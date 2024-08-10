@@ -65,10 +65,11 @@ namespace StarForce
                 Log.Warning("Entity is invalid.");
                 return;
             }
-
+            //检测列表中是否存在 如果存在则返回
             HPBarItem hpBarItem = GetActiveHPBarItem(entity);
+            //如果当前为空 则创建新的缓冲池
             if (hpBarItem == null)
-            {
+            {   
                 hpBarItem = CreateHPBarItem(entity);
                 m_ActiveHPBarItems.Add(hpBarItem);
             }
@@ -82,7 +83,12 @@ namespace StarForce
             m_ActiveHPBarItems.Remove(hpBarItem);
             m_HPBarItemObjectPool.Unspawn(hpBarItem);
         }
-
+        
+        /// <summary>
+        /// 从List 内 查找是否是已存在的对象
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
         private HPBarItem GetActiveHPBarItem(Entity entity)
         {
             if (entity == null)
@@ -100,10 +106,15 @@ namespace StarForce
 
             return null;
         }
-
+        /// <summary>
+        /// 从池内获取一个对象或者创建一个新的对象
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
         private HPBarItem CreateHPBarItem(Entity entity)
         {
             HPBarItem hpBarItem = null;
+            //从池内获取一个对象
             HPBarItemObject hpBarItemObject = m_HPBarItemObjectPool.Spawn();
             if (hpBarItemObject != null)
             {

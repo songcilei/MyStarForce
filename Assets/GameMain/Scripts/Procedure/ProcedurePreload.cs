@@ -86,7 +86,8 @@ namespace StarForce
             //ChangeState<ProcedureChangeScene>(procedureOwner);
 //------------test            
             procedureOwner.SetData<VarInt32>("NextSceneId", GameEntry.Config.GetInt("Scene.Test"));
-            ChangeState<ProcedureTest>(procedureOwner);
+//------------change state            
+            ChangeState<TestProcedureObjectPool>(procedureOwner);
         }
 
         private void PreloadResources()
