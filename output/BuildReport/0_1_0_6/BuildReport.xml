@@ -1,0 +1,668 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<UnityGameFramework>
+  <BuildReport>
+    <Summary>
+      <ProductName>Star Force</ProductName>
+      <CompanyName>Game Framework</CompanyName>
+      <GameIdentifier>com.gameframework.starforce</GameIdentifier>
+      <GameFrameworkVersion>2021.05.31</GameFrameworkVersion>
+      <UnityVersion>2022.3.34f1c1</UnityVersion>
+      <ApplicableGameVersion>0.1.0</ApplicableGameVersion>
+      <InternalResourceVersion>6</InternalResourceVersion>
+      <Platforms>Android</Platforms>
+      <AssetBundleCompression>LZ4</AssetBundleCompression>
+      <CompressionHelperTypeName>UnityGameFramework.Runtime.DefaultCompressionHelper</CompressionHelperTypeName>
+      <AdditionalCompressionSelected>True</AdditionalCompressionSelected>
+      <ForceRebuildAssetBundleSelected>False</ForceRebuildAssetBundleSelected>
+      <BuildEventHandlerTypeName>StarForce.Editor.StarForceBuildEventHandler</BuildEventHandlerTypeName>
+      <OutputDirectory>D:/UnityProject3/MyStarForce/output</OutputDirectory>
+      <BuildAssetBundleOptions>DeterministicAssetBundle, ChunkBasedCompression</BuildAssetBundleOptions>
+    </Summary>
+    <Resources Count="23">
+      <Resource Name="Configs" Extension="dat" FileSystem="GameData" LoadType="0" Packed="True" ResourceGroups="Base">
+        <Assets Count="2">
+          <Asset Guid="44c8db52241385c45bbb14a1718f17bf" Name="Assets/GameMain/Configs/DefaultConfig.txt" Length="194" HashCode="-28294422" />
+          <Asset Guid="7fd11dc5d29076d469d414dec2818f11" Name="Assets/GameMain/Configs/DefaultConfig.bytes" Length="45" HashCode="698598607" />
+        </Assets>
+        <Codes>
+          <Android Length="1417" HashCode="1271718270" CompressedLength="1170" CompressedHashCode="1982434720" />
+        </Codes>
+      </Resource>
+      <Resource Name="DataTables" Extension="dat" FileSystem="GameData" LoadType="0" Packed="True" ResourceGroups="Base">
+        <Assets Count="22">
+          <Asset Guid="239366f83979ffa48a45dac2f0f1e8cb" Name="Assets/GameMain/DataTables/Armor.bytes" Length="7" HashCode="-947532496" />
+          <Asset Guid="315e8ed2db27c254cb3366ff0793cd90" Name="Assets/GameMain/DataTables/Music.txt" Length="254" HashCode="141271682" />
+          <Asset Guid="352da872791696c48af3b21132e3e3c3" Name="Assets/GameMain/DataTables/UIForm.txt" Length="702" HashCode="1628460514" />
+          <Asset Guid="372a8b1e52bedc64b9207b12d167afaa" Name="Assets/GameMain/DataTables/Sound.txt" Length="868" HashCode="-981921304" />
+          <Asset Guid="4a17d2c656f5c6b44a31e3ee547a76b0" Name="Assets/GameMain/DataTables/Aircraft.bytes" Length="44" HashCode="700627166" />
+          <Asset Guid="4db6a299939bfe94893585eb387f577a" Name="Assets/GameMain/DataTables/Thruster.bytes" Length="8" HashCode="-338186446" />
+          <Asset Guid="64f3bb52c6a54854688fcc656af2b1c9" Name="Assets/GameMain/DataTables/Aircraft.txt" Length="666" HashCode="-2090882756" />
+          <Asset Guid="8b1acacd22538f34cb85287a0781ea5e" Name="Assets/GameMain/DataTables/Weapon.bytes" Length="18" HashCode="1370616616" />
+          <Asset Guid="8e114ded6a865324588170636872943c" Name="Assets/GameMain/DataTables/UISound.bytes" Length="29" HashCode="-540465734" />
+          <Asset Guid="97d117308cf86924289e81e7e71dd5dd" Name="Assets/GameMain/DataTables/Entity.bytes" Length="230" HashCode="-1176981906" />
+          <Asset Guid="9b433f0bb7fef6f4085c316a0d88c307" Name="Assets/GameMain/DataTables/Music.bytes" Length="46" HashCode="-102054710" />
+          <Asset Guid="9c3961f379234354e813d7b38146424d" Name="Assets/GameMain/DataTables/Thruster.txt" Length="144" HashCode="891006938" />
+          <Asset Guid="9c3faac13c8ced84a9f3018303b7bb98" Name="Assets/GameMain/DataTables/Sound.bytes" Length="167" HashCode="-1089466089" />
+          <Asset Guid="a33e23ae848110243820cda82120b105" Name="Assets/GameMain/DataTables/UIForm.bytes" Length="111" HashCode="1948674893" />
+          <Asset Guid="a71f8bb1b1b2c51438e2bafc884cb02c" Name="Assets/GameMain/DataTables/Scene.txt" Length="276" HashCode="-802131244" />
+          <Asset Guid="ab4774faf71b57a40a29a9e902403fe3" Name="Assets/GameMain/DataTables/Weapon.txt" Length="370" HashCode="1232484129" />
+          <Asset Guid="ad56aae2bb0f2ce4a86711287e14e223" Name="Assets/GameMain/DataTables/Asteroid.txt" Length="548" HashCode="2096169771" />
+          <Asset Guid="b2cebe04343227945bab3729ca9a3493" Name="Assets/GameMain/DataTables/Armor.txt" Length="184" HashCode="-819325575" />
+          <Asset Guid="cfe53cf384344bd47a8680f8c5f97a7b" Name="Assets/GameMain/DataTables/Entity.txt" Length="848" HashCode="1017285111" />
+          <Asset Guid="e0792649e7774a24d8e7cceba0231c61" Name="Assets/GameMain/DataTables/Asteroid.bytes" Length="65" HashCode="-1041507408" />
+          <Asset Guid="f2f97a713beae744181ba934f9c4113a" Name="Assets/GameMain/DataTables/UISound.txt" Length="334" HashCode="1201326981" />
+          <Asset Guid="fdb5edd099d06b045af609ba3172400a" Name="Assets/GameMain/DataTables/Scene.bytes" Length="24" HashCode="92881583" />
+        </Assets>
+        <Codes>
+          <Android Length="4415" HashCode="-599048117" CompressedLength="3730" CompressedHashCode="-1336248555" />
+        </Codes>
+      </Resource>
+      <Resource Name="Entities" Extension="dat" FileSystem="Resources" LoadType="0" Packed="True">
+        <Assets Count="14">
+          <Asset Guid="0992f89f84d762f478fd32f8225168b0" Name="Assets/GameMain/Entities/DefaultArmor.prefab" Length="1025" HashCode="-415561374" />
+          <Asset Guid="11e27c26ac87b40f0a62ec40d7261989" Name="Assets/GameMain/Entities/EnemyBolt.prefab" Length="3441" HashCode="-1224496379">
+            <DependencyAssets Count="1">
+              <DependencyAsset Name="Assets/GameMain/Materials/done_fx_bolt_cyan_mat.mat" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="160925a6fe2664f2a978566b819f0af0" Name="Assets/GameMain/Entities/EnemyExplosion.prefab" Length="196466" HashCode="930618837">
+            <DependencyAssets Count="4">
+              <DependencyAsset Name="Assets/GameMain/Materials/part_blast_mat.mat" />
+              <DependencyAsset Name="Assets/GameMain/Materials/part_shockwave_mat.mat" />
+              <DependencyAsset Name="Assets/GameMain/Materials/part_spark_blue_mat.mat" />
+              <DependencyAsset Name="Assets/GameMain/Materials/part_spark_large_mat.mat" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="3455fe69f7ddc4604b95bf9b0a1e88d7" Name="Assets/GameMain/Entities/PlayerExplosion.prefab" Length="819001" HashCode="-777282489">
+            <DependencyAssets Count="5">
+              <DependencyAsset Name="Assets/GameMain/Materials/part_blast_mat.mat" />
+              <DependencyAsset Name="Assets/GameMain/Materials/part_shockwave_mat.mat" />
+              <DependencyAsset Name="Assets/GameMain/Materials/part_spark_large_mat.mat" />
+              <DependencyAsset Name="Assets/GameMain/Materials/part_spark_white_mat.mat" />
+              <DependencyAsset Name="Assets/GameMain/Materials/part_spark_yellow_mat.mat" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="738bdf56857a65f479c367c7b62c4ad7" Name="Assets/GameMain/Entities/PlayerShip.prefab" Length="5749" HashCode="-2045885854">
+            <DependencyAssets Count="4">
+              <DependencyAsset Name="Assets/GameMain/Materials/vehicle_playerShip_glass_mat.mat" />
+              <DependencyAsset Name="Assets/GameMain/Materials/vehicle_playerShip_metal_mat.mat" />
+              <DependencyAsset Name="Assets/GameMain/Meshes/vehicle_playerShip.FBX" />
+              <DependencyAsset Name="Assets/GameMain/Meshes/vehicle_playerShip_collider.FBX" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="7d5f7699d6d1d48e485ac71126e12061" Name="Assets/GameMain/Entities/Asteroid01.prefab" Length="3546" HashCode="-1191952948">
+            <DependencyAssets Count="2">
+              <DependencyAsset Name="Assets/GameMain/Materials/prop_asteroid_01_mat.mat" />
+              <DependencyAsset Name="Assets/GameMain/Meshes/prop_asteroid_01.FBX" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="834bfaee90a9d4e04b1e8c1ca22cc88e" Name="Assets/GameMain/Entities/Asteroid03.prefab" Length="3583" HashCode="594042380">
+            <DependencyAssets Count="2">
+              <DependencyAsset Name="Assets/GameMain/Materials/prop_asteroid_03_mat.mat" />
+              <DependencyAsset Name="Assets/GameMain/Meshes/prop_asteroid_03.FBX" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="8cf749fdfa5edc3478d16893efeaa0eb" Name="Assets/GameMain/Entities/PlayerEngine.prefab" Length="67536" HashCode="1773899896">
+            <DependencyAssets Count="2">
+              <DependencyAsset Name="Assets/GameMain/Materials/part_jet_core_mat.mat" />
+              <DependencyAsset Name="Assets/GameMain/Materials/part_jet_flare_mat.mat" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="9143e2b62ad50488482f9b73672fc331" Name="Assets/GameMain/Entities/Asteroid02.prefab" Length="3599" HashCode="-1896194590">
+            <DependencyAssets Count="2">
+              <DependencyAsset Name="Assets/GameMain/Materials/prop_asteroid_02_mat.mat" />
+              <DependencyAsset Name="Assets/GameMain/Meshes/prop_asteroid_02.FBX" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="a6d58f54ce5934781962a4f887e834f3" Name="Assets/GameMain/Entities/AsteroidExplosion.prefab" Length="466397" HashCode="-1167801065">
+            <DependencyAssets Count="4">
+              <DependencyAsset Name="Assets/GameMain/Materials/part_glow_mat.mat" />
+              <DependencyAsset Name="Assets/GameMain/Materials/part_shockwave_mat.mat" />
+              <DependencyAsset Name="Assets/GameMain/Materials/part_spark_large_mat.mat" />
+              <DependencyAsset Name="Assets/GameMain/Materials/part_spark_white_mat.mat" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="abd1565e9e268f04cac3631d022b4ace" Name="Assets/GameMain/Entities/DefaultWeapon.prefab" Length="1026" HashCode="1728914360" />
+          <Asset Guid="afc18fc39ade3744397c0c993b57be53" Name="Assets/GameMain/Entities/EnemyShip.prefab" Length="5751" HashCode="-1220400851">
+            <DependencyAssets Count="3">
+              <DependencyAsset Name="Assets/GameMain/Materials/vehicle_enemyShip_glow_mat.mat" />
+              <DependencyAsset Name="Assets/GameMain/Materials/vehicle_enemyShip_metal_mat.mat" />
+              <DependencyAsset Name="Assets/GameMain/Meshes/vehicle_enemyShip.FBX" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="f4ec271e525e14ca9927a07e6a2e153d" Name="Assets/GameMain/Entities/PlayerBolt.prefab" Length="3442" HashCode="-387983550">
+            <DependencyAssets Count="1">
+              <DependencyAsset Name="Assets/GameMain/Materials/done_fx_bolt_orange_mat.mat" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="fedd25a3c60e7ae499fc6efab9ee180b" Name="Assets/GameMain/Entities/EnemyEngine.prefab" Length="33266" HashCode="1342398884">
+            <DependencyAssets Count="1">
+              <DependencyAsset Name="Assets/GameMain/Materials/fx_enemyShip_engines_mat.mat" />
+            </DependencyAssets>
+          </Asset>
+        </Assets>
+        <Codes>
+          <Android Length="40988" HashCode="-1688088314" CompressedLength="23489" CompressedHashCode="939296031" />
+        </Codes>
+      </Resource>
+      <Resource Name="Fonts" Extension="dat" FileSystem="UI" LoadType="0" Packed="True" ResourceGroups="Base">
+        <Assets Count="1">
+          <Asset Guid="77cbb7c5404c10242ab59953e0746314" Name="Assets/GameMain/Fonts/MainFont.ttf" Length="7070444" HashCode="-915020890" />
+        </Assets>
+        <Codes>
+          <Android Length="4628822" HashCode="-289834969" CompressedLength="4052699" CompressedHashCode="54052888" />
+        </Codes>
+      </Resource>
+      <Resource Name="Localization/Dictionaries" Variant="en-us" Extension="dat" FileSystem="UI" LoadType="0" Packed="True" ResourceGroups="Base">
+        <Assets Count="1">
+          <Asset Guid="14869ac0d4433f04db1704e39d03412e" Name="Assets/GameMain/Localization/English/Dictionaries/Default.xml" Length="1971" HashCode="1436356205" />
+        </Assets>
+        <Codes>
+          <Android Length="2185" HashCode="-1002990817" CompressedLength="1816" CompressedHashCode="-492201418" />
+        </Codes>
+      </Resource>
+      <Resource Name="Localization/Dictionaries" Variant="ko-kr" Extension="dat" FileSystem="UI" LoadType="0" Packed="True" ResourceGroups="Base">
+        <Assets Count="1">
+          <Asset Guid="5dcd89912e222bf4c87f76db4044bc5e" Name="Assets/GameMain/Localization/Korean/Dictionaries/Default.xml" Length="2161" HashCode="298362949" />
+        </Assets>
+        <Codes>
+          <Android Length="2250" HashCode="-919170803" CompressedLength="1940" CompressedHashCode="-298385441" />
+        </Codes>
+      </Resource>
+      <Resource Name="Localization/Dictionaries" Variant="zh-cn" Extension="dat" FileSystem="UI" LoadType="0" Packed="True" ResourceGroups="Base">
+        <Assets Count="1">
+          <Asset Guid="9be2e1e45f4edd74c8764538ad306b78" Name="Assets/GameMain/Localization/ChineseSimplified/Dictionaries/Default.xml" Length="1900" HashCode="-822664770" />
+        </Assets>
+        <Codes>
+          <Android Length="2135" HashCode="1940404521" CompressedLength="1856" CompressedHashCode="-922771630" />
+        </Codes>
+      </Resource>
+      <Resource Name="Localization/Dictionaries" Variant="zh-tw" Extension="dat" FileSystem="UI" LoadType="0" Packed="True" ResourceGroups="Base">
+        <Assets Count="1">
+          <Asset Guid="1053b0070685be347ab58587156842dc" Name="Assets/GameMain/Localization/ChineseTraditional/Dictionaries/Default.xml" Length="1901" HashCode="-1957327408" />
+        </Assets>
+        <Codes>
+          <Android Length="2136" HashCode="475267505" CompressedLength="1859" CompressedHashCode="578141842" />
+        </Codes>
+      </Resource>
+      <Resource Name="Materials" Extension="dat" FileSystem="Resources" LoadType="0" Packed="True">
+        <Assets Count="24">
+          <Asset Guid="0ed73dc47f4cb38489020d05e9f02c99" Name="Assets/GameMain/Materials/part_glow_mat.mat" Length="969" HashCode="-511342649" />
+          <Asset Guid="0f995b3145e0e7247a42da6cef1dbf23" Name="Assets/GameMain/Materials/part_spark_white_mat.mat" Length="1112" HashCode="1890053044">
+            <DependencyAssets Count="1">
+              <DependencyAsset Name="Assets/GameMain/Textures/part_spark_small_dff.tif" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="185f97f18bd603a478461ce9c08bd039" Name="Assets/GameMain/Materials/part_star_mat.mat" Length="776" HashCode="252208735">
+            <DependencyAssets Count="1">
+              <DependencyAsset Name="Assets/GameMain/Textures/part_star_dff.tif" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="1b4bad6cea5a94611b21f9757fe41444" Name="Assets/GameMain/Materials/fx_enemyShip_engines_mat.mat" Length="957" HashCode="-821726425">
+            <DependencyAssets Count="1">
+              <DependencyAsset Name="Assets/GameMain/Textures/part_enginePulse_dff.tif" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="1cfe02ffd0b74854ea5bcd1a3c63ac3c" Name="Assets/GameMain/Materials/part_blast_mat.mat" Length="1507" HashCode="820852791">
+            <DependencyAssets Count="1">
+              <DependencyAsset Name="Assets/GameMain/Textures/part_flash_dff.tif" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="1d46a17a95a444c08830612bc1146d1d" Name="Assets/GameMain/Materials/part_shockwave_mat.mat" Length="951" HashCode="-1023517588">
+            <DependencyAssets Count="1">
+              <DependencyAsset Name="Assets/GameMain/Textures/part_shockwave_dff.tif" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="1e0350b97c61bfb4a91c62d756d01727" Name="Assets/GameMain/Materials/vehicle_enemyShip_glow_mat.mat" Length="3386" HashCode="917040183">
+            <DependencyAssets Count="1">
+              <DependencyAsset Name="Assets/GameMain/Textures/vehicle_enemyShip_purple_dff.tif" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="4c3865b2ac420cd46a9cde6ab468d016" Name="Assets/GameMain/Materials/prop_asteroid_03_mat.mat" Length="2431" HashCode="659671172">
+            <DependencyAssets Count="2">
+              <DependencyAsset Name="Assets/GameMain/Textures/prop_asteroid_03_dff.tif" />
+              <DependencyAsset Name="Assets/GameMain/Textures/prop_asteroid_03_nrm.tif" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="578af1667322bab45b652b79a40bb4fb" Name="Assets/GameMain/Materials/prop_asteroid_02_mat.mat" Length="2430" HashCode="-66418341">
+            <DependencyAssets Count="2">
+              <DependencyAsset Name="Assets/GameMain/Textures/prop_asteroid_02_dff.tif" />
+              <DependencyAsset Name="Assets/GameMain/Textures/prop_asteroid_02_nrm.tif" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="583ff7026dac91849b7c7b2468ba456b" Name="Assets/GameMain/Materials/prop_asteroid_01_mat.mat" Length="2432" HashCode="430966068">
+            <DependencyAssets Count="2">
+              <DependencyAsset Name="Assets/GameMain/Textures/prop_asteroid_01_dff.tif" />
+              <DependencyAsset Name="Assets/GameMain/Textures/prop_asteroid_01_nrm.tif" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="5a6e00c9235681446ad58ebbce355608" Name="Assets/GameMain/Materials/icon.mat" Length="2240" HashCode="-1377295365">
+            <DependencyAssets Count="2">
+              <DependencyAsset Name="Assets/GameMain/Shader/IconShader.shader" />
+              <DependencyAsset Name="Assets/GameMain/Textures/icon.png" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="63fe6ff9ab9e1433f8db4ebd940f2442" Name="Assets/GameMain/Materials/done_fx_bolt_cyan_mat.mat" Length="954" HashCode="1780959827">
+            <DependencyAssets Count="1">
+              <DependencyAsset Name="Assets/GameMain/Textures/fx_lazer_cyan_dff.tif" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="8940b037a9b441c4cbd3d2b446838424" Name="Assets/GameMain/Materials/vehicle_playerShip_metal_mat.mat" Length="2651" HashCode="-1970677649">
+            <DependencyAssets Count="2">
+              <DependencyAsset Name="Assets/GameMain/Textures/vehicle_playerShip_orange_dff.tif" />
+              <DependencyAsset Name="Assets/GameMain/Textures/vehicle_playerShip_orange_nrm.tif" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="8ce2a793d97d7cd46912fd76cba10d83" Name="Assets/GameMain/Materials/matrital2.mat" Length="2449" HashCode="1394253067">
+            <DependencyAssets Count="2">
+              <DependencyAsset Name="Assets/GameMain/Shader/CubeShader.shader" />
+              <DependencyAsset Name="Assets/GameMain/Textures/cube2.png" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="8e27380ee68aa4a219b4db9018e7da31" Name="Assets/GameMain/Materials/done_fx_bolt_orange_mat.mat" Length="956" HashCode="648966394">
+            <DependencyAssets Count="1">
+              <DependencyAsset Name="Assets/GameMain/Textures/fx_lazer_orange_dff.tif" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="955000b4d1441470e8cbf94f483228b5" Name="Assets/GameMain/Materials/done_tile_nebula_green_dff.mat" Length="789" HashCode="-145053111">
+            <DependencyAssets Count="1">
+              <DependencyAsset Name="Assets/GameMain/Textures/tile_nebula_green_dff.tif" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="97b1f8b25cca2bc458cb9d6127c8d186" Name="Assets/GameMain/Materials/part_spark_large_mat.mat" Length="783" HashCode="-380307461">
+            <DependencyAssets Count="1">
+              <DependencyAsset Name="Assets/GameMain/Textures/part_spark_large_dff.tif" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="a23eef5e20ff8cb46adf33491fc443fb" Name="Assets/GameMain/Materials/part_spark_yellow_mat.mat" Length="1135" HashCode="1637589738">
+            <DependencyAssets Count="1">
+              <DependencyAsset Name="Assets/GameMain/Textures/part_spark_small_dff.tif" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="a7b030cffa2dc44478c14e49a22771c2" Name="Assets/GameMain/Materials/part_jet_flare_mat.mat" Length="985" HashCode="317355288">
+            <DependencyAssets Count="1">
+              <DependencyAsset Name="Assets/GameMain/Textures/part_jet_flare_dff.tif" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="b0c7cf51d3fecb446ab93bf854419715" Name="Assets/GameMain/Materials/part_spark_blue_mat.mat" Length="1308" HashCode="1315080688">
+            <DependencyAssets Count="1">
+              <DependencyAsset Name="Assets/GameMain/Textures/part_spark_small_dff.tif" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="c547624e174de984882f0a14b4bb32e1" Name="Assets/GameMain/Materials/vehicle_enemyShip_metal_mat.mat" Length="2656" HashCode="-1618264689">
+            <DependencyAssets Count="2">
+              <DependencyAsset Name="Assets/GameMain/Textures/vehicle_enemyShip_nrm.tif" />
+              <DependencyAsset Name="Assets/GameMain/Textures/vehicle_enemyShip_purple_dff.tif" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="c58c9afddbd36d14d837fa218d772996" Name="Assets/GameMain/Materials/part_jet_core_mat.mat" Length="950" HashCode="-1986767761">
+            <DependencyAssets Count="1">
+              <DependencyAsset Name="Assets/GameMain/Textures/part_jet_core_dff.tif" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="f36c72c738c55f741afcd674a0b1245f" Name="Assets/GameMain/Materials/vehicle_playerShip_glass_mat.mat" Length="2647" HashCode="10990979">
+            <DependencyAssets Count="2">
+              <DependencyAsset Name="Assets/GameMain/Textures/vehicle_playerShip_orange_dff.tif" />
+              <DependencyAsset Name="Assets/GameMain/Textures/vehicle_playerShip_orange_nrm.tif" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="faff10f17706301498d6df9c6524d91a" Name="Assets/GameMain/Materials/matrital1.mat" Length="2449" HashCode="-696404443">
+            <DependencyAssets Count="2">
+              <DependencyAsset Name="Assets/GameMain/Shader/CubeShader.shader" />
+              <DependencyAsset Name="Assets/GameMain/Textures/cuebe1.png" />
+            </DependencyAssets>
+          </Asset>
+        </Assets>
+        <Codes>
+          <Android Length="153989" HashCode="-1328626201" CompressedLength="130620" CompressedHashCode="2003001028" />
+        </Codes>
+      </Resource>
+      <Resource Name="Meshes" Extension="dat" FileSystem="Resources" LoadType="0" Packed="True">
+        <Assets Count="6">
+          <Asset Guid="2768a9a4c8d289840918dcb879705893" Name="Assets/GameMain/Meshes/prop_asteroid_03.FBX" Length="52288" HashCode="-1722450471" />
+          <Asset Guid="5282f20eba4d44213820e21af8481932" Name="Assets/GameMain/Meshes/vehicle_playerShip_collider.FBX" Length="19056" HashCode="1860635943" />
+          <Asset Guid="9afa958d6d8235941b9badb42aae4370" Name="Assets/GameMain/Meshes/prop_asteroid_02.FBX" Length="41168" HashCode="1343012427" />
+          <Asset Guid="9ddab293e2a8af3499dac05f5fd6169c" Name="Assets/GameMain/Meshes/vehicle_enemyShip.FBX" Length="120512" HashCode="-379217913" />
+          <Asset Guid="baedbbad82997f445a8cb4da210404e0" Name="Assets/GameMain/Meshes/prop_asteroid_01.FBX" Length="46624" HashCode="1188617936" />
+          <Asset Guid="d9808401c68af274a8edfbed3d1b53c7" Name="Assets/GameMain/Meshes/vehicle_playerShip.FBX" Length="104528" HashCode="-999938615" />
+        </Assets>
+        <Codes>
+          <Android Length="341658" HashCode="-124545589" CompressedLength="298096" CompressedHashCode="1601156931" />
+        </Codes>
+      </Resource>
+      <Resource Name="Music/About" Extension="dat" FileSystem="Resources" LoadType="0" Packed="True" ResourceGroups="Music">
+        <Assets Count="1">
+          <Asset Guid="093f8873cfe371d41b854ed9fb6bff69" Name="Assets/GameMain/Music/music_about.mp3" Length="5188156" HashCode="-1448743119" />
+        </Assets>
+        <Codes>
+          <Android Length="3368473" HashCode="-1534983293" CompressedLength="3357242" CompressedHashCode="1824106332" />
+        </Codes>
+      </Resource>
+      <Resource Name="Music/Background" Extension="dat" FileSystem="Resources" LoadType="0" Packed="True" ResourceGroups="Music">
+        <Assets Count="1">
+          <Asset Guid="638ff8ae4a0d15047839cd265d3bc296" Name="Assets/GameMain/Music/music_background.mp3" Length="2336432" HashCode="588648626" />
+        </Assets>
+        <Codes>
+          <Android Length="127411" HashCode="1302532255" CompressedLength="126773" CompressedHashCode="-1272395618" />
+        </Codes>
+      </Resource>
+      <Resource Name="Music/Menu" Extension="dat" FileSystem="Resources" LoadType="0" Packed="True" ResourceGroups="Music">
+        <Assets Count="1">
+          <Asset Guid="caa829ab2ffc71340a69253afdf58365" Name="Assets/GameMain/Music/music_menu.mp3" Length="1866065" HashCode="306016124" />
+        </Assets>
+        <Codes>
+          <Android Length="997977" HashCode="-462437606" CompressedLength="996274" CompressedHashCode="-1936375751" />
+        </Codes>
+      </Resource>
+      <Resource Name="Plugins" Extension="dat" LoadType="0" Packed="True">
+        <Assets Count="135">
+          <Asset Guid="018a5623a46db1d49b1e6ff2482b07ab" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/tileBars_slanted_alpha.png" Length="266" HashCode="68727507" />
+          <Asset Guid="01976ad42d31f494e8040d3e32e283dc" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_skull.png" Length="227" HashCode="1885230918" />
+          <Asset Guid="039dc89c76661c344b7776f8a47cc5a4" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/whiteDot_whiteBorderAlpha.png" Length="176" HashCode="1625726278" />
+          <Asset Guid="05cfe010378336646ad6c721f66543d1" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/blueSquare.png" Length="106" HashCode="1726815105" />
+          <Asset Guid="070edb62059c27b408e16f28cb87f941" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/whiteSquareCurved.png" Length="144" HashCode="1392777103" />
+          <Asset Guid="09a0cde07b4d75f49b4c817932791b81" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/project/ico_models.png" Length="380" HashCode="-1033835173" />
+          <Asset Guid="0c0132429106c8a4d89d9d0a6b723ec3" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_visibility_off.png" Length="367" HashCode="-18153141" />
+          <Asset Guid="0f79253104349f44cb73978f6c8e93de" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_alignTC.png" Length="164" HashCode="1087071478" />
+          <Asset Guid="11848dd30e516d846a02cd302634d317" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/whiteSquareAlpha80.png" Length="110" HashCode="1224331865" />
+          <Asset Guid="18a5a7cde794cc04b9b446f0feedb3a0" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_foldout_open.png" Length="170" HashCode="942773244" />
+          <Asset Guid="18f3a26aa87fccc4cb5e211d4c6de662" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_star_border.png" Length="323" HashCode="2014698176" />
+          <Asset Guid="1ccb12a4b0bf8f447b2cc114851732f5" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_distributeHAlignT.png" Length="174" HashCode="1189431570" />
+          <Asset Guid="20794834c0a413f408b80110d0fc73b8" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/project/ico_heart.png" Length="334" HashCode="1990355206" />
+          <Asset Guid="21820ec6fc9dd0b4fbf42a3b93fdad4e" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/project/ico_star.png" Length="289" HashCode="-415329672" />
+          <Asset Guid="229d0d11465a822449f78a50dbf7104d" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_demigiant.png" Length="605" HashCode="-1099541749" />
+          <Asset Guid="24123b2fcdc15c943bed44e0c6beeec7" Name="Assets/Plugins/Demigiant/readme_DOTweenPro.txt" Length="2439" HashCode="-652622155" />
+          <Asset Guid="252f207d01ecc87419cdba1d1c0ab1ea" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_light_border.png" Length="292" HashCode="-658843772" />
+          <Asset Guid="25da15ac84743244ab4c860cf8798ec8" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/squareBorderCurved_darkBorders.png" Length="216" HashCode="169978964" />
+          <Asset Guid="27df4ca974a8eaf40803907859421506" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/whiteDot_darkBorder.png" Length="219" HashCode="1423400477" />
+          <Asset Guid="282d742ce2ddf9f458812ab84ea6fa88" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/whiteSquareCurved02.png" Length="190" HashCode="936017997" />
+          <Asset Guid="29b0e8156f6fb774faf129c83bc9ee33" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/squareBorderEmpty02.png" Length="121" HashCode="1717441401" />
+          <Asset Guid="2a563a43c33f0f3428d02b3a43886fc2" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_play.png" Length="256" HashCode="-2063851121" />
+          <Asset Guid="2a8208d8e80f90944b8ff2978292b03b" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_alignCL.png" Length="158" HashCode="-871395687" />
+          <Asset Guid="2cdc0bc527f7a434496c6be9236e636f" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_alignBC.png" Length="158" HashCode="2066751858" />
+          <Asset Guid="2e2c6224d345d9249acfa6e8ef40bb2d" Name="Assets/Plugins/Demigiant/DOTween/Editor/DOTweenEditor.XML" Length="6018" HashCode="1702547095" />
+          <Asset Guid="301c130dbb4bbba4e87072804939c861" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_foldout_closed.png" Length="158" HashCode="-1711531029" />
+          <Asset Guid="32eaa0efb2b38774ea9705b40fdcc00a" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_distributeVAlignL.png" Length="197" HashCode="443297650" />
+          <Asset Guid="34192c5e0d14aee43a0e86cc4823268a" Name="Assets/Plugins/Demigiant/DOTween/DOTween.XML" Length="223033" HashCode="-1180334699" />
+          <Asset Guid="34f39b5a760ddbb4d8b8749852868335" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_ok.png" Length="715" HashCode="-1052124350" />
+          <Asset Guid="358cddede8023574191e0aae610a4645" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_camera_border.png" Length="347" HashCode="-378522752" />
+          <Asset Guid="37639be6148186645bca3fce45d5aa22" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_camera.png" Length="206" HashCode="-864199237" />
+          <Asset Guid="39cacc93c6c183f44992bf2421362f78" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_alert.png" Length="540" HashCode="-289428157" />
+          <Asset Guid="3b67e53c8c2f8114b966c0e70d452419" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/project/ico_cross.png" Length="210" HashCode="-1473870476" />
+          <Asset Guid="3e6b96a975eba1c43b2bad66fb7f8b4a" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/project/ico_textures.png" Length="278" HashCode="1429759899" />
+          <Asset Guid="3e730492361eb6e45be5c5fdafac23be" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/orangeSquare.png" Length="104" HashCode="-873031259" />
+          <Asset Guid="44a054df1702e39458b7072b08d0f212" Name="Assets/Plugins/Demigiant/DOTweenPro Examples/Examples Assets/dotweenpro_logo.png" Length="17098" HashCode="1663735997" />
+          <Asset Guid="4578222ee7a511446b0c340551bf8740" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/squareBorderCurvedEmpty.png" Length="180" HashCode="-303737656" />
+          <Asset Guid="45e128e1cf00555479ee7934ab11cadf" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_play_border.png" Length="386" HashCode="1316198182" />
+          <Asset Guid="4896b5aa9d63dec498136c21ffce735b" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/squareBorderCurved.png" Length="196" HashCode="325458176" />
+          <Asset Guid="4a091a7609ef2d34bbdfaa1a886deb18" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/project/ico_terrains.png" Length="309" HashCode="-1849924154" />
+          <Asset Guid="4aa34055b1d36ef479af3d7b5701b28a" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_nodeArrow.png" Length="168" HashCode="-1680769407" />
+          <Asset Guid="4d338c631fa36f345b72a36f1c91ff9a" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/transparentSquare.png" Length="97" HashCode="595303496" />
+          <Asset Guid="4f2c4b43188596b47866d41e1dc13c8a" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/project/ico_folder.png" Length="150" HashCode="2203422" />
+          <Asset Guid="4f69b96f9308d8f4ea239773ef5b55c4" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_light.png" Length="190" HashCode="1888135447" />
+          <Asset Guid="511f6b24c50557a40a09633b12b8b8ef" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/whiteSquareAlpha25.png" Length="107" HashCode="152069942" />
+          <Asset Guid="517a5bfe18f2ee04d9925db10be034e2" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/yellowSquare.png" Length="106" HashCode="-949474709" />
+          <Asset Guid="519694efe2bb2914788b151fbd8c01f4" Name="Assets/Plugins/Demigiant/DOTween/Editor/Imgs/Footer_dark.png" Length="4429" HashCode="830073387" />
+          <Asset Guid="522b0133a9838674ca9a12e0c6e5a59c" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/circle_dashedBorderEmpty.png" Length="673" HashCode="1409581620" />
+          <Asset Guid="53d696c01f6ca524383f11fcc34dd13c" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/blackSquareAlpha15.png" Length="109" HashCode="454003014" />
+          <Asset Guid="5510cdd48a6aaaa439c95ef5b2fe9e28" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/whiteSquareAlpha15.png" Length="109" HashCode="-105896311" />
+          <Asset Guid="55c2b426022dac44f9b25f0cba28aa45" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_visibility.png" Length="298" HashCode="-307541664" />
+          <Asset Guid="58676a985ae875646b7be748cf4499fd" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/project/ico_bundle.png" Length="522" HashCode="1729427988" />
+          <Asset Guid="595b166389c8db546a199430284ebc9b" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/blackSquareAlpha80.png" Length="109" HashCode="1334405576" />
+          <Asset Guid="61521df2e071645488ba3d05e49289ae" Name="Assets/Plugins/Demigiant/DOTween/Editor/Imgs/DOTweenMiniIcon.png" Length="319" HashCode="-383661530" />
+          <Asset Guid="622fdb780ae13e840938631c5ed708f2" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_comment.png" Length="176" HashCode="1625572523" />
+          <Asset Guid="62a48d93e78c63b4ea9b46537c7c0091" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_optionsDropdown.png" Length="135" HashCode="733399697" />
+          <Asset Guid="645aafe2260b2884a9df05b4bc01b1ec" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_star.png" Length="203" HashCode="1925132914" />
+          <Asset Guid="669c487f3c9c5fe4abb6459f9c2628f0" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_heart_border.png" Length="307" HashCode="-1662602044" />
+          <Asset Guid="6862027f2176eae40a3143c562466a1b" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_cog_border.png" Length="376" HashCode="2025687014" />
+          <Asset Guid="6b1f9e1e1c2cf004b8e3bdd3033a8e75" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_delete.png" Length="145" HashCode="-867807353" />
+          <Asset Guid="6dfd924c0ba23844fb5d04ad1560de22" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_skull_border.png" Length="332" HashCode="-103587353" />
+          <Asset Guid="6efe1c8569d975640ba0c9f2ac4a9d61" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_alignTL.png" Length="153" HashCode="-1451047570" />
+          <Asset Guid="6f504a3fa8848264bb4fb9bb7d582dd5" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_alignCR.png" Length="153" HashCode="-4839403" />
+          <Asset Guid="7051dba417b3d53409f2918f1ea4938d" Name="Assets/Plugins/Demigiant/DOTween/Editor/Imgs/Footer.png" Length="4409" HashCode="1102773471" />
+          <Asset Guid="727ba41e4cc95fe4a98b07301e3ebfc8" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_alignR.png" Length="145" HashCode="317134051" />
+          <Asset Guid="753a4f4ed73b17143923101226957756" Name="Assets/Plugins/Demigiant/DOTweenPro/Editor/DOTweenProEditor.XML" Length="542" HashCode="966698680" />
+          <Asset Guid="789ef07ba2573f6448fa8b5dc5224c44" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/greenSquare.png" Length="106" HashCode="1152069656" />
+          <Asset Guid="78a59ca99f8987941adb61f9e14a06a7" Name="Assets/Plugins/Demigiant/DOTween/Editor/Imgs/Header.jpg" Length="22787" HashCode="-1105699361" />
+          <Asset Guid="7acc6bd588627b046bc1c9b3cd78a6c7" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/squareBorderThickerEmpty.png" Length="122" HashCode="836668611" />
+          <Asset Guid="7ba4b2810f605d945af87e032ca2957b" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/blackSquare.png" Length="109" HashCode="963180059" />
+          <Asset Guid="7c83a08052c9e2f49b47897a637994de" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_cog.png" Length="197" HashCode="-1150152310" />
+          <Asset Guid="7d504312fad10f040b95bd8836dc6fc6" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/squareBorderCurvedEmpty02.png" Length="217" HashCode="1981560979" />
+          <Asset Guid="8003873ab749935489bb11f23f830856" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/project/ico_particles.png" Length="493" HashCode="1694966362" />
+          <Asset Guid="8b6b31f71cd528243b053cfc488e73f5" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_alignB.png" Length="131" HashCode="-968625443" />
+          <Asset Guid="8c9cfa1dbe00a1d41ae9d14f5ac543ec" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/blackSquareAlpha10.png" Length="109" HashCode="-355088665" />
+          <Asset Guid="8d60feae84bdb2d4eb16a0037056c588" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_lock_open.png" Length="293" HashCode="1643877430" />
+          <Asset Guid="8da095e39e9b4df488dfd436f81116d6" Name="Assets/Plugins/Demigiant/DOTween/Editor/Imgs/DOTweenIcon.png" Length="1565" HashCode="-1168536582" />
+          <Asset Guid="8db54efcce998554c86b796b37a7cdfa" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/squareBorderEmpty.png" Length="114" HashCode="-1933678371" />
+          <Asset Guid="8f0cb66458819764b94b93250bae94b6" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_alignCC.png" Length="152" HashCode="-1527855667" />
+          <Asset Guid="93b1287b4a087f84c95c72f49ec94e83" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/grid_bright.png" Length="222" HashCode="821360776" />
+          <Asset Guid="93b68213089b05943a651574eb7e2fb5" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/whiteSquareAlpha10.png" Length="107" HashCode="-1797632339" />
+          <Asset Guid="96cbdf605b8ddb34da384703f2d0b849" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/project/ico_scripts.png" Length="208" HashCode="-56127032" />
+          <Asset Guid="9bf2564c9817bb34988453ae948954d2" Name="Assets/Plugins/Demigiant/DemiLib/Core/DemiLib.xml" Length="8703" HashCode="-875862075" />
+          <Asset Guid="a1606d34a052ed3449da93edd229743e" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/squareBorderCurvedAlpha.png" Length="197" HashCode="927701830" />
+          <Asset Guid="a248c8288afb9184f953d9aa07a696b0" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_end.png" Length="475" HashCode="-1014527727" />
+          <Asset Guid="a40dc0d6372a9084fb45976308087290" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/whiteSquare_fadeOut_bt.png" Length="131" HashCode="-1480743402" />
+          <Asset Guid="aa1d42dc6ff3e894da2208c6929d2165" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/blackSquareAlpha50.png" Length="109" HashCode="-1614820049" />
+          <Asset Guid="aa8dc9238ab21e54ca88fa22698e4679" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/squareBorderEmpty01.png" Length="114" HashCode="-1933678371" />
+          <Asset Guid="aa8f07903bf128e44a7d0b91a63dedab" Name="Assets/Plugins/Demigiant/DOTweenPro/readme.txt" Length="2439" HashCode="-652622155" />
+          <Asset Guid="abf8a615f379ef44b9ac872a13b7712f" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_alignBL.png" Length="152" HashCode="-19474317" />
+          <Asset Guid="af28470bd0e2e9543a6dfa9a1a4b348d" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/circle.png" Length="455" HashCode="1362743341" />
+          <Asset Guid="afd7d0ddb1d6c744b9cb87ae49b2ce62" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/squareBorder.png" Length="122" HashCode="-749914726" />
+          <Asset Guid="b4785ec6d937dab4fa59da70b69afc9d" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_alignT.png" Length="129" HashCode="-1308808689" />
+          <Asset Guid="b9e0e5a8836018e4c810fbceba55a1b4" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_alignHC.png" Length="147" HashCode="2055781221" />
+          <Asset Guid="c0a56b88a1b449045b3fe5f561aa12fa" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/squareBorderEmpty03.png" Length="122" HashCode="836668611" />
+          <Asset Guid="c0c40ceac3c6df146a0fcd4e6b226540" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_ui_border.png" Length="259" HashCode="1227300681" />
+          <Asset Guid="c44ae4a96937e2c4b8be481648364682" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_flipV.png" Length="167" HashCode="1645867363" />
+          <Asset Guid="c456d5ac01d2aa843a63985497b04931" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/squareBorderThickEmpty.png" Length="121" HashCode="1717441401" />
+          <Asset Guid="c99a391f381fe534c80a193fe9f307a0" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/tileBars_slanted.png" Length="285" HashCode="919202008" />
+          <Asset Guid="ca2f91cc405eb144dad970eb23db2f72" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/squareCornersEmpty02.png" Length="131" HashCode="-38884575" />
+          <Asset Guid="cb46e1d925af22d43a6f8bf0e1d459e6" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_ui.png" Length="223" HashCode="2038150068" />
+          <Asset Guid="cf986943c88c2254780c17b2b5e3bc2f" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/project/ico_fonts.png" Length="465" HashCode="-51086101" />
+          <Asset Guid="d1278357b25e10442b6ca6c24edc9781" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/tileBars_empty.png" Length="236" HashCode="-791780059" />
+          <Asset Guid="d173388c1d9c32a418b5b777dd89d71a" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_heart.png" Length="210" HashCode="2014214866" />
+          <Asset Guid="d18ceface0c20014b8db4bba05a41b83" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_alignL.png" Length="136" HashCode="732490487" />
+          <Asset Guid="d1d45eadab0e41c4a82cdffb6396b1d7" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_alignVC.png" Length="135" HashCode="-2030392868" />
+          <Asset Guid="d4a42b2e4e6f64d4ba01d35c5a3dafed" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/DemiEditor.xml" Length="145280" HashCode="-201918312" />
+          <Asset Guid="d542f997a51000946873268e3546b6ba" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/grid_dark.png" Length="216" HashCode="350353935" />
+          <Asset Guid="d563d6ce25cd2ca48b185ec47a74a3fb" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/project/ico_skull.png" Length="368" HashCode="-2044250925" />
+          <Asset Guid="d8306b1e159c72c4ebc9a4fc31debe60" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/project/ico_play.png" Length="217" HashCode="-1792556106" />
+          <Asset Guid="d98b8847646169c4fb5af28dd84c4179" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_comment_border.png" Length="426" HashCode="-1023233199" />
+          <Asset Guid="db7d7ef84c388bc4fbc3835d31a15306" Name="Assets/Plugins/Demigiant/DOTweenPro/DOTweenPro.XML" Length="2915" HashCode="1609615867" />
+          <Asset Guid="dc0ca9b32ae9fd049911671cf1a480bf" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/purpleSquare.png" Length="106" HashCode="1118764385" />
+          <Asset Guid="dec3ea647707588408ec0d11ab130b73" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/squareCorners03.png" Length="133" HashCode="-1106777522" />
+          <Asset Guid="dfd33662d9f6f3849bd92f6e159ca226" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/squareBorderAlpha15.png" Length="116" HashCode="-549214549" />
+          <Asset Guid="dfe6e0ac3e5f24740a17e14b65e08406" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/whiteSquare.png" Length="103" HashCode="-1503453537" />
+          <Asset Guid="e01c0b07c87513844ab88bb432bcf85a" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_alignTR.png" Length="155" HashCode="-1329718981" />
+          <Asset Guid="e02713e10d7aced44a7a651231f0adef" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/project/ico_materials.png" Length="355" HashCode="353246617" />
+          <Asset Guid="e1af8927fb6f5634896d59aed409a589" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/project/ico_audio.png" Length="338" HashCode="-357716119" />
+          <Asset Guid="e2279677842a8064fbae0bc889fb85ab" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/project/ico_atlas.png" Length="218" HashCode="610809145" />
+          <Asset Guid="e3ae01f12865ad54ba365963bda55759" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/squareBorderCurved02_darkBorders.png" Length="336" HashCode="-1595699916" />
+          <Asset Guid="e3d0592dad579e141924133869455c53" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_lock.png" Length="300" HashCode="870302157" />
+          <Asset Guid="ed3789262161efa4fa33c85ca534590e" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/project/ico_prefab.png" Length="343" HashCode="-2068279203" />
+          <Asset Guid="ed7cb8f9a27664e48896c904189f0e2c" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/whiteDot.png" Length="148" HashCode="-1123193670" />
+          <Asset Guid="eeac3acbf7d1cd54fabfb1c4a12f9fc8" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/ico_alignBR.png" Length="150" HashCode="-411385799" />
+          <Asset Guid="ef40b00a83f7bd34f84851386b3321f0" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/whiteSquareAlpha50.png" Length="107" HashCode="1901037738" />
+          <Asset Guid="f252c69cd0163714eba038403f61b09e" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/project/ico_shaders.png" Length="379" HashCode="-394083700" />
+          <Asset Guid="f36ab42cc6fcdfd4187033279d3d14a9" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/project/ico_demigiant.png" Length="388" HashCode="675701791" />
+          <Asset Guid="f536c51d3da3f2e4ca93ac8773ec2ad8" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/squareBorderCurved_darkBordersAlpha.png" Length="200" HashCode="1812654675" />
+          <Asset Guid="f7ff421f40d548444864a01cd7f47112" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/blackSquareAlpha25.png" Length="109" HashCode="1024012063" />
+          <Asset Guid="fb605a2688b31194887f2e7a6769235b" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/project/ico_cog.png" Length="406" HashCode="1241660087" />
+          <Asset Guid="fbdd7ecf39c13bf48a5bd02a1159c90b" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/redSquare.png" Length="106" HashCode="-1357806198" />
+          <Asset Guid="fc3b86627d5fe1c4d865b80627e2e37c" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/squareBorderCurvedEmptyThick.png" Length="233" HashCode="1196066473" />
+          <Asset Guid="fccfc62abf2eb0a4db614853430894fd" Name="Assets/Plugins/Demigiant/DOTween/readme.txt" Length="2190" HashCode="-1587406940" />
+          <Asset Guid="ff88be84254fb1f4b9a81a27ae0b2e81" Name="Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/squareBorderCurved02.png" Length="281" HashCode="1391313103" />
+        </Assets>
+        <Codes>
+          <Android Length="205085" HashCode="1264741460" CompressedLength="178891" CompressedHashCode="-1944211231" />
+        </Codes>
+      </Resource>
+      <Resource Name="Scenes" Extension="dat" FileSystem="Resources" LoadType="0" Packed="True">
+        <Assets Count="3">
+          <Asset Guid="4473d81b14ddb0143addf0e6050d8491" Name="Assets/GameMain/Scenes/Main.unity" Length="95971" HashCode="-488537534">
+            <DependencyAssets Count="2">
+              <DependencyAsset Name="Assets/GameMain/Materials/done_tile_nebula_green_dff.mat" />
+              <DependencyAsset Name="Assets/GameMain/Materials/part_star_mat.mat" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="4dbd1981b979bf8489d7cfb4efae1a0d" Name="Assets/GameMain/Scenes/Test.unity" Length="13194" HashCode="416586059" />
+          <Asset Guid="b031b4f2980561542a7f7ba41391edc3" Name="Assets/GameMain/Scenes/Menu.unity" Length="91992" HashCode="-1378139879">
+            <DependencyAssets Count="2">
+              <DependencyAsset Name="Assets/GameMain/Materials/done_tile_nebula_green_dff.mat" />
+              <DependencyAsset Name="Assets/GameMain/Materials/part_star_mat.mat" />
+            </DependencyAssets>
+          </Asset>
+        </Assets>
+        <Codes>
+          <Android Length="100114" HashCode="-1946224139" CompressedLength="56578" CompressedHashCode="-1213690701" />
+        </Codes>
+      </Resource>
+      <Resource Name="Sounds" Extension="dat" FileSystem="Resources" LoadType="0" Packed="True">
+        <Assets Count="5">
+          <Asset Guid="1be4472894949437694aead55c6da60f" Name="Assets/GameMain/Sounds/weapon_enemy.wav" Length="51004" HashCode="-1155291960" />
+          <Asset Guid="3dc7455402dfa462b89a4bbd513955e9" Name="Assets/GameMain/Sounds/explosion_asteroid.wav" Length="149216" HashCode="305962817" />
+          <Asset Guid="72e76810224064300b7d32e8322a5d12" Name="Assets/GameMain/Sounds/explosion_enemy.wav" Length="174116" HashCode="-984961901" />
+          <Asset Guid="a019ae3af8e864616b85773c509f5285" Name="Assets/GameMain/Sounds/explosion_player.wav" Length="326536" HashCode="2022881377" />
+          <Asset Guid="bf75b984df8a84987bcf3a8bf6e2862d" Name="Assets/GameMain/Sounds/weapon_player.wav" Length="65792" HashCode="1405407806" />
+        </Assets>
+        <Codes>
+          <Android Length="46310" HashCode="1019027221" CompressedLength="45971" CompressedHashCode="1542843357" />
+        </Codes>
+      </Resource>
+      <Resource Name="Textures" Extension="dat" FileSystem="Resources" LoadType="0" Packed="True">
+        <Assets Count="24">
+          <Asset Guid="04dbc0581071c254ea6564b2ff06ff9b" Name="Assets/GameMain/Textures/part_shockwave_dff.tif" Length="29920" HashCode="714741080" />
+          <Asset Guid="0963e6c65b2b1f74d9f455e21901e2dc" Name="Assets/GameMain/Textures/part_jet_core_dff.tif" Length="28084" HashCode="1623997199" />
+          <Asset Guid="1478894bc9a1ed241b05b0862a7b8bce" Name="Assets/GameMain/Textures/part_spark_small_dff.tif" Length="23444" HashCode="259058137" />
+          <Asset Guid="1c89236d45255234ebd1d39657ff7e02" Name="Assets/GameMain/Textures/part_star_dff.tif" Length="27984" HashCode="355466149" />
+          <Asset Guid="2cb5eef4d7d7bf6459dd13a3f8d90246" Name="Assets/GameMain/Textures/part_jet_flare_dff.tif" Length="32524" HashCode="669524243" />
+          <Asset Guid="3e504a46a8fcec34db3c4776530c6eb2" Name="Assets/GameMain/Textures/part_flash_dff.tif" Length="41228" HashCode="-1101222391" />
+          <Asset Guid="4f688097e85071841a2c3ba165000c20" Name="Assets/GameMain/Textures/vehicle_playerShip_orange_dff.tif" Length="564764" HashCode="-2018611845" />
+          <Asset Guid="6a4b156c67b58ef49b93de891b5b5b9c" Name="Assets/GameMain/Textures/cube2.png" Length="11633128" HashCode="-24884902" />
+          <Asset Guid="6d9b42ac01f24bf4d98923573f103575" Name="Assets/GameMain/Textures/prop_asteroid_02_nrm.tif" Length="131344" HashCode="-192446338" />
+          <Asset Guid="6db0c8354d868834abf29840037591b1" Name="Assets/GameMain/Textures/vehicle_playerShip_orange_nrm.tif" Length="312180" HashCode="-1788428530" />
+          <Asset Guid="6e023ca4283b3a7469cd61d24c83048c" Name="Assets/GameMain/Textures/vehicle_enemyShip_nrm.tif" Length="356436" HashCode="899098033" />
+          <Asset Guid="6e3730451fa077346abd4ac642ea71d8" Name="Assets/GameMain/Textures/fx_lazer_cyan_dff.tif" Length="31592" HashCode="-1831304548" />
+          <Asset Guid="6e5d026bf0652ed4380f6a66f4aa26c5" Name="Assets/GameMain/Textures/vehicle_enemyShip_purple_dff.tif" Length="672204" HashCode="-564831858" />
+          <Asset Guid="71646ebaae78d43aeb8b53cacdb69671" Name="Assets/GameMain/Textures/tile_nebula_green_dff.tif" Length="9705884" HashCode="-1662044067" />
+          <Asset Guid="7e91cd9bad7babf4b975882a4b7453cb" Name="Assets/GameMain/Textures/part_spark_large_dff.tif" Length="36684" HashCode="-899107547" />
+          <Asset Guid="7eae0d2701845a54aa570b07c55dab44" Name="Assets/GameMain/Textures/prop_asteroid_03_nrm.tif" Length="113880" HashCode="-1723421358" />
+          <Asset Guid="836be25be3e1e8c41ae5545bc8a9a4d7" Name="Assets/GameMain/Textures/prop_asteroid_03_dff.tif" Length="188368" HashCode="-622630330" />
+          <Asset Guid="90191905b6afade45ab4530e049378b5" Name="Assets/GameMain/Textures/cuebe1.png" Length="12845531" HashCode="-1228488264" />
+          <Asset Guid="ae6a7f967521769458b0913fa39caaf4" Name="Assets/GameMain/Textures/prop_asteroid_01_dff.tif" Length="214996" HashCode="43590910" />
+          <Asset Guid="ba157ba55f72c424a9e88f3c029997c4" Name="Assets/GameMain/Textures/prop_asteroid_02_dff.tif" Length="212292" HashCode="565654828" />
+          <Asset Guid="baf2695d0bf656846aa04726830ae03b" Name="Assets/GameMain/Textures/icon.png" Length="23418" HashCode="-961219214" />
+          <Asset Guid="eabb37cb6d738b443b398b701a64cd88" Name="Assets/GameMain/Textures/part_enginePulse_dff.tif" Length="34544" HashCode="-1021196410" />
+          <Asset Guid="f6db5bbdfe0e9894798706814cd6b336" Name="Assets/GameMain/Textures/prop_asteroid_01_nrm.tif" Length="144408" HashCode="-45291197" />
+          <Asset Guid="fd3cbf51780694849b9b019b36a3938e" Name="Assets/GameMain/Textures/fx_lazer_orange_dff.tif" Length="31812" HashCode="-1367320896" />
+        </Assets>
+        <Codes>
+          <Android Length="5274466" HashCode="-585963808" CompressedLength="4955275" CompressedHashCode="907616029" />
+        </Codes>
+      </Resource>
+      <Resource Name="UI/UIForms" Extension="dat" FileSystem="UI" LoadType="0" Packed="True">
+        <Assets Count="4">
+          <Asset Guid="04d7dde7615d71b4db1a0c8d67a62e95" Name="Assets/GameMain/UI/UIForms/DialogForm.prefab" Length="56987" HashCode="-646401918">
+            <DependencyAssets Count="4">
+              <DependencyAsset Name="Assets/GameMain/UI/UISprites/Common/background.png" />
+              <DependencyAsset Name="Assets/GameMain/UI/UISprites/Common/button-outline.png" />
+              <DependencyAsset Name="Assets/GameMain/UI/UISprites/Common/dialog-background.png" />
+              <DependencyAsset Name="Assets/GameMain/UI/UISprites/Common/dialog-title-background.png" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="09966b19e546cc94aa84d0743cb2a83d" Name="Assets/GameMain/UI/UIForms/MenuForm.prefab" Length="37012" HashCode="614725490">
+            <DependencyAssets Count="1">
+              <DependencyAsset Name="Assets/GameMain/UI/UISprites/Common/button-outline.png" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="3aa539b1e46111d4299a83c73ebe762c" Name="Assets/GameMain/UI/UIForms/AboutForm.prefab" Length="21384" HashCode="752796115">
+            <DependencyAssets Count="1">
+              <DependencyAsset Name="Assets/GameMain/UI/UISprites/Logos/unity-logo.png" />
+            </DependencyAssets>
+          </Asset>
+          <Asset Guid="bbfd75fe6fe00e1448fe988173ede7f9" Name="Assets/GameMain/UI/UIForms/SettingForm.prefab" Length="148917" HashCode="152412542">
+            <DependencyAssets Count="15">
+              <DependencyAsset Name="Assets/GameMain/UI/UISprites/Common/background.png" />
+              <DependencyAsset Name="Assets/GameMain/UI/UISprites/Common/box.png" />
+              <DependencyAsset Name="Assets/GameMain/UI/UISprites/Common/button-outline.png" />
+              <DependencyAsset Name="Assets/GameMain/UI/UISprites/Common/checked.png" />
+              <DependencyAsset Name="Assets/GameMain/UI/UISprites/Common/circle.png" />
+              <DependencyAsset Name="Assets/GameMain/UI/UISprites/Common/dialog-background.png" />
+              <DependencyAsset Name="Assets/GameMain/UI/UISprites/Common/dialog-title-background.png" />
+              <DependencyAsset Name="Assets/GameMain/UI/UISprites/Common/info.png" />
+              <DependencyAsset Name="Assets/GameMain/UI/UISprites/Common/line.png" />
+              <DependencyAsset Name="Assets/GameMain/UI/UISprites/Common/progressbar.png" />
+              <DependencyAsset Name="Assets/GameMain/UI/UISprites/Common/progressbar-background.png" />
+              <DependencyAsset Name="Assets/GameMain/UI/UISprites/Common/progress-conner.png" />
+              <DependencyAsset Name="Assets/GameMain/UI/UISprites/Icons/music.png" />
+              <DependencyAsset Name="Assets/GameMain/UI/UISprites/Icons/sound.png" />
+              <DependencyAsset Name="Assets/GameMain/UI/UISprites/Icons/world.png" />
+            </DependencyAssets>
+          </Asset>
+        </Assets>
+        <Codes>
+          <Android Length="23606" HashCode="110384002" CompressedLength="20718" CompressedHashCode="222110153" />
+        </Codes>
+      </Resource>
+      <Resource Name="UI/UISounds" Extension="dat" FileSystem="UI" LoadType="0" Packed="True">
+        <Assets Count="2">
+          <Asset Guid="c7d1e11dd37634b48a9dd4012b8e4306" Name="Assets/GameMain/UI/UISounds/click.wav" Length="41568" HashCode="-1547829698" />
+          <Asset Guid="e830964cdb85ff3429bca484c16bab44" Name="Assets/GameMain/UI/UISounds/select.wav" Length="41568" HashCode="-1920478215" />
+        </Assets>
+        <Codes>
+          <Android Length="3719" HashCode="211476405" CompressedLength="3375" CompressedHashCode="1438655092" />
+        </Codes>
+      </Resource>
+      <Resource Name="UI/UISprites/Common" Extension="dat" FileSystem="UI" LoadType="0" Packed="True">
+        <Assets Count="17">
+          <Asset Guid="0179316b5fc7c2946a67c5877c02fc30" Name="Assets/GameMain/UI/UISprites/Common/info.png" Length="1869" HashCode="1439065304" />
+          <Asset Guid="0a65a68c01a76ea4b8b574827a6467aa" Name="Assets/GameMain/UI/UISprites/Common/dialog-title-background.png" Length="1614" HashCode="-248782138" />
+          <Asset Guid="156d241f796508c4da4fc354a7fbf5a8" Name="Assets/GameMain/UI/UISprites/Common/progressbar-background.png" Length="784" HashCode="-1146856258" />
+          <Asset Guid="236433a27ce40a7429b87d14d8fa3035" Name="Assets/GameMain/UI/UISprites/Common/progress-conner.png" Length="576" HashCode="-1226923544" />
+          <Asset Guid="24ca310f92a6796408f1db7647ec4e55" Name="Assets/GameMain/UI/UISprites/Common/circle.png" Length="1365" HashCode="1330959776" />
+          <Asset Guid="3be3fac3611f4584695662c4889f722d" Name="Assets/GameMain/UI/UISprites/Common/circle-outline.png" Length="20881" HashCode="-260484534" />
+          <Asset Guid="3f54fcfdac53aec42ae18a6a1c6d8cb1" Name="Assets/GameMain/UI/UISprites/Common/checked.png" Length="15921" HashCode="-1098762055" />
+          <Asset Guid="56b8df63bbad60749a69e38bc687fadf" Name="Assets/GameMain/UI/UISprites/Common/circle-filled.png" Length="16998" HashCode="964408779" />
+          <Asset Guid="62af9e5c8f39cfa49af9e10ccf42f1da" Name="Assets/GameMain/UI/UISprites/Common/round-button-outline.png" Length="3345" HashCode="451796798" />
+          <Asset Guid="6cbc2c323b77f804fb958fa4eca33998" Name="Assets/GameMain/UI/UISprites/Common/line.png" Length="797" HashCode="1722275133" />
+          <Asset Guid="9f847ec5e66e03e4ead1d3c5f7b510e8" Name="Assets/GameMain/UI/UISprites/Common/button-filled.png" Length="1467" HashCode="1095020050" />
+          <Asset Guid="a8c07bbe04fdaf04b80e27f651a8edd6" Name="Assets/GameMain/UI/UISprites/Common/button-outline.png" Length="1683" HashCode="-837309841" />
+          <Asset Guid="ab45c3f613f388d43bbf43ec05eb92e2" Name="Assets/GameMain/UI/UISprites/Common/dialog-background.png" Length="7706" HashCode="1348455424" />
+          <Asset Guid="cadd0764941c8b646ae79b51d0ea8285" Name="Assets/GameMain/UI/UISprites/Common/background.png" Length="5175294" HashCode="1806783389" />
+          <Asset Guid="e82837c9099f69a48b48fc44eb8d119d" Name="Assets/GameMain/UI/UISprites/Common/progressbar.png" Length="24724" HashCode="706154886" />
+          <Asset Guid="e85864330b68dde498dcb6e8711815d3" Name="Assets/GameMain/UI/UISprites/Common/round-button-filled.png" Length="2690" HashCode="-105002164" />
+          <Asset Guid="f2f4df0b7211e4c42a5638273525d8ee" Name="Assets/GameMain/UI/UISprites/Common/box.png" Length="1058" HashCode="-2109500730" />
+        </Assets>
+        <Codes>
+          <Android Length="145656" HashCode="-89319041" CompressedLength="90293" CompressedHashCode="492773573" />
+        </Codes>
+      </Resource>
+      <Resource Name="UI/UISprites/Icons" Extension="dat" FileSystem="UI" LoadType="0" Packed="True">
+        <Assets Count="3">
+          <Asset Guid="db58965402f12ed47b4dad61a9e48c9d" Name="Assets/GameMain/UI/UISprites/Icons/world.png" Length="18113" HashCode="220145781" />
+          <Asset Guid="e5ca26c53b6ab8a46b52817008d7c7fa" Name="Assets/GameMain/UI/UISprites/Icons/sound.png" Length="16337" HashCode="-2031218235" />
+          <Asset Guid="f438a72a91e1c3c4a9ced40888ffec96" Name="Assets/GameMain/UI/UISprites/Icons/music.png" Length="16152" HashCode="-1208903891" />
+        </Assets>
+        <Codes>
+          <Android Length="8300" HashCode="1074953347" CompressedLength="6926" CompressedHashCode="981522161" />
+        </Codes>
+      </Resource>
+      <Resource Name="UI/UISprites/Logos" Extension="dat" FileSystem="UI" LoadType="0" Packed="True">
+        <Assets Count="1">
+          <Asset Guid="7f5aee8da226edf4991598327cb32ce0" Name="Assets/GameMain/UI/UISprites/Logos/unity-logo.png" Length="39531" HashCode="1403969223" />
+        </Assets>
+        <Codes>
+          <Android Length="16523" HashCode="1403932005" CompressedLength="13404" CompressedHashCode="1037315003" />
+        </Codes>
+      </Resource>
+      <Resource Name="shader" Extension="dat" LoadType="0" Packed="True">
+        <Assets Count="2">
+          <Asset Guid="9054b385deb91074594672fd4866e6cb" Name="Assets/GameMain/Shader/IconShader.shader" Length="1230" HashCode="-1240737053" />
+          <Asset Guid="ceab1cb3f7ec04c4996ded523212990c" Name="Assets/GameMain/Shader/CubeShader.shader" Length="1287" HashCode="-12167716" />
+        </Assets>
+        <Codes>
+          <Android Length="18328" HashCode="357465162" CompressedLength="10888" CompressedHashCode="-191768614" />
+        </Codes>
+      </Resource>
+    </Resources>
+  </BuildReport>
+</UnityGameFramework>

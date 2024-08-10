@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 268933111
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 63e08dba596c007c1aa0fdcedb60762d
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9a2ca7bdbd1871f7131daf57de908e0c
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 63e08dba596c007c1aa0fdcedb60762d
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/GameMain/UI/UISounds/select.wav
+- Assets/GameMain/UI/UISounds/click.wav
+Dependencies: []

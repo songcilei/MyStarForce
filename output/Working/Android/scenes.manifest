@@ -1,0 +1,67 @@
+ManifestFileVersion: 0
+CRC: 1977900889
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 951be096206b761e0ca55a6b900ba361
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f6df445c22717d4721a6087b30619496
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 951be096206b761e0ca55a6b900ba361
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 20
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 81
+  Script: {instanceID: 0}
+- Class: 104
+  Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2712544bc58b0e44aa9df7e58e01e5c5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3d1059cacfb0eac4c86b807e799ba37f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 312b05b5bd83b784baf13704b27b6865, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7b6cb7e3a2afa644aafbd721fa79354c, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 157
+  Script: {instanceID: 0}
+- Class: 196
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+- Class: 850595691
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/GameMain/Scenes/Test.unity
+- Assets/GameMain/Scenes/Menu.unity
+- Assets/GameMain/Scenes/Main.unity
+Dependencies:
+- D:/UnityProject3/MyStarForce/output/Working/Android/materials

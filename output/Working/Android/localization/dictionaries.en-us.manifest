@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 2663489088
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: f197ea87136d313076661d8ef2585aae
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: f197ea87136d313076661d8ef2585aae
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/GameMain/Localization/English/Dictionaries/Default.xml
+Dependencies: []
