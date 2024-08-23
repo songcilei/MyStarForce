@@ -386,6 +386,7 @@ namespace UnityGameFramework.Runtime
             if (subDebuggerWindowGroup != null)
             {
                 DrawDebuggerWindowGroup(subDebuggerWindowGroup);
+
             }
 
             debuggerWindowGroup.SelectedWindow.OnDraw();

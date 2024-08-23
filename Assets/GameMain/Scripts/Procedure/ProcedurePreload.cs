@@ -30,6 +30,7 @@ namespace StarForce
             "UIForm",
             "UISound",
             "Weapon",
+            "Product"
         };
         
         private Dictionary<string, bool> m_LoadedFlag = new Dictionary<string, bool>();
@@ -88,7 +89,9 @@ namespace StarForce
             procedureOwner.SetData<VarInt32>("NextSceneId", GameEntry.Config.GetInt("Scene.Test"));
 //------------change state            
             //ChangeState<TestProcedureObjectPool>(procedureOwner);
-            ChangeState<TestProcedureReferencePool>(procedureOwner);
+            // ChangeState<TestProcedureReferencePool>(procedureOwner);
+            procedureOwner.SetData<VarByte>("GameMode",(byte)GameModeH.Normal);
+            ChangeState<TestProcedureGame>(procedureOwner);
         }
 
         private void PreloadResources()

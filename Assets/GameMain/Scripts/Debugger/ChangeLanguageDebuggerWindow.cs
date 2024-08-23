@@ -19,6 +19,7 @@ namespace StarForce
 
         public void Initialize(params object[] args)
         {
+            
         }
 
         public void Shutdown()

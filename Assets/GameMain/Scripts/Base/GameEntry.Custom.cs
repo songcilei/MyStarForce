@@ -26,10 +26,17 @@ namespace StarForce
             private set;
         }
 
+        public static ShopComponent Shop
+        {
+            get;
+            private set;
+        }
+
         private static void InitCustomComponents()
         {
             BuiltinData = UnityGameFramework.Runtime.GameEntry.GetComponent<BuiltinDataComponent>();
             HPBar = UnityGameFramework.Runtime.GameEntry.GetComponent<HPBarComponent>();
+            Shop = UnityGameFramework.Runtime.GameEntry.GetComponent<ShopComponent>();
         }
     }
 }

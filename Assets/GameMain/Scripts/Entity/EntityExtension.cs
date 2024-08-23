@@ -85,6 +85,16 @@ namespace StarForce
             entityComponent.ShowEntity(typeof(VRCamera),"Asteroid",100,data);
         }
 
+        public static void ShowMyCube(this EntityComponent entityComponent,myCubeData data)
+        {
+            entityComponent.ShowEntity(typeof(myCube),"Asteroid",100,data);
+        }
+
+        public static void ShowMySphere(this EntityComponent entityComponent,mSphereData data)
+        {
+            entityComponent.ShowEntity(typeof(mSphere),"Asteroid",100,data);    
+        }
+
         private static void ShowEntity(this EntityComponent entityComponent, Type logicType, string entityGroup, int priority, EntityData data)
         {
             if (data == null)
