@@ -12,21 +12,23 @@ public class NpcFSM : EntityLogic
     private NpcFSMData NpcFsmData = null;
 
     public NavMeshAgent _agent;
-    
+
+    public ProductBase NeedProduct;
+
+    private IFsm<NpcFSM> npcF;
     protected override void OnInit(object userData)
     {
         base.OnInit(userData);
 
         FsmState<NpcFSM>[] npcState =
         {
-            new TrackTarget(),
+            new TrackTarget(1),
             new GetTarget(),
             new LeaveTarget()
         };
 
-        var npcF = GameEntry.Fsm.CreateFsm(this, npcState);
+        npcF = GameEntry.Fsm.CreateFsm(this, npcState);
         _agent = this.GetComponent<NavMeshAgent>();
-        npcF.Start<TrackTarget>();
         Debug.Log("create state");
 
     }
@@ -43,7 +45,11 @@ public class NpcFSM : EntityLogic
         //Init value=====================
 
         this.transform.position = NpcFsmData.InitPosition;
-
+        this.NeedProduct = NpcFsmData.NeedProduct;    
+        
+        //run fsm
+        npcF.Start<TrackTarget>();
+        Debug.Log("run FSM");
     }
 
     protected override void OnHide(bool isShutdown, object userData)

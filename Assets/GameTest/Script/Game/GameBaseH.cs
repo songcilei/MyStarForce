@@ -70,9 +70,13 @@ public abstract class GameBaseH
     void InitSceneLogic()
     {
         shopAgents = Object.FindObjectsOfType<ShopAgent>();
+        
+        GameEntry.Shop.SetAgents(shopAgents);
         GameEntry.Shop.DispenseShopAgent(shopAgents);//fen fa 
 
         birthPoints = Object.FindObjectsOfType<BirthPoint>();
     }
+    
+
 
 }

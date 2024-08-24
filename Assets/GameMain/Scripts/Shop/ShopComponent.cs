@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using GameFramework.Event;
 using UnityEditor;
 using UnityEngine;
 using UnityGameFramework.Runtime;
+using Random = UnityEngine.Random;
 
 namespace StarForce
 {
@@ -14,7 +16,8 @@ namespace StarForce
         // private List<ProductBase> ProductList = null;
     
         public ProductScriptable ProductSet;
-    
+
+        public ShopAgent[] ShopAgents;
         protected override void Awake()
         {
             base.Awake();
@@ -48,6 +51,10 @@ namespace StarForce
             
         }
     
+        /// <summary>
+        /// 分发数据到Agent
+        /// </summary>
+        /// <param name="product"></param>
         public void DeleteProductForType(ProductBase product)
         {
             Debug.Log(product.name);
@@ -60,6 +67,15 @@ namespace StarForce
                     break;
                 }
             }
+        }
+
+        /// <summary>
+        /// 同步到Component
+        /// </summary>
+        /// <param name="shopAgents"></param>
+        public void SetAgents(ShopAgent[] shopAgents)
+        {
+            this.ShopAgents = shopAgents;
         }
 
 
@@ -102,6 +118,31 @@ namespace StarForce
                 }
             }
         }
+
+        /// <summary>
+        /// 根据 shop agent 类型  返回具体位置
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public Vector3 GetShopAgentPosition(ShopType type)
+        {
+            foreach (var agent in ShopAgents)
+            {
+                if (agent.ShopType == type)
+                {
+                    return agent.transform.position;
+                }
+            }
+
+            return Vector3.zero;
+        }
+        
+        public ProductBase GetRandomProduct()
+        {
+            int index = Random.Range(0, ProductSet.ProductList.Count);
+            return ProductSet.ProductList[index];
+        }
+
 
 
         private void OnDestroy()

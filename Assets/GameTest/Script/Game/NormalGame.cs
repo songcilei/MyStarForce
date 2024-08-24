@@ -41,9 +41,10 @@ public class NormalGame : GameBaseH
 
             if (birthPoints.Length == 0)
             {
+                Debug.LogError("brith Points is 0!!!!");
                 return;
             }
-
+            
             NpcFSMData data = new NpcFSMData(GameEntry.Entity.GenerateSerialId(), 70006,birthPoints);
             GameEntry.Entity.ShowMyNpc(data);
 
