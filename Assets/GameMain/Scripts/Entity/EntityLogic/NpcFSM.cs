@@ -41,7 +41,9 @@ public class NpcFSM : EntityLogic
             return;
         }
         //Init value=====================
-        
+
+        this.transform.position = NpcFsmData.InitPosition;
+
     }
 
     protected override void OnHide(bool isShutdown, object userData)

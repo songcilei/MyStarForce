@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using GameFramework.Event;
 using GameFramework.Fsm;
 using GameFramework.Procedure;
 using StarForce;
@@ -30,16 +31,21 @@ public class TestProcedureGame : ProcedureBase
 //event
         // ProductSubEventArgs e = ProductSubEventArgs.Create();
       //  GameEntry.Event.Fire(this,ProductSubEventArgs.Create(testDebugger));
-        
+
+
+//load event      
     }
 
     protected override void OnEnter(IFsm<IProcedureManager> procedureOwner)
     {
         base.OnEnter(procedureOwner);
+        
+        
         GameModeH gameMode = (GameModeH)procedureOwner.GetData<VarByte>("GameMode").Value;
         gameMode = 0;//这里是临时改的
         m_CurrentGame = m_games[gameMode];
         m_CurrentGame.Initialize();
+
         
     }
 
@@ -54,4 +60,7 @@ public class TestProcedureGame : ProcedureBase
         base.OnLeave(procedureOwner, isShutdown);
         m_CurrentGame.Shutdown();
     }
+
+
+
 }

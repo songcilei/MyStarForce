@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using StarForce;
 using Unity.VisualScripting;
 using UnityEngine;
+using AssetUtility = StarForce.AssetUtility;
 
 public class NormalGame : GameBaseH
 {
@@ -19,6 +20,7 @@ public class NormalGame : GameBaseH
     public override void Initialize()
     {
         base.Initialize();
+        
     }
 
     public override void Shutdown()
@@ -34,9 +36,16 @@ public class NormalGame : GameBaseH
         {
             m_ElapseSeconde = 0;
 
-            mSphereData data = new mSphereData(GameEntry.Entity.GenerateSerialId(), 70005);
-            GameEntry.Entity.ShowMySphere(data);
+            // mSphereData data = new mSphereData(GameEntry.Entity.GenerateSerialId(), 70005);
+            // GameEntry.Entity.ShowMySphere(data);
 
+            if (birthPoints.Length == 0)
+            {
+                return;
+            }
+
+            NpcFSMData data = new NpcFSMData(GameEntry.Entity.GenerateSerialId(), 70006,birthPoints);
+            GameEntry.Entity.ShowMyNpc(data);
 
         }
     }

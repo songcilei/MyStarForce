@@ -18,12 +18,17 @@ public abstract class GameBaseH
     }
 
     private myCube _myCube = null;
-    
+    private ShopAgent[] shopAgents;
+    public BirthPoint[] birthPoints;
     public virtual void Initialize()
     {
         GameEntry.Event.Subscribe(ShowEntitySuccessEventArgs.EventId,OnShowEntitySuccess);
         GameEntry.Event.Subscribe(ShowEntityFailureEventArgs.EventId,OnShowEntityFailure);
 
+                
+        InitSceneLogic();
+        
+        
         myCubeData _myCubeData = new myCubeData(GameEntry.Entity.GenerateSerialId(),70004);
         GameEntry.Entity.ShowMyCube(_myCubeData);
         
@@ -59,6 +64,15 @@ public abstract class GameBaseH
         {
             Debug.LogError("dont load entity!!");
         }
+    }
+
+
+    void InitSceneLogic()
+    {
+        shopAgents = Object.FindObjectsOfType<ShopAgent>();
+        GameEntry.Shop.DispenseShopAgent(shopAgents);//fen fa 
+
+        birthPoints = Object.FindObjectsOfType<BirthPoint>();
     }
 
 }

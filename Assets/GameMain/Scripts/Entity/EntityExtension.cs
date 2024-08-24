@@ -95,6 +95,11 @@ namespace StarForce
             entityComponent.ShowEntity(typeof(mSphere),"Asteroid",100,data);    
         }
 
+        public static void ShowMyNpc(this EntityComponent entityComponent,NpcFSMData data)
+        {
+            entityComponent.ShowEntity(typeof(NpcFSM),"Asteroid",100,data);
+        }
+
         private static void ShowEntity(this EntityComponent entityComponent, Type logicType, string entityGroup, int priority, EntityData data)
         {
             if (data == null)

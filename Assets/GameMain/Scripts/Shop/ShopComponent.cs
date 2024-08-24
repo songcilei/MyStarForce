@@ -83,7 +83,27 @@ namespace StarForce
         {
             ProductSet.ProductList.Clear();
         }
-    
+
+        //分发物品到各个代理
+        public void DispenseShopAgent(ShopAgent[] shopAgents)
+        {
+            foreach (var agent in shopAgents)
+            {
+                agent.Clear();
+            }
+            for (int i = 0; i < shopAgents.Length; i++)
+            {
+                foreach (var product in ProductSet.ProductList)
+                {
+                    if (product.shopType == shopAgents[i].ShopType)
+                    {
+                        shopAgents[i].ProductBases.Add(product);
+                    }
+                }
+            }
+        }
+
+
         private void OnDestroy()
         {
             // GameEntry.Event.Unsubscribe(ProductSubEventArgs.EventId,ProductSub);

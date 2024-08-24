@@ -15,7 +15,7 @@ namespace StarForce
     public class ProcedureChangeScene : ProcedureBase
     {
         private const int MenuSceneId = 1;
-
+        private int NextSceneId=0;
         private bool m_ChangeToMenu = false;
         private bool m_IsChangeSceneComplete = false;
         private int m_BackgroundMusicId = 0;
@@ -58,6 +58,7 @@ namespace StarForce
             GameEntry.Base.ResetNormalGameSpeed();
 
             int sceneId = procedureOwner.GetData<VarInt32>("NextSceneId");
+            NextSceneId = sceneId;
             m_ChangeToMenu = sceneId == MenuSceneId;
             IDataTable<DRScene> dtScene = GameEntry.DataTable.GetDataTable<DRScene>();
             DRScene drScene = dtScene.GetDataRow(sceneId);
@@ -90,13 +91,31 @@ namespace StarForce
                 return;
             }
 
-            if (m_ChangeToMenu)
+            // if (m_ChangeToMenu)
+            // {
+            //     ChangeState<ProcedureMenu>(procedureOwner);
+            // }
+            // else
+            // {
+            //     ChangeState<ProcedureMain>(procedureOwner);
+            // }
+
+            switch (NextSceneId)
             {
-                ChangeState<ProcedureMenu>(procedureOwner);
-            }
-            else
-            {
-                ChangeState<ProcedureMain>(procedureOwner);
+                case 1:
+                    ChangeState<ProcedureMenu>(procedureOwner);
+                    break;
+                case 2:
+                    ChangeState<ProcedureMain>(procedureOwner);
+                    break;
+                case 3:
+                    ChangeState<ProcedureTest>(procedureOwner);
+                    break;
+                case 4:
+                    ChangeState<TestProcedureGame>(procedureOwner);
+                    break;
+                default:
+                    break;
             }
         }
 
