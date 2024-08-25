@@ -17,15 +17,20 @@ public class TrackTarget : FsmState<NpcFSM>
     protected override void OnInit(IFsm<NpcFSM> fsm)
     {
         base.OnInit(fsm);
-        fsm.Owner._agent.Warp(fsm.Owner.transform.position);
+        if (fsm.Owner._agent == null)
+        {
+            Debug.LogError("logerro == null");
+        }
         
+        fsm.Owner._agent.Warp(fsm.Owner.transform.position);
     }
 
     protected override void OnEnter(IFsm<NpcFSM> fsm)
     {
         base.OnEnter(fsm);
 
-
+        fsm.Owner._agent.Warp(fsm.Owner.transform.position);
+        
         var shopType = fsm.Owner.NeedProduct.shopType;
         targetPosition = GameEntry.Shop.GetShopAgentPosition(shopType);
         
@@ -34,10 +39,14 @@ public class TrackTarget : FsmState<NpcFSM>
     protected override void OnUpdate(IFsm<NpcFSM> fsm, float elapseSeconds, float realElapseSeconds)
     {
         base.OnUpdate(fsm, elapseSeconds, realElapseSeconds);
+   
+
         fsm.Owner._agent.SetDestination(targetPosition);
         float distance = Vector3.Distance(fsm.Owner.transform.position, targetPosition);
+        
         if (distance<=minDistance)
         {
+            Debug.Log("switch state");
             ChangeState<GetTarget>(fsm);
         }
     }
@@ -46,4 +55,6 @@ public class TrackTarget : FsmState<NpcFSM>
     {
         base.OnLeave(fsm, isShutdown);
     }
+    
+    
 }

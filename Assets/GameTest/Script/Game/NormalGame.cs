@@ -8,6 +8,7 @@ using AssetUtility = StarForce.AssetUtility;
 public class NormalGame : GameBaseH
 {
     private float m_ElapseSeconde=0;
+
     // Update is called once per frame
     public override GameModeH GameMode
     {
@@ -47,7 +48,6 @@ public class NormalGame : GameBaseH
             
             NpcFSMData data = new NpcFSMData(GameEntry.Entity.GenerateSerialId(), 70006,birthPoints);
             GameEntry.Entity.ShowMyNpc(data);
-
         }
     }
 }

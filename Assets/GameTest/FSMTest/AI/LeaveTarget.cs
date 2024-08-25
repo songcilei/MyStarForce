@@ -13,6 +13,7 @@ public class LeaveTarget : FsmState<NpcFSM>
     protected override void OnEnter(IFsm<NpcFSM> fsm)
     {
         base.OnEnter(fsm);
+        
     }
 
     protected override void OnUpdate(IFsm<NpcFSM> fsm, float elapseSeconds, float realElapseSeconds)

@@ -817,6 +817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProductSet: {fileID: 11400000, guid: 90ce0e1b7e822e743abc493084057aab, type: 2}
+  ShopAgents: []
 --- !u!1 &1424866493
 GameObject:
   m_ObjectHideFlags: 0
@@ -1314,6 +1315,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Npc
+      objectReference: {fileID: 0}
+    - target: {fileID: 8645787897095532283, guid: 43b771c44fe990f4f8ac931a65f6fde5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

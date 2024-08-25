@@ -9,33 +9,23 @@ using GameEntry = StarForce.GameEntry;
 
 public class NpcFSM : EntityLogic
 {
-    private NpcFSMData NpcFsmData = null;
+    public NpcFSMData NpcFsmData = null;
 
     public NavMeshAgent _agent;
 
     public ProductBase NeedProduct;
 
     private IFsm<NpcFSM> npcF;
+
+    private float checkMinDistance = 1.5f;
+    
+    public int entityId;
     protected override void OnInit(object userData)
     {
         base.OnInit(userData);
 
-        FsmState<NpcFSM>[] npcState =
-        {
-            new TrackTarget(1),
-            new GetTarget(),
-            new LeaveTarget()
-        };
-
-        npcF = GameEntry.Fsm.CreateFsm(this, npcState);
-        _agent = this.GetComponent<NavMeshAgent>();
-        Debug.Log("create state");
-
-    }
-
-    protected override void OnShow(object userData)
-    {
-        base.OnShow(userData);
+        _agent = GetComponent<NavMeshAgent>();
+        
         NpcFsmData = userData as NpcFSMData;
         if (userData == null)
         {
@@ -45,10 +35,41 @@ public class NpcFSM : EntityLogic
         //Init value=====================
 
         this.transform.position = NpcFsmData.InitPosition;
-        this.NeedProduct = NpcFsmData.NeedProduct;    
+        this.NeedProduct = NpcFsmData.NeedProduct;
+        this.entityId = NpcFsmData.EntityId;
+
+        //FsmState<NpcFSM>[] npcState = new FsmState<NpcFSM>[] { };
+        
+        FsmState<NpcFSM>[] npcState = {
+            new TrackTarget(checkMinDistance),
+            new GetTarget(),
+            new LeaveTarget()
+        };
+
+
+        Debug.Log("NPC init");
+        // if (GameEntry.Fsm.HasFsm<NpcFSM>())
+        // {
+        //     npcF = GameEntry.Fsm.GetFsm<NpcFSM>();
+        //     npcF.GetState<TrackTarget>();
+        // }
+        // else
+        // {
+        //     npcF = GameEntry.Fsm.CreateFsm(this, npcState);
+        //     npcF.Start<TrackTarget>();
+        // }
+        npcF = GameEntry.Fsm.CreateFsm(this.name+entityId,this, npcState);
+     
+        npcF.Start<TrackTarget>();
+        Debug.Log("create state");
+
+    }
+
+    protected override void OnShow(object userData)
+    {
+        base.OnShow(userData);
         
         //run fsm
-        npcF.Start<TrackTarget>();
         Debug.Log("run FSM");
     }
 
@@ -60,5 +81,10 @@ public class NpcFSM : EntityLogic
     protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
     {
         base.OnUpdate(elapseSeconds, realElapseSeconds);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(this.transform.position,checkMinDistance);
     }
 }

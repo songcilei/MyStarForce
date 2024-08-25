@@ -41,8 +41,8 @@ public class TestProcedureGame : ProcedureBase
         base.OnEnter(procedureOwner);
         
         
-        GameModeH gameMode = (GameModeH)procedureOwner.GetData<VarByte>("GameMode").Value;
-        gameMode = 0;//这里是临时改的
+        //GameModeH gameMode = (GameModeH)procedureOwner.GetData<VarByte>("GameMode").Value;
+        GameModeH gameMode = 0;//这里是临时改的
         m_CurrentGame = m_games[gameMode];
         m_CurrentGame.Initialize();
 

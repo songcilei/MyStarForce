@@ -13,6 +13,11 @@ public class GetTarget : FsmState<NpcFSM>
     protected override void OnEnter(IFsm<NpcFSM> fsm)
     {
         base.OnEnter(fsm);
+        
+        Vector3 leavePosition = fsm.Owner.NpcFsmData.InitPosition;
+        fsm.Owner._agent.SetDestination(leavePosition);
+        ChangeState<LeaveTarget>(fsm);
+
     }
 
     protected override void OnUpdate(IFsm<NpcFSM> fsm, float elapseSeconds, float realElapseSeconds)
