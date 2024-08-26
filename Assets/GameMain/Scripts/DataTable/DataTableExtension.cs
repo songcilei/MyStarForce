@@ -7,6 +7,8 @@
 
 using GameFramework.DataTable;
 using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
@@ -87,5 +89,43 @@ namespace StarForce
             string[] splitedValue = value.Split(',');
             return new Vector4(float.Parse(splitedValue[0]), float.Parse(splitedValue[1]), float.Parse(splitedValue[2]), float.Parse(splitedValue[3]));
         }
+        public static string[] ParseStringArray(string value)
+        {
+            //正则表达式解析{}中的数组
+            value = value.Replace("\n", "");
+            Regex r = new Regex(@"[^{^}]+");
+            var ms = r.Matches(value);
+
+            List<string> array = new List<string>();
+            foreach (var item in ms)
+            {
+                var childs = item.ToString().Split(',');
+                foreach (var child in childs)
+                {
+                    array.Add(child);
+                }
+            }
+            return array.ToArray();
+        }
+
+        public static string[] ParseIntArray(string value)
+        {
+            //正则表达式解析{}中的数组
+            value = value.Replace("\n", "");
+            Regex r = new Regex(@"[^{^}]+");
+            var ms = r.Matches(value);
+
+            List<string> array = new List<string>();
+            foreach (var item in ms)
+            {
+                var childs = item.ToString().Split(',');
+                foreach (var child in childs)
+                {
+                    array.Add(child);
+                }
+            }
+            return array.ToArray();
+        }
+        
     }
 }
