@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2024-08-24 21:51:43.571
+// 生成时间：2024-08-26 14:56:39.968
 //------------------------------------------------------------
 
 using GameFramework;
@@ -45,6 +45,24 @@ namespace StarForce
             private set;
         }
 
+        /// <summary>
+        /// 获取状态机检测距离。
+        /// </summary>
+        public float FSMDistance
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取dsfd。
+        /// </summary>
+        public int TestArray
+        {
+            get;
+            private set;
+        }
+
         public override bool ParseDataRow(string dataRowString, object userData)
         {
             string[] columnStrings = dataRowString.Split(DataTableExtension.DataSplitSeparators);
@@ -58,6 +76,8 @@ namespace StarForce
             m_Id = int.Parse(columnStrings[index++]);
             index++;
             AssetName = columnStrings[index++];
+            FSMDistance = float.Parse(columnStrings[index++]);
+            TestArray = int.Parse(columnStrings[index++]);
 
             GeneratePropertyArray();
             return true;
@@ -71,6 +91,8 @@ namespace StarForce
                 {
                     m_Id = binaryReader.Read7BitEncodedInt32();
                     AssetName = binaryReader.ReadString();
+                    FSMDistance = binaryReader.ReadSingle();
+                    TestArray = binaryReader.Read7BitEncodedInt32();
                 }
             }
 

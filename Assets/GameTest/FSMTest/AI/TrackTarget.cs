@@ -7,11 +7,11 @@ using UnityEngine.AI;
 
 public class TrackTarget : FsmState<NpcFSM>
 {
-    private float minDistance=1;
+    private float checkDistance=1;
     private Vector3 targetPosition;
     public TrackTarget(float minDistance)
     {
-        this.minDistance = minDistance;
+        this.checkDistance = minDistance;
     }
 
     protected override void OnInit(IFsm<NpcFSM> fsm)
@@ -44,7 +44,7 @@ public class TrackTarget : FsmState<NpcFSM>
         fsm.Owner._agent.SetDestination(targetPosition);
         float distance = Vector3.Distance(fsm.Owner.transform.position, targetPosition);
         
-        if (distance<=minDistance)
+        if (distance<=checkDistance)
         {
             Debug.Log("switch state");
             ChangeState<GetTarget>(fsm);
@@ -55,6 +55,5 @@ public class TrackTarget : FsmState<NpcFSM>
     {
         base.OnLeave(fsm, isShutdown);
     }
-    
-    
+
 }

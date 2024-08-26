@@ -16,8 +16,8 @@ public class NpcFSM : EntityLogic
     public ProductBase NeedProduct;
 
     private IFsm<NpcFSM> npcF;
-
-    private float checkMinDistance = 1.5f;
+//table
+    private float FsmDistance = 1.5f;
     
     public int entityId;
     protected override void OnInit(object userData)
@@ -37,13 +37,13 @@ public class NpcFSM : EntityLogic
         this.transform.position = NpcFsmData.InitPosition;
         this.NeedProduct = NpcFsmData.NeedProduct;
         this.entityId = NpcFsmData.EntityId;
-
+        this.FsmDistance = NpcFsmData.FSMDistance;
         //FsmState<NpcFSM>[] npcState = new FsmState<NpcFSM>[] { };
         
         FsmState<NpcFSM>[] npcState = {
-            new TrackTarget(checkMinDistance),
+            new TrackTarget(FsmDistance),
             new GetTarget(),
-            new LeaveTarget()
+            new LeaveTarget(FsmDistance)
         };
 
 
@@ -85,6 +85,6 @@ public class NpcFSM : EntityLogic
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(this.transform.position,checkMinDistance);
+        Gizmos.DrawWireSphere(this.transform.position,FsmDistance);
     }
 }

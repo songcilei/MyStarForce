@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using GameFramework.Fsm;
+using StarForce;
 using UnityEngine;
+using UnityGameFramework.Runtime;
 
 public class GetTarget : FsmState<NpcFSM>
 {
@@ -16,6 +18,7 @@ public class GetTarget : FsmState<NpcFSM>
         
         Vector3 leavePosition = fsm.Owner.NpcFsmData.InitPosition;
         fsm.Owner._agent.SetDestination(leavePosition);
+        fsm.SetData<VarVector3>("targetPosition",leavePosition);
         ChangeState<LeaveTarget>(fsm);
 
     }
