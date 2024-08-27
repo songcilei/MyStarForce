@@ -7,7 +7,7 @@ namespace StarForce.Editor.DataTableTools
 {
     public sealed partial class DataTableProcessor
     {
-        public sealed class IntArrayProcessor : GenericDataProcessor<int[]>
+        public sealed class FloatArrayProcessor : GenericDataProcessor<float[]>
         {
             public override bool IsSystem {
                 get
@@ -18,16 +18,16 @@ namespace StarForce.Editor.DataTableTools
             public override string LanguageKeyword {
                 get
                 {
-                    return "int[]";
+                    return "float[]";
                 }
             } 
             public override string[] GetTypeStrings()
             {
-                return new string[] { "int[]", "system.int[]" };
+                return new string[] { "float[]", "system.float[]" };
             }
-            public override int[] Parse(string value)
+            public override float[] Parse(string value)
             {
-                return DataTableExtension.ParseIntArray(value);
+                return DataTableExtension.ParseFloatArray(value);
             }
             public override void WriteToStream(DataTableProcessor dataTableProcessor, BinaryWriter binaryWriter, string value)
             {

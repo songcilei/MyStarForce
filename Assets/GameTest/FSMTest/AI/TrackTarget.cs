@@ -21,7 +21,6 @@ public class TrackTarget : FsmState<NpcFSM>
         {
             Debug.LogError("logerro == null");
         }
-        
         fsm.Owner._agent.Warp(fsm.Owner.transform.position);
     }
 
@@ -39,7 +38,6 @@ public class TrackTarget : FsmState<NpcFSM>
     protected override void OnUpdate(IFsm<NpcFSM> fsm, float elapseSeconds, float realElapseSeconds)
     {
         base.OnUpdate(fsm, elapseSeconds, realElapseSeconds);
-   
 
         fsm.Owner._agent.SetDestination(targetPosition);
         float distance = Vector3.Distance(fsm.Owner.transform.position, targetPosition);

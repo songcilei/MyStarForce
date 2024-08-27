@@ -9,6 +9,7 @@ public class NpcFSMData : EntityData
     public ProductBase NeedProduct;
     public int EntityId;
     public float FSMDistance;
+    public int[] ModelIDs;
     public NpcFSMData(int entityId, int typeId,BirthPoint[] birthPoints) : base(entityId, typeId)
     {
         int index = Mathf.FloorToInt(Random.Range(0, birthPoints.Length));
@@ -16,11 +17,13 @@ public class NpcFSMData : EntityData
         NeedProduct = GameEntry.Shop.GetRandomProduct();
         EntityId = entityId;
 
-
+//Fsm distance
         var drEntityTable =GameEntry.DataTable.GetDataTable<DREntity>();
         DREntity drEntity = drEntityTable.GetDataRow(typeId);
         FSMDistance = drEntity.FSMDistance;
-        //Debug.Log("array:"+drEntity.TestArray);
+        
+//model id
+        ModelIDs = drEntity.ModelID;
     }
     
     

@@ -1111,7 +1111,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1079
 --- !u!114 &1576232205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1315,11 +1315,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Npc
-      objectReference: {fileID: 0}
-    - target: {fileID: 8645787897095532283, guid: 43b771c44fe990f4f8ac931a65f6fde5,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2024-08-27 01:49:46.490
+// 生成时间：2024-08-27 01:49:46.494
 //------------------------------------------------------------
 
 using GameFramework;
@@ -19,14 +19,14 @@ using UnityGameFramework.Runtime;
 namespace StarForce
 {
     /// <summary>
-    /// 推进器表。
+    /// 实体表。
     /// </summary>
-    public class DRThruster : DataRowBase
+    public class DRNpcModel : DataRowBase
     {
         private int m_Id = 0;
 
         /// <summary>
-        /// 获取推进器编号。
+        /// 获取模型编号。
         /// </summary>
         public override int Id
         {
@@ -37,9 +37,9 @@ namespace StarForce
         }
 
         /// <summary>
-        /// 获取。
+        /// 获取资源名称。
         /// </summary>
-        public float Speed
+        public string AssetName
         {
             get;
             private set;
@@ -57,7 +57,7 @@ namespace StarForce
             index++;
             m_Id = int.Parse(columnStrings[index++]);
             index++;
-            Speed = float.Parse(columnStrings[index++]);
+            AssetName = columnStrings[index++];
 
             GeneratePropertyArray();
             return true;
@@ -70,7 +70,7 @@ namespace StarForce
                 using (BinaryReader binaryReader = new BinaryReader(memoryStream, Encoding.UTF8))
                 {
                     m_Id = binaryReader.Read7BitEncodedInt32();
-                    Speed = binaryReader.ReadSingle();
+                    AssetName = binaryReader.ReadString();
                 }
             }
 

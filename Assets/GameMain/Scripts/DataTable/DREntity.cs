@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2024-08-26 14:56:39.968
+// 生成时间：2024-08-27 01:49:46.486
 //------------------------------------------------------------
 
 using GameFramework;
@@ -55,9 +55,9 @@ namespace StarForce
         }
 
         /// <summary>
-        /// 获取dsfd。
+        /// 获取模型Id。
         /// </summary>
-        public int TestArray
+        public int[] ModelID
         {
             get;
             private set;
@@ -77,7 +77,7 @@ namespace StarForce
             index++;
             AssetName = columnStrings[index++];
             FSMDistance = float.Parse(columnStrings[index++]);
-            TestArray = int.Parse(columnStrings[index++]);
+            ModelID = DataTableExtension.ParseIntArray(columnStrings[index++]);
 
             GeneratePropertyArray();
             return true;
@@ -92,7 +92,13 @@ namespace StarForce
                     m_Id = binaryReader.Read7BitEncodedInt32();
                     AssetName = binaryReader.ReadString();
                     FSMDistance = binaryReader.ReadSingle();
-                    TestArray = binaryReader.Read7BitEncodedInt32();
+                    string[] temp = binaryReader.ReadString().Split(",");
+                    List<int> tempList = new List<int>();
+                    foreach(var t in temp)
+                    {
+                       tempList.Add(int.Parse(t));
+                    }
+                    ModelID = tempList.ToArray();
                 }
             }
 

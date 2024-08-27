@@ -80,7 +80,7 @@ namespace StarForce.Editor.DataTableTools
             codeContent.Replace("__DATA_TABLE_COMMENT__", dataTableProcessor.GetValue(0, 1) + "。");
             codeContent.Replace("__DATA_TABLE_ID_COMMENT__", "获取" + dataTableProcessor.GetComment(dataTableProcessor.IdColumn) + "。");
             codeContent.Replace("__DATA_TABLE_PROPERTIES__", GenerateDataTableProperties(dataTableProcessor));
-            codeContent.Replace("__DATA_TABLE_PARSER__", GenerateDataTableParser(dataTableProcessor));
+            codeContent.Replace("__DATA_TABLE_PARSER__", GenerateDataTableParser(dataTableProcessor));//ParseDataRow()
             codeContent.Replace("__DATA_TABLE_PROPERTY_ARRAY__", GenerateDataTablePropertyArray(dataTableProcessor));
         }
 
@@ -169,7 +169,24 @@ namespace StarForce.Editor.DataTableTools
                 }
                 else
                 {
-                    stringBuilder.AppendFormat("            {0} = DataTableExtension.Parse{1}(columnStrings[index++]);", dataTableProcessor.GetName(i), dataTableProcessor.GetType(i).Name).AppendLine();
+                    string languageKeyword = dataTableProcessor.GetLanguageKeyword(i);
+                    Debug.Log(languageKeyword);
+                    if (languageKeyword == "string[]")
+                    {
+                        stringBuilder.AppendFormat("            {0} = DataTableExtension.ParseStringArray(columnStrings[index++]);", dataTableProcessor.GetName(i)).AppendLine();
+                    }
+                    else if (languageKeyword == "int[]")
+                    {
+                        stringBuilder.AppendFormat("            {0} = DataTableExtension.ParseIntArray(columnStrings[index++]);", dataTableProcessor.GetName(i)).AppendLine();
+                    }
+                    else if (languageKeyword == "float[]")
+                    {
+                        stringBuilder.AppendFormat("            {0} = DataTableExtension.ParseFloatArray(columnStrings[index++]);", dataTableProcessor.GetName(i)).AppendLine();
+                    }
+                    else
+                    {
+                        stringBuilder.AppendFormat("            {0} = DataTableExtension.Parse{1}(columnStrings[index++]);", dataTableProcessor.GetName(i), dataTableProcessor.GetType(i).Name).AppendLine();
+                    }
                 }
             }
 
@@ -204,6 +221,30 @@ namespace StarForce.Editor.DataTableTools
                 if (languageKeyword == "int" || languageKeyword == "uint" || languageKeyword == "long" || languageKeyword == "ulong")
                 {
                     stringBuilder.AppendFormat("                    {0} = binaryReader.Read7BitEncoded{1}();", dataTableProcessor.GetName(i), dataTableProcessor.GetType(i).Name).AppendLine();
+                }
+                else if(languageKeyword == "string[]")
+                {
+                    stringBuilder.AppendFormat("                    {0} = binaryReader.ReadString().Split(\",\");", dataTableProcessor.GetName(i)).AppendLine();
+                }
+                else if (languageKeyword == "int[]")
+                {
+                    stringBuilder.AppendFormat("                    string[] temp = binaryReader.ReadString().Split(\",\");").AppendLine();
+                    stringBuilder.AppendFormat("                    List<int> tempList = new List<int>();").AppendLine();
+                    stringBuilder.AppendFormat("                    foreach(var t in temp)").AppendLine()
+                        .AppendLine("                    {")
+                        .AppendLine("                       tempList.Add(int.Parse(t));")
+                        .AppendLine("                    }");
+                    stringBuilder.AppendFormat("                    {0} = tempList.ToArray();", dataTableProcessor.GetName(i)).AppendLine();
+                }
+                else if (languageKeyword == "float[]")
+                {
+                    stringBuilder.AppendFormat("                    string[] temp = binaryReader.ReadString().Split(\",\");").AppendLine();
+                    stringBuilder.AppendFormat("                    List<float> tempList = new List<float>();").AppendLine();
+                    stringBuilder.AppendFormat("                    foreach(var t in temp)").AppendLine()
+                        .AppendLine("                    {")
+                        .AppendLine("                       tempList.Add(float.Parse(t));")
+                        .AppendLine("                    }");
+                    stringBuilder.AppendFormat("                    {0} = tempList.ToArray();", dataTableProcessor.GetName(i)).AppendLine();
                 }
                 else
                 {

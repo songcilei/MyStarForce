@@ -29,19 +29,22 @@ public class LeaveTarget : FsmState<NpcFSM>
     protected override void OnUpdate(IFsm<NpcFSM> fsm, float elapseSeconds, float realElapseSeconds)
     {
         base.OnUpdate(fsm, elapseSeconds, realElapseSeconds);
+        float distance = Vector3.Distance(fsm.Owner.transform.position, targetPosition);
+        
+        if (distance<=checkDistance)
+        {
+            ChangeState<KeepIdle>(fsm);
+            GameEntry.Entity.HideEntity(fsm.Owner.Entity);
+
+            GameEntry.Fsm.DestroyFsm<NpcFSM>(fsm);
+        }
     }
 
     protected override void OnLeave(IFsm<NpcFSM> fsm, bool isShutdown)
     {
         base.OnLeave(fsm, isShutdown);
         
-        float distance = Vector3.Distance(fsm.Owner.transform.position, targetPosition);
-        
-        if (distance<=checkDistance)
-        {
-            Debug.Log("switch state");
-            GameEntry.Entity.HideEntity(fsm.Owner.entityId);
-        }
+
         
     }
 }

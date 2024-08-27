@@ -108,24 +108,44 @@ namespace StarForce
             return array.ToArray();
         }
 
-        public static string[] ParseIntArray(string value)
+        public static int[] ParseIntArray(string value)
         {
             //正则表达式解析{}中的数组
             value = value.Replace("\n", "");
             Regex r = new Regex(@"[^{^}]+");
             var ms = r.Matches(value);
 
-            List<string> array = new List<string>();
+            List<int> array = new List<int>();
             foreach (var item in ms)
             {
                 var childs = item.ToString().Split(',');
                 foreach (var child in childs)
                 {
-                    array.Add(child);
+                    array.Add(int.Parse(child));
+                }
+            }
+
+            return array.ToArray();
+
+        }
+
+        public static float[] ParseFloatArray(string value)
+        {
+            //正则表达式解析{}中的数组
+            value = value.Replace("\n", "");
+            Regex r = new Regex(@"[^{^}]+");
+            var ms = r.Matches(value);
+
+            List<float> array = new List<float>();
+            foreach (var item in ms)
+            {
+                var childs = item.ToString().Split(',');
+                foreach (var child in childs)
+                { 
+                    array.Add(float.Parse(child));
                 }
             }
             return array.ToArray();
         }
-        
     }
 }
