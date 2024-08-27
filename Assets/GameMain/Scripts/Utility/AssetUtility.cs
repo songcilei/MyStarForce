@@ -63,7 +63,7 @@ namespace StarForce
         
         public static string GetNPCModelAsset(string assetName)
         {
-            return Utility.Text.Format("Assets/GameMain/Object/NPCModel/{0}.prefab", assetName);
+            return Utility.Text.Format("Assets/GameMain/Object/NpcModel/{0}.prefab", assetName);
         }
     }
 }

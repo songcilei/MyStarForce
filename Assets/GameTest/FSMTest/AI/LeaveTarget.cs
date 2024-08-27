@@ -37,6 +37,8 @@ public class LeaveTarget : FsmState<NpcFSM>
             GameEntry.Entity.HideEntity(fsm.Owner.Entity);
 
             GameEntry.Fsm.DestroyFsm<NpcFSM>(fsm);
+            //这里可以考虑换成pool
+            GameObject.DestroyImmediate(fsm.Owner.Model);
         }
     }
 

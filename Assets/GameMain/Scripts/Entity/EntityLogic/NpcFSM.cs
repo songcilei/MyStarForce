@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using GameFramework.Fsm;
+using GameFramework.Resource;
 using StarForce;
 using UnityEngine;
 using UnityEngine.AI;
@@ -21,16 +22,20 @@ public class NpcFSM : EntityLogic
     private FsmState<NpcFSM>[] npcState;
 //table
     private float FsmDistance = 1.5f;
+
+    private LoadAssetCallbacks m_LoadAssetCallbacks;
     
     public int entityId;
 
     public int ModelID;
+    public Transform Model;
+    public Animator _animator;
     protected override void OnInit(object userData)
     {
         base.OnInit(userData);
 
         _agent = GetComponent<NavMeshAgent>();
-        
+        m_LoadAssetCallbacks = new LoadAssetCallbacks(loadModelSuccess);
         NpcFsmData = userData as NpcFSMData;
         if (userData == null)
         {
@@ -67,8 +72,8 @@ public class NpcFSM : EntityLogic
         DRNpcModel drNpcModel = table.GetDataRow(ModelID);
 //load model asset
         string path = AssetUtility.GetNPCModelAsset(drNpcModel.AssetName);
-        // GameEntry.Resource.load
-        
+        GameEntry.Resource.LoadAsset(path,m_LoadAssetCallbacks);
+//FSM Create
         npcF = GameEntry.Fsm.CreateFsm(this.name + entityId, this, npcState);
         npcF.Start<TrackTarget>();
         
@@ -86,8 +91,11 @@ public class NpcFSM : EntityLogic
         base.OnUpdate(elapseSeconds, realElapseSeconds);
     }
 
-    public void loadModelSuccess()
+    public void loadModelSuccess(string assetName,object asset,float duration,object userData)
     {
+        Debug.Log("loaded success");
+        Model = Instantiate(asset as GameObject).transform;
+        Model.gameObject.TryGetComponent<Animator>(out _animator);
         
     }
 
