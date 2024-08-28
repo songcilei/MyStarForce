@@ -65,5 +65,12 @@ namespace StarForce
         {
             return Utility.Text.Format("Assets/GameMain/Object/NpcModel/{0}.prefab", assetName);
         }
+        
+        //icon 头像
+        public static string GetPlayerHeadIconAsset(string assetName)
+        {
+            return Utility.Text.Format("Assets/GameMain/Textures/Entity/HeadIcon/{0}.png", assetName);
+        }
+        
     }
 }

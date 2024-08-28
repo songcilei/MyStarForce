@@ -112,7 +112,7 @@ namespace StarForce
                     ChangeState<ProcedureTest>(procedureOwner);
                     break;
                 case 4:
-                    ChangeState<TestProcedureGame>(procedureOwner);
+                    ChangeState<ProcedureLeve1>(procedureOwner);
                     break;
                 default:
                     break;
@@ -144,7 +144,6 @@ namespace StarForce
             {
                 return;
             }
-
             Log.Error("Load scene '{0}' failure, error message '{1}'.", ne.SceneAssetName, ne.ErrorMessage);
         }
 

@@ -87,7 +87,7 @@ namespace StarForce
             //procedureOwner.SetData<VarInt32>("NextSceneId", GameEntry.Config.GetInt("Scene.Menu"));
             //ChangeState<ProcedureChangeScene>(procedureOwner);
 //------------test            
-            procedureOwner.SetData<VarInt32>("NextSceneId", GameEntry.Config.GetInt("Scene.Test"));
+            //procedureOwner.SetData<VarInt32>("NextSceneId", GameEntry.Config.GetInt("Scene.Test"));
 //------------change state            
             //ChangeState<TestProcedureObjectPool>(procedureOwner);
             // ChangeState<TestProcedureReferencePool>(procedureOwner);
@@ -95,7 +95,8 @@ namespace StarForce
             // procedureOwner.SetData<VarByte>("GameMode",(byte)GameModeH.Normal);
             // ChangeState<TestProcedureGame>(procedureOwner);
             
-            procedureOwner.SetData<VarInt32>("NextSceneId",GameEntry.Config.GetInt("Scene.Home"));
+            // procedureOwner.SetData<VarInt32>("NextSceneId",GameEntry.Config.GetInt("Scene.Home"));
+            procedureOwner.SetData<VarInt32>("NextSceneId",GameEntry.Config.GetInt("Scene.Level01"));
             ChangeState<ProcedureChangeScene>(procedureOwner);
             
         }

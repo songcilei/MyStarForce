@@ -14,14 +14,12 @@ public class PlayerBase : EntityLogic
 {
     
     public string name;
+    public int entityId;
     public float TimeSpeed=0;
-    public GameObject Icon;
     public PlayerType PlayerType = PlayerType.None;
     public float TimelineInitPos = 0;
     
     
-
-
 
     
 }

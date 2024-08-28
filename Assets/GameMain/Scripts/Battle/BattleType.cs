@@ -10,3 +10,4 @@ public enum BattleType
     OnUpdate,
     OnLeave
 }
+

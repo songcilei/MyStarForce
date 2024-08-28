@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2024-08-27 01:49:46.486
+// 生成时间：2024-08-28 21:32:51.394
 //------------------------------------------------------------
 
 using GameFramework;
@@ -63,6 +63,15 @@ namespace StarForce
             private set;
         }
 
+        /// <summary>
+        /// 获取默认时间轴速度。
+        /// </summary>
+        public float TimeSpeed
+        {
+            get;
+            private set;
+        }
+
         public override bool ParseDataRow(string dataRowString, object userData)
         {
             string[] columnStrings = dataRowString.Split(DataTableExtension.DataSplitSeparators);
@@ -78,6 +87,7 @@ namespace StarForce
             AssetName = columnStrings[index++];
             FSMDistance = float.Parse(columnStrings[index++]);
             ModelID = DataTableExtension.ParseIntArray(columnStrings[index++]);
+            TimeSpeed = float.Parse(columnStrings[index++]);
 
             GeneratePropertyArray();
             return true;
@@ -99,6 +109,7 @@ namespace StarForce
                        tempList.Add(int.Parse(t));
                     }
                     ModelID = tempList.ToArray();
+                    TimeSpeed = binaryReader.ReadSingle();
                 }
             }
 

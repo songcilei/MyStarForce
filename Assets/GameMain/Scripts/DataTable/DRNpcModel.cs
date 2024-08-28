@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2024-08-27 01:49:46.494
+// 生成时间：2024-08-28 21:32:51.405
 //------------------------------------------------------------
 
 using GameFramework;
@@ -45,6 +45,15 @@ namespace StarForce
             private set;
         }
 
+        /// <summary>
+        /// 获取头像图片名称。
+        /// </summary>
+        public string Icon
+        {
+            get;
+            private set;
+        }
+
         public override bool ParseDataRow(string dataRowString, object userData)
         {
             string[] columnStrings = dataRowString.Split(DataTableExtension.DataSplitSeparators);
@@ -58,6 +67,7 @@ namespace StarForce
             m_Id = int.Parse(columnStrings[index++]);
             index++;
             AssetName = columnStrings[index++];
+            Icon = columnStrings[index++];
 
             GeneratePropertyArray();
             return true;
@@ -71,6 +81,7 @@ namespace StarForce
                 {
                     m_Id = binaryReader.Read7BitEncodedInt32();
                     AssetName = binaryReader.ReadString();
+                    Icon = binaryReader.ReadString();
                 }
             }
 
