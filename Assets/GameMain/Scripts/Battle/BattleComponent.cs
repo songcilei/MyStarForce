@@ -1,23 +1,37 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityGameFramework.Runtime;
+using GameEntry = StarForce.GameEntry;
 
 public class BattleComponent : GameFrameworkComponent
 {
     public BattleType _battleType = BattleType.None;
     public List<PlayerFSM> PlayerFsmList = new List<PlayerFSM>();
-    public Dictionary<string, Transform> battleHeadUIList = new Dictionary<string, Transform>();
+    public Dictionary<string, BattleBase> battleHeadUIList = new Dictionary<string, BattleBase>();
     public RectTransform Timeline;
+
+    public float YOffset = 5;
     public RectTransform PlayerHead;
     public RectTransform PlayerHeadTemp;
     public RectTransform PplayerHeadIns;
+    
     public bool RunBattleState = false;
 
     public RectTransform StartPos;
     public RectTransform EndPos;
+    private float StartPosX;
+    private float EndPosX;
+    public float WidthX;
+    
+    
+    private float timeFrame = 0;
+    public float TimeStandardSpeed = 1;
+    private bool FreeTime = false;
     
     protected override void Awake()
     {
@@ -54,24 +68,24 @@ public class BattleComponent : GameFrameworkComponent
                 if (RunBattleState)
                 {
                     _battleType = BattleType.OnInit;
+                    RectTransform rect = Timeline.GetComponent<RectTransform>();
+                    StartPosX = StartPos.position.x;
+                    EndPosX = EndPos.position.x;
+                    WidthX = Mathf.Abs(EndPosX - StartPosX); 
                     RunBattleState = false;
                 }
 
                 break;
             case BattleType.OnInit:
                 Init();
+                _battleType = BattleType.OnStart;
                 break;
             case BattleType.OnStart:
-                for (int i = 0; i < PlayerFsmList.Count; i++)
-                {
-                    
-                }
+                _battleType = BattleType.OnUpdate;
                 break;
             case BattleType.OnUpdate:
-                for (int i = 0; i < PlayerFsmList.Count; i++)
-                {
-                    
-                }
+                UpdateComponent();
+
                 break;
             case BattleType.OnLeave:
                 Shutdown();
@@ -84,7 +98,7 @@ public class BattleComponent : GameFrameworkComponent
 /// run 
 /// </summary>
 /// <param name="herolist"></param>
-    public void RunBattle(List<Entity> herolist)
+    public void RunBattle(List<PlayerFSM> herolist)
     {
         if (RunBattleState)
         {
@@ -98,15 +112,80 @@ public class BattleComponent : GameFrameworkComponent
     private void Init()
     {
         ShowUI();
-
+        
         GameObject HeadTemp = PlayerHeadTemp.gameObject;
         foreach (var playerF in PlayerFsmList)
         {
-            
+            RectTransform insTran = Instantiate(HeadTemp,PlayerHead).GetComponent<RectTransform>();
             Texture2D icon = playerF.HeadIcon;
-            // battleHeadUIList.Add(playerF.);
-            // Transform  Instantiate(HeadTemp);
+            RawImage icon_ui = insTran.transform.Find("HeadIcon")?.GetComponent<RawImage>();
+            icon_ui.texture= icon;
+            insTran.gameObject.SetActive(true);
+            float initPos = playerF.TimelineInitPos*WidthX; 
+            Vector3 startPosition = Vector3.zero;
+            Vector3 endPosition = Vector3.zero;
+            switch (playerF.PlayerType)
+            {
+                case PlayerType.Hero:
+                    startPosition = new Vector3(StartPosX+initPos, PlayerHead.position.y+YOffset, 0);
+                    break;
+                case PlayerType.Enemy:
+                    startPosition = new Vector3(StartPosX+initPos, PlayerHead.position.y-YOffset, 0);
+                    break;
+                default:
+                    break;
+            }
+            endPosition = startPosition + new Vector3(WidthX,0,0);
+            
+            
+            
+            BattleBase battleBase = new BattleBase(playerF.name,playerF.entityId,playerF.TimeSpeed,insTran,icon,startPosition,endPosition);
+            if (!battleHeadUIList.ContainsKey(playerF.name))
+            {
+                battleHeadUIList.Add(playerF.name,battleBase);
+                UnityGameFramework.Runtime.Log.Debug(playerF.name);
+            }
         }
+        
+        
+    }
+
+
+    private void UpdateComponent()
+    {
+        if (FreeTime)
+        {
+            return;
+        }
+
+        timeFrame = Time.deltaTime*TimeStandardSpeed;
+        for (int i = 0; i < battleHeadUIList.Count; i++)
+        {
+            string key = battleHeadUIList.ElementAt(i).Key;
+
+            BattleBase mbase = battleHeadUIList[key];
+            mbase.m_TotalTime += timeFrame*mbase.TimeSpeed;
+            if (mbase.m_TotalTime>100000)
+            {
+                mbase.m_TotalTime = 0;
+            }
+
+            mbase.m_LocalTime = battleHeadUIList[key].m_TotalTime % 100;
+            mbase.RectTrans.position = new Vector3(mbase.StartPosition.x + (WidthX * mbase.m_LocalTime / 100),mbase.StartPosition.y,mbase.StartPosition.z);
+//action
+            if (Mathf.Abs(mbase.RectTrans.position.x - EndPosX)<1)
+            {
+                PlayerFSM playerFsm = (PlayerFSM)GameEntry.Entity.GetEntity(mbase.EntityId).Logic;
+                playerFsm.OnAction();
+            }
+        }
+        
+        
+    }
+//set free time
+    public void SetFreeTimeState(bool state)
+    {
+        FreeTime = state;
     }
 
     private void Shutdown()
@@ -139,11 +218,11 @@ public class BattleComponent : GameFrameworkComponent
     }
 
 
-    private void SetPlayerToList(List<Entity> entitylist)
+    private void SetPlayerToList(List<PlayerFSM> entitylist)
     {
         foreach (var entity in entitylist)
         {
-            PlayerFsmList.Add(entity.Logic as PlayerFSM);
+            PlayerFsmList.Add(entity);
         }
         RunBattleState = true;
     }

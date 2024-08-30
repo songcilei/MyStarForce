@@ -11,7 +11,7 @@ using ShowEntitySuccessEventArgs = UnityGameFramework.Runtime.ShowEntitySuccessE
 public class BattleVolume : MonoBehaviour
 {
     public List<ActorType> ActorTypes = new List<ActorType>();
-    List<UnityGameFramework.Runtime.Entity> EntityFsms = new List<UnityGameFramework.Runtime.Entity>();
+    List<PlayerFSM> EntityFsms = new List<PlayerFSM>();
     private int loadEd = 0;
     private void Start()
     {
@@ -55,7 +55,11 @@ public class BattleVolume : MonoBehaviour
     private void LoadSuccess(object sender,GameEventArgs e)
     {
         ShowEntitySuccessEventArgs ne = (ShowEntitySuccessEventArgs)e;
-        EntityFsms.Add(ne.Entity);
+        if (ne.EntityLogicType == typeof(PlayerFSM))
+        {
+            EntityFsms.Add((PlayerFSM)ne.Entity.Logic);
+        }
+
         loadEd++;
     }
 }

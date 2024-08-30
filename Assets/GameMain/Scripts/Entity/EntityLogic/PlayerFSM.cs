@@ -26,17 +26,23 @@ public class PlayerFSM : PlayerBase
         
         PlayerFSMData playerFsmData = userData as PlayerFSMData;
         entityId = playerFsmData.EntityId;
-        
+        PlayerType = playerFsmData.PlayerType;
+        TimeSpeed = playerFsmData.TimeSpeed;
         string modelPath = AssetUtility.GetNPCModelAsset(playerFsmData.ModelName);
         GameEntry.Resource.LoadAsset(modelPath,LoadAssetCallbacks_Model);
 
+        name = playerFsmData.ModelName + entityId;
+        
         string iconPath = AssetUtility.GetPlayerHeadIconAsset(playerFsmData.Icon);
         GameEntry.Resource.LoadAsset(iconPath,LoadAssetSuccessCallback_Icon);
 
-        
-        
+    }
 
-
+    public override void OnAction()
+    {
+        base.OnAction();
+        GameEntry.BattleSystem.SetFreeTimeState(true);
+        Debug.Log("name:"+name +"::::Action");
     }
 
     protected override void OnShow(object userData)
@@ -57,7 +63,7 @@ public class PlayerFSM : PlayerBase
             Debug.Log("load ed   Model and Icon");
         }
     }
-
+    
     private void LoadModelSuccess(string assetName, object asset, float duration, object userData)
     {
         var obj = asset as GameObject;

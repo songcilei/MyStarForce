@@ -18,8 +18,11 @@ public class PlayerBase : EntityLogic
     public float TimeSpeed=0;
     public PlayerType PlayerType = PlayerType.None;
     public float TimelineInitPos = 0;
-    
-    
 
-    
+
+    public virtual void OnAction()
+    {
+        
+    }
+
 }
