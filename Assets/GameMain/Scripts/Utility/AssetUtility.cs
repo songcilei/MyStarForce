@@ -69,7 +69,7 @@ namespace StarForce
         //icon 头像
         public static string GetPlayerHeadIconAsset(string assetName)
         {
-            return Utility.Text.Format("Assets/GameMain/Textures/Entity/HeadIcon/{0}.png", assetName);
+            return Utility.Text.Format("Assets/GameMain/Art/Textures/Entity/HeadIcon/{0}.png", assetName);
         }
         
     }
