@@ -12,6 +12,8 @@ public class BattleComponent : GameFrameworkComponent
 {
     public BattleType _battleType = BattleType.None;
     public List<PlayerFSM> PlayerFsmList = new List<PlayerFSM>();
+    private List<PlayerFSM> heroFsmList = new List<PlayerFSM>();
+    private List<PlayerFSM> enemyFsmList = new List<PlayerFSM>();
     public Dictionary<string, BattleBase> battleHeadUIList = new Dictionary<string, BattleBase>();
     public RectTransform Timeline;
 
@@ -67,12 +69,11 @@ public class BattleComponent : GameFrameworkComponent
             case BattleType.None:
                 if (RunBattleState)
                 {
-                    _battleType = BattleType.OnInit;
+                    _battleType = BattleType.OnInit;//change state
                     RectTransform rect = Timeline.GetComponent<RectTransform>();
                     StartPosX = StartPos.position.x;
                     EndPosX = EndPos.position.x;
                     WidthX = Mathf.Abs(EndPosX - StartPosX); 
-                    RunBattleState = false;
                 }
 
                 break;
@@ -89,6 +90,7 @@ public class BattleComponent : GameFrameworkComponent
                 break;
             case BattleType.OnLeave:
                 Shutdown();
+                RunBattleState = false;
                 break;
             default:
                 break;
@@ -112,7 +114,8 @@ public class BattleComponent : GameFrameworkComponent
     private void Init()
     {
         ShowUI();
-        
+        heroFsmList.Clear();
+        enemyFsmList.Clear();
         GameObject HeadTemp = PlayerHeadTemp.gameObject;
         foreach (var playerF in PlayerFsmList)
         {
@@ -128,9 +131,11 @@ public class BattleComponent : GameFrameworkComponent
             {
                 case PlayerType.Hero:
                     startPosition = new Vector3(StartPosX+initPos, PlayerHead.position.y+YOffset, 0);
+                    heroFsmList.Add(playerF);
                     break;
                 case PlayerType.Enemy:
                     startPosition = new Vector3(StartPosX+initPos, PlayerHead.position.y-YOffset, 0);
+                    enemyFsmList.Add(playerF);
                     break;
                 default:
                     break;
@@ -200,6 +205,7 @@ public class BattleComponent : GameFrameworkComponent
         {
             battleHeadUIList.Clear();
         }
+
 
 //Hide UI
         HideUI();

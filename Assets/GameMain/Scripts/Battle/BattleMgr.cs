@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using StarForce;
 using UnityEngine;
 
 public class BattleMgr : MonoBehaviour
@@ -54,15 +55,18 @@ public class BattleMgr : MonoBehaviour
     /// init battle scene
     /// </summary>
     /// <param name="playPos"></param>
-    public void CreatBattle(Vector3 playPos)
+    public void CreatBattle(Vector3 playPos,PlayerFSM heroFsm,PlayerFSM enemyFsm)
     {
         if (battlePoints==null)
         {
             Debug.LogError("battlePoint is null!!");
             return;
         }
-
-        BattlePointValue battlePoint = battlePoints.GetNearBattlePoint(playPos);
+        BattlePointValue battlePos = battlePoints.GetNearBattlePoint(playPos);
+        
+        //load asset battle scene
+        
+        
     }
 
 

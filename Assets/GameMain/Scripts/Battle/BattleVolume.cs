@@ -23,10 +23,9 @@ public class BattleVolume : MonoBehaviour
         //临时写的+3 代表主角3个英雄
         if (loadEd>= ActorTypes.Count+3)
         {
-            List<PlayerFSM> playerFsms = new List<PlayerFSM>();
+            // List<PlayerFSM> playerFsms = new List<PlayerFSM>();
             
             GameEntry.BattleSystem.RunBattle(EntityFsms);
-
             this.gameObject.SetActive(false);
             Debug.Log("run Battle Component!");
         }
