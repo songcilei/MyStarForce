@@ -218,11 +218,9 @@ Shader "URP/PetIsLand_SimpleTree_BigLand"
                 half3 fresnel = pow(1 - saturate(dot(N, ViewDir)), _FresnelPow) * _FresnelSize * +_FresnelColor;
 //Combine-------------------------------------------Start
                 half4 finalcolor=0;
-//Combine Atten
+//Combine Atten shadow
             
                 half atten;
-                // ShadowData shadowData = GetShadowMapData(i.normalWS.w);
-                // Light light = GetDirectionalShadowMapLight(half(1.0),i.positionWS.xyz,N,shadowData);
                 float4  shadowCoord =TransformWorldToShadowCoord(i.positionWS);
                 half realtimeShadow = MainLightRealtimeShadow(shadowCoord);
                 
