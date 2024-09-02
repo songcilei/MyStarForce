@@ -34,7 +34,9 @@ public class BattleComponent : GameFrameworkComponent
     private float timeFrame = 0;
     public float TimeStandardSpeed = 1;
     private bool FreeTime = false;
-    
+
+
+    public Transform heroTransform;
     protected override void Awake()
     {
         base.Awake();
@@ -82,6 +84,9 @@ public class BattleComponent : GameFrameworkComponent
                 _battleType = BattleType.OnStart;
                 break;
             case BattleType.OnStart:
+                heroTransform = GameObject.Find("hero").transform;
+                
+                BattleMgr.Instance.CreatBattle(heroTransform.position,heroFsmList,enemyFsmList);
                 _battleType = BattleType.OnUpdate;
                 break;
             case BattleType.OnUpdate:

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using GameFramework.Fsm;
 using GameFramework.Resource;
 using StarForce;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerFSM : PlayerBase
@@ -22,7 +23,8 @@ public class PlayerFSM : PlayerBase
 
         LoadAssetCallbacks_Model = new LoadAssetCallbacks(LoadModelSuccess);
         LoadAssetSuccessCallback_Icon = new LoadAssetCallbacks(LoadIconSuccess);
-        
+
+        Model = transform.Find("Model").gameObject;
         
         PlayerFSMData playerFsmData = userData as PlayerFSMData;
         entityId = playerFsmData.EntityId;
@@ -67,7 +69,11 @@ public class PlayerFSM : PlayerBase
     private void LoadModelSuccess(string assetName, object asset, float duration, object userData)
     {
         var obj = asset as GameObject;
-        Model = Instantiate(obj);
+        GameObject model = Instantiate(obj,Model.transform);
+        model.transform.localPosition = Vector3.zero;
+        model.transform.rotation = quaternion.identity;
+        model.transform.localScale = Vector3.one;
+        
         modelLoadEd = true;
     }
     private void LoadIconSuccess(string assetName, object asset, float duration, object userData)

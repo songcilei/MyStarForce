@@ -26,7 +26,7 @@ public class BattleMgr : MonoBehaviour
         }
         else
         {
-            GameObject.DestroyImmediate(this);
+            GameObject.Destroy(gameObject);
         }
     }
 
@@ -55,7 +55,7 @@ public class BattleMgr : MonoBehaviour
     /// init battle scene
     /// </summary>
     /// <param name="playPos"></param>
-    public void CreatBattle(Vector3 playPos,PlayerFSM heroFsm,PlayerFSM enemyFsm)
+    public void CreatBattle(Vector3 playPos,List<PlayerFSM> heroFsm,List<PlayerFSM> enemyFsm)
     {
         if (battlePoints==null)
         {
@@ -65,8 +65,26 @@ public class BattleMgr : MonoBehaviour
         BattlePointValue battlePos = battlePoints.GetNearBattlePoint(playPos);
         
         //load asset battle scene
-        
-        
+
+        this.transform.position = battlePos.trans.position;
+        this.transform.rotation = battlePos.trans.rotation;
+
+        int heroCount = heroFsm.Count;
+        int enemyCount = enemyFsm.Count;
+        for (int i = 0; i < heroCount; i++)
+        {
+            PlayerFSM hero = heroFsm[i];
+            hero.transform.position = heroPointList[i].position;
+            hero.transform.rotation = heroPointList[i].rotation;
+
+        }
+
+        for (int i = 0; i < enemyCount; i++)
+        {
+            PlayerFSM enemy = enemyFsm[i];
+            enemy.transform.position = enemyPointList[i].position;
+            enemy.transform.rotation = enemyPointList[i].rotation;
+        }
     }
 
 
