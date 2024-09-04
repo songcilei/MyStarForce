@@ -6,7 +6,7 @@ using UnityGameFramework.Runtime;
 
 public class myCube : EntityLogic
 {
-    public string name = null;
+    public new string name = null;
     private myCubeData _myCubeData = null;
     protected override void OnInit(object userData)
     {

@@ -7,6 +7,7 @@
 
 using GameFramework.DataTable;
 using GameFramework.Event;
+using UnityEngine;
 using UnityGameFramework.Runtime;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
@@ -99,7 +100,6 @@ namespace StarForce
             // {
             //     ChangeState<ProcedureMain>(procedureOwner);
             // }
-
             switch (NextSceneId)
             {
                 case 1:
@@ -112,6 +112,9 @@ namespace StarForce
                     ChangeState<ProcedureTest>(procedureOwner);
                     break;
                 case 4:
+                    ChangeState<ProcedureHome>(procedureOwner);
+                    break;
+                case 5:
                     ChangeState<ProcedureLeve1>(procedureOwner);
                     break;
                 default:

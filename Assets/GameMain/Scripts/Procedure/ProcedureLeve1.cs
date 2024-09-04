@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using GameFramework.Fsm;
 using GameFramework.Procedure;
+using StarForce;
 using UnityEngine;
 using ProcedureBase = StarForce.ProcedureBase;
 
@@ -23,6 +24,7 @@ public class ProcedureLeve1 : ProcedureBase
     protected override void OnEnter(IFsm<IProcedureManager> procedureOwner)
     {
         base.OnEnter(procedureOwner);
+        GameEntry.Entity.ShowPlayerControl(new PlayerControlEntityData(GameEntry.Entity.GenerateSerialId(),90001));
     }
 
     protected override void OnUpdate(IFsm<IProcedureManager> procedureOwner, float elapseSeconds, float realElapseSeconds)

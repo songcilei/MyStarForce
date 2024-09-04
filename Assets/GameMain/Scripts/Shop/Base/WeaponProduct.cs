@@ -38,7 +38,6 @@ public class WeaponProduct : ProductBase
         this.attack = drProduct.Attack;
         this.defence = drProduct.Defence;
         this.value = drProduct.Value;
-        this.shopType = shopType;
 
     }
 }

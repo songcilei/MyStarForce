@@ -16,7 +16,8 @@ public class PlayerFSM : PlayerBase
 
     private bool modelLoadEd = false;
     private bool IconLoadEd = false;
-    
+    private string modelName;
+    private string icon;
     protected override void OnInit(object userData)
     {
         base.OnInit(userData);
@@ -30,14 +31,8 @@ public class PlayerFSM : PlayerBase
         entityId = playerFsmData.EntityId;
         PlayerType = playerFsmData.PlayerType;
         TimeSpeed = playerFsmData.TimeSpeed;
-        string modelPath = AssetUtility.GetNPCModelAsset(playerFsmData.ModelName);
-        GameEntry.Resource.LoadAsset(modelPath,LoadAssetCallbacks_Model);
-
-        name = playerFsmData.ModelName + entityId;
-        
-        string iconPath = AssetUtility.GetPlayerHeadIconAsset(playerFsmData.Icon);
-        GameEntry.Resource.LoadAsset(iconPath,LoadAssetSuccessCallback_Icon);
-
+        modelName = playerFsmData.ModelName;
+        icon = playerFsmData.Icon;
     }
 
     public override void OnAction()
@@ -50,6 +45,15 @@ public class PlayerFSM : PlayerBase
     protected override void OnShow(object userData)
     {
         base.OnShow(userData);
+        
+        string modelPath = AssetUtility.GetNPCModelAsset(modelName);
+        GameEntry.Resource.LoadAsset(modelPath,LoadAssetCallbacks_Model);
+        Debug.Log("loading model!");
+        name = modelName + entityId;
+        
+        string iconPath = AssetUtility.GetPlayerHeadIconAsset(icon);
+        GameEntry.Resource.LoadAsset(iconPath,LoadAssetSuccessCallback_Icon);
+        
     }
 
     protected override void OnHide(bool isShutdown, object userData)
@@ -73,7 +77,7 @@ public class PlayerFSM : PlayerBase
         model.transform.localPosition = Vector3.zero;
         model.transform.rotation = quaternion.identity;
         model.transform.localScale = Vector3.one;
-        
+        Debug.Log("log success for model!!");
         modelLoadEd = true;
     }
     private void LoadIconSuccess(string assetName, object asset, float duration, object userData)

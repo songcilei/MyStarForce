@@ -13,7 +13,7 @@ public enum PlayerType
 public class PlayerBase : EntityLogic
 {
     
-    public string name;
+    public new string name;
     public int entityId;
     public float TimeSpeed=0;
     public PlayerType PlayerType = PlayerType.None;

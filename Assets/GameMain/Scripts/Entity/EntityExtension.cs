@@ -104,6 +104,11 @@ namespace StarForce
         {
             entityComponent.ShowEntity(typeof(PlayerFSM),"Asteroid",100,data);
         }
+        
+        public static void ShowPlayerControl(this EntityComponent entityComponent,PlayerControlEntityData data)
+        {
+            entityComponent.ShowEntity(typeof(PlayerControlEntity),"Asteroid",100,data);
+        }
 
         private static void ShowEntity(this EntityComponent entityComponent, Type logicType, string entityGroup, int priority, EntityData data)
         {

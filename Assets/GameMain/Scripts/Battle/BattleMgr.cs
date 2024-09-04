@@ -10,7 +10,7 @@ public class BattleMgr : MonoBehaviour
     public Transform Scene;
     public Transform HeropPints;
     public Transform EnemyPoints;
-    public Camera camera;
+    public new Camera camera;
 
     private List<Transform> heroPointList = new List<Transform>();
     private List<Transform> enemyPointList = new List<Transform>();

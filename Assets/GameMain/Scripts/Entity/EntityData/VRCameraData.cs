@@ -10,6 +10,6 @@ public class VRCameraData : EntityData
     {
         var dtEntity =GameEntry.DataTable.GetDataTable<DREntity>();
         var attack = dtEntity.GetDataRow(typeId);
-        this.attack = this.attack;
+        // this.attack = attack.;
     }
 }

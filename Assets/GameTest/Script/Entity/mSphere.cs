@@ -5,7 +5,7 @@ using UnityGameFramework.Runtime;
 
 public class mSphere : EntityLogic
 {
-    private string name;
+    private new string name;
     private mSphereData _mSphereData;
     protected override void OnInit(object userData)
     {
