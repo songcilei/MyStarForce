@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using GameFramework;
+using GameFramework.Event;
 using StarForce;
 using UnityEngine;
 
@@ -28,6 +30,11 @@ public class BattleMgr : MonoBehaviour
         {
             GameObject.Destroy(gameObject);
         }
+
+        camera.enabled = false;
+        
+        GameEntry.Event.Subscribe(StartBattleEventArgs.EventId,StartBattle);
+        GameEntry.Event.Subscribe(CloseBattleEventArgs.EventId,CloseBattle);
     }
 
     void Start()
@@ -62,6 +69,8 @@ public class BattleMgr : MonoBehaviour
             Debug.LogError("battlePoint is null!!");
             return;
         }
+
+        camera.enabled = true;
         BattlePointValue battlePos = battlePoints.GetNearBattlePoint(playPos);
         
         //load asset battle scene
@@ -87,7 +96,22 @@ public class BattleMgr : MonoBehaviour
         }
     }
 
+    public void CloseBattle(object obj,GameEventArgs args)
+    {
+        camera.enabled = false;
+    }
 
+
+    public void StartBattle(object obj,GameEventArgs args)
+    {
+        StartBattleEventArgs ne = (StartBattleEventArgs)args;
+        if (ne == null||ne.Id == -1)
+        {
+            return;
+        }
+
+        CreatBattle(ne.playPos, ne.heroFsm, ne.enemyFsm);
+    }
 
 
     List<Transform> GetPointsToList(Transform tran)

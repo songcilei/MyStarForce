@@ -86,7 +86,8 @@ public class BattleComponent : GameFrameworkComponent
             case BattleType.OnStart:
                 heroTransform = GameObject.Find("hero").transform;
                 
-                BattleMgr.Instance.CreatBattle(heroTransform.position,heroFsmList,enemyFsmList);
+                // BattleMgr.Instance.CreatBattle(heroTransform.position,heroFsmList,enemyFsmList);
+                GameEntry.Event.Fire(this,StartBattleEventArgs.Create(heroTransform.position,heroFsmList,enemyFsmList));
                 _battleType = BattleType.OnUpdate;
                 break;
             case BattleType.OnUpdate:
