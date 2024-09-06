@@ -228,23 +228,25 @@ namespace StarForce.Editor.DataTableTools
                 }
                 else if (languageKeyword == "int[]")
                 {
-                    stringBuilder.AppendFormat("                    string[] temp = binaryReader.ReadString().Split(\",\");").AppendLine();
-                    stringBuilder.AppendFormat("                    List<int> tempList = new List<int>();").AppendLine();
-                    stringBuilder.AppendFormat("                    foreach(var t in temp)").AppendLine()
-                        .AppendLine("                    {")
-                        .AppendLine("                       tempList.Add(int.Parse(t));")
+                    stringBuilder.AppendFormat("                    string[] {0}_str = binaryReader.ReadString().Split(\",\");",dataTableProcessor.GetName(i)).AppendLine();
+                    stringBuilder.AppendFormat("                    List<int> {0}List = new List<int>();",dataTableProcessor.GetName(i)).AppendLine();
+                    stringBuilder.AppendFormat("                    foreach(var t in {0}_str)",dataTableProcessor.GetName(i)).AppendLine()
+                        .AppendLine("                    {");
+                    stringBuilder.AppendFormat("                       {0}List.Add(int.Parse(t));",dataTableProcessor.GetName(i)).AppendLine()
+                        // .AppendLine("                       tempList.Add(float.Parse(t));")
                         .AppendLine("                    }");
-                    stringBuilder.AppendFormat("                    {0} = tempList.ToArray();", dataTableProcessor.GetName(i)).AppendLine();
+                    stringBuilder.AppendFormat("                    {0} = {0}List.ToArray();", dataTableProcessor.GetName(i)).AppendLine();
                 }
                 else if (languageKeyword == "float[]")
                 {
-                    stringBuilder.AppendFormat("                    string[] temp = binaryReader.ReadString().Split(\",\");").AppendLine();
-                    stringBuilder.AppendFormat("                    List<float> tempList = new List<float>();").AppendLine();
-                    stringBuilder.AppendFormat("                    foreach(var t in temp)").AppendLine()
-                        .AppendLine("                    {")
-                        .AppendLine("                       tempList.Add(float.Parse(t));")
+                    stringBuilder.AppendFormat("                    string[] {0}_str = binaryReader.ReadString().Split(\",\");",dataTableProcessor.GetName(i)).AppendLine();
+                    stringBuilder.AppendFormat("                    List<float> {0}List = new List<float>();",dataTableProcessor.GetName(i)).AppendLine();
+                    stringBuilder.AppendFormat("                    foreach(var t in {0}_str)",dataTableProcessor.GetName(i)).AppendLine()
+                        .AppendLine("                    {");
+                        stringBuilder.AppendFormat("                       {0}List.Add(float.Parse(t));",dataTableProcessor.GetName(i)).AppendLine()
+                        // .AppendLine("                       tempList.Add(float.Parse(t));")
                         .AppendLine("                    }");
-                    stringBuilder.AppendFormat("                    {0} = tempList.ToArray();", dataTableProcessor.GetName(i)).AppendLine();
+                    stringBuilder.AppendFormat("                    {0} = {0}List.ToArray();", dataTableProcessor.GetName(i)).AppendLine();
                 }
                 else
                 {

@@ -303,6 +303,46 @@ namespace GameFramework.Fsm
             m_CurrentState.OnEnter(this);
         }
 
+        public void CastChangeState<TState>() where TState : FsmState<T>
+        {
+            if (!IsRunning)
+            {
+                throw new GameFrameworkException("FSM not running, can not Change state.");
+            }
+            FsmState<T> state = GetState<TState>();
+            if (state == null)
+            {
+                throw new GameFrameworkException(Utility.Text.Format("FSM '{0}' can not Change state '{1}' which is not exist.", new TypeNamePair(typeof(T), Name), typeof(TState).FullName));
+            }
+
+            m_CurrentState.OnLeave(this,false);
+            m_CurrentState = state;
+            m_CurrentState.OnEnter(this);
+        }
+
+        public void CastChangeState(Type stateType)
+        {
+            if (!IsRunning)
+            {
+                throw new GameFrameworkException("FSM not running, can not Change state.");
+            }
+
+            if (stateType == null)
+            {
+                throw new GameFrameworkException("State type is invalid.");
+            }
+            
+            if (!typeof(FsmState<T>).IsAssignableFrom(stateType))
+            {
+                throw new GameFrameworkException(Utility.Text.Format("State type '{0}' is invalid.", stateType.FullName));
+            }
+            FsmState<T> state = GetState(stateType);
+            m_CurrentState.OnLeave(this,false);
+            m_CurrentState = state;
+            m_CurrentState.OnEnter(this);
+
+        }
+
         /// <summary>
         /// 是否存在有限状态机状态。
         /// </summary>

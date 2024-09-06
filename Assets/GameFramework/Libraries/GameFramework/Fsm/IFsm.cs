@@ -93,6 +93,17 @@ namespace GameFramework.Fsm
         void Start(Type stateType);
 
         /// <summary>
+        /// 强制转换有限状态机目前状态
+        /// </summary>
+        /// <typeparam name="TState"></typeparam>
+        void CastChangeState<TState>() where TState : FsmState<T>;
+        
+        /// <summary>
+        /// 强制转换有限状态机目前状态
+        /// </summary>
+        /// <typeparam name="TState"></typeparam>
+        void CastChangeState(Type stateType);
+        /// <summary>
         /// 是否存在有限状态机状态。
         /// </summary>
         /// <typeparam name="TState">要检查的有限状态机状态类型。</typeparam>

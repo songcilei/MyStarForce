@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2024-09-04 16:31:04.563
+// 生成时间：2024-09-06 16:43:36.897
 //------------------------------------------------------------
 
 using GameFramework;
@@ -66,7 +66,97 @@ namespace StarForce
         /// <summary>
         /// 获取默认时间轴速度。
         /// </summary>
-        public float TimeSpeed
+        public float Spd
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取dfgd。
+        /// </summary>
+        public int Level
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取sdf。
+        /// </summary>
+        public float Grow
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取sgdf。
+        /// </summary>
+        public int[] Skills
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取攻击。
+        /// </summary>
+        public int Atk
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取法伤。
+        /// </summary>
+        public int Mag
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取防御。
+        /// </summary>
+        public int Def
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取魔抗。
+        /// </summary>
+        public int Mdf
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取血量。
+        /// </summary>
+        public int Hp
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取蓝量。
+        /// </summary>
+        public int Mp
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取幸运值。
+        /// </summary>
+        public int Luck
         {
             get;
             private set;
@@ -87,7 +177,17 @@ namespace StarForce
             AssetName = columnStrings[index++];
             FSMDistance = float.Parse(columnStrings[index++]);
             ModelID = DataTableExtension.ParseIntArray(columnStrings[index++]);
-            TimeSpeed = float.Parse(columnStrings[index++]);
+            Spd = float.Parse(columnStrings[index++]);
+            Level = int.Parse(columnStrings[index++]);
+            Grow = float.Parse(columnStrings[index++]);
+            Skills = DataTableExtension.ParseIntArray(columnStrings[index++]);
+            Atk = int.Parse(columnStrings[index++]);
+            Mag = int.Parse(columnStrings[index++]);
+            Def = int.Parse(columnStrings[index++]);
+            Mdf = int.Parse(columnStrings[index++]);
+            Hp = int.Parse(columnStrings[index++]);
+            Mp = int.Parse(columnStrings[index++]);
+            Luck = int.Parse(columnStrings[index++]);
 
             GeneratePropertyArray();
             return true;
@@ -102,14 +202,30 @@ namespace StarForce
                     m_Id = binaryReader.Read7BitEncodedInt32();
                     AssetName = binaryReader.ReadString();
                     FSMDistance = binaryReader.ReadSingle();
-                    string[] temp = binaryReader.ReadString().Split(",");
-                    List<int> tempList = new List<int>();
-                    foreach(var t in temp)
+                    string[] ModelID_str = binaryReader.ReadString().Split(",");
+                    List<int> ModelIDList = new List<int>();
+                    foreach(var t in ModelID_str)
                     {
-                       tempList.Add(int.Parse(t));
+                       ModelIDList.Add(int.Parse(t));
                     }
-                    ModelID = tempList.ToArray();
-                    TimeSpeed = binaryReader.ReadSingle();
+                    ModelID = ModelIDList.ToArray();
+                    Spd = binaryReader.ReadSingle();
+                    Level = binaryReader.Read7BitEncodedInt32();
+                    Grow = binaryReader.ReadSingle();
+                    string[] Skills_str = binaryReader.ReadString().Split(",");
+                    List<int> SkillsList = new List<int>();
+                    foreach(var t in Skills_str)
+                    {
+                       SkillsList.Add(int.Parse(t));
+                    }
+                    Skills = SkillsList.ToArray();
+                    Atk = binaryReader.Read7BitEncodedInt32();
+                    Mag = binaryReader.Read7BitEncodedInt32();
+                    Def = binaryReader.Read7BitEncodedInt32();
+                    Mdf = binaryReader.Read7BitEncodedInt32();
+                    Hp = binaryReader.Read7BitEncodedInt32();
+                    Mp = binaryReader.Read7BitEncodedInt32();
+                    Luck = binaryReader.Read7BitEncodedInt32();
                 }
             }
 

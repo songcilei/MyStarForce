@@ -15,10 +15,17 @@ public class PlayerBase : EntityLogic
     
     public new string name;
     public int entityId;
-    public float TimeSpeed=0;
     public PlayerType PlayerType = PlayerType.None;
     public float TimelineInitPos = 0;
-
+    public float Spd=0;
+    public int Atk = 0;
+    public int Mag = 0;
+    public int Def = 0;
+    public int Mdf = 0;
+    public int Hp = 0;
+    public int Mp = 0;
+    public int Level;
+    public int Luck = 0;
 
     public virtual void OnAction()
     {

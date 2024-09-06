@@ -98,6 +98,22 @@ public class BattleMgr : MonoBehaviour
 
     public void CloseBattle(object obj,GameEventArgs args)
     {
+        CloseBattleEventArgs ne = (CloseBattleEventArgs)args;
+        if (ne == null)
+        {
+            return;
+        }
+        //hide hero
+        foreach (var hero in ne.heroFsm)
+        {
+            GameEntry.Entity.HideEntity(hero.entityId);
+        }
+        //hide enemy
+        foreach (var enemy in ne.enemyFsm)
+        {
+            GameEntry.Entity.HideEntity(enemy.entityId);
+        }
+        
         camera.enabled = false;
     }
 

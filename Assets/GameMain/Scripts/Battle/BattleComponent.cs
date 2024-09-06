@@ -85,16 +85,15 @@ public class BattleComponent : GameFrameworkComponent
                 break;
             case BattleType.OnStart:
                 heroTransform = GameObject.Find("hero").transform;
-                
-                // BattleMgr.Instance.CreatBattle(heroTransform.position,heroFsmList,enemyFsmList);
+    //enter BattleMgr            
                 GameEntry.Event.Fire(this,StartBattleEventArgs.Create(heroTransform.position,heroFsmList,enemyFsmList));
                 _battleType = BattleType.OnUpdate;
                 break;
             case BattleType.OnUpdate:
                 UpdateComponent();
-
                 break;
             case BattleType.OnLeave:
+                GameEntry.Event.Fire(this,CloseBattleEventArgs.Create(heroTransform.position,heroFsmList,enemyFsmList));
                 Shutdown();
                 RunBattleState = false;
                 break;
@@ -150,7 +149,7 @@ public class BattleComponent : GameFrameworkComponent
             
             
             
-            BattleBase battleBase = new BattleBase(playerF.name,playerF.entityId,playerF.TimeSpeed,insTran,icon,startPosition,endPosition);
+            BattleBase battleBase = new BattleBase(playerF.name,playerF.entityId,playerF.Spd,insTran,icon,startPosition,endPosition);
             if (!battleHeadUIList.ContainsKey(playerF.name))
             {
                 battleHeadUIList.Add(playerF.name,battleBase);
@@ -164,6 +163,12 @@ public class BattleComponent : GameFrameworkComponent
 
     private void UpdateComponent()
     {
+        
+        if (CheckHeroHPZero() || CheckEnemyHPZero())
+        {
+            _battleType = BattleType.OnLeave;
+        }
+
         if (FreeTime)
         {
             return;
@@ -216,8 +221,34 @@ public class BattleComponent : GameFrameworkComponent
 //Hide UI
         HideUI();
     }
-    
-    
+
+    public bool CheckHeroHPZero()
+    {
+        bool death = true;
+        foreach (var hero in heroFsmList)
+        {
+            if (hero.Hp>0)
+            {
+                death = false;
+                break;
+            }
+        }
+        return death;
+    }
+
+    public bool CheckEnemyHPZero()
+    {
+        bool death = true;
+        foreach (var enemy in enemyFsmList)
+        {
+            if (enemy.Hp>0)
+            {
+                death = false;
+                break;
+            }
+        }
+        return death;
+    }
 
     private void HideUI()
     {

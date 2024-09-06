@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2024-09-04 16:31:04.593
+// 生成时间：2024-09-06 16:43:36.917
 //------------------------------------------------------------
 
 using GameFramework;
@@ -54,6 +54,15 @@ namespace StarForce
             private set;
         }
 
+        /// <summary>
+        /// 获取半径。
+        /// </summary>
+        public float Radius
+        {
+            get;
+            private set;
+        }
+
         public override bool ParseDataRow(string dataRowString, object userData)
         {
             string[] columnStrings = dataRowString.Split(DataTableExtension.DataSplitSeparators);
@@ -68,6 +77,7 @@ namespace StarForce
             index++;
             AssetName = columnStrings[index++];
             Icon = columnStrings[index++];
+            Radius = float.Parse(columnStrings[index++]);
 
             GeneratePropertyArray();
             return true;
@@ -82,6 +92,7 @@ namespace StarForce
                     m_Id = binaryReader.Read7BitEncodedInt32();
                     AssetName = binaryReader.ReadString();
                     Icon = binaryReader.ReadString();
+                    Radius = binaryReader.ReadSingle();
                 }
             }
 

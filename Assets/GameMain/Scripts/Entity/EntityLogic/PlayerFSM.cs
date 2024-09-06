@@ -5,6 +5,8 @@ using GameFramework.Resource;
 using StarForce;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityGameFramework.Runtime;
+using GameEntry = StarForce.GameEntry;
 
 public class PlayerFSM : PlayerBase
 {
@@ -18,6 +20,10 @@ public class PlayerFSM : PlayerBase
     private bool IconLoadEd = false;
     private string modelName;
     private string icon;
+    public float Radius;
+    public Vector3 InitActionPos;
+    public Quaternion InitActionRotation;
+    private IFsm<PlayerFSM> playFsm;
     protected override void OnInit(object userData)
     {
         base.OnInit(userData);
@@ -30,15 +36,49 @@ public class PlayerFSM : PlayerBase
         PlayerFSMData playerFsmData = userData as PlayerFSMData;
         entityId = playerFsmData.EntityId;
         PlayerType = playerFsmData.PlayerType;
-        TimeSpeed = playerFsmData.TimeSpeed;
+        Spd = playerFsmData.Spd;
         modelName = playerFsmData.ModelName;
         icon = playerFsmData.Icon;
+        Radius = playerFsmData.Radius;
+        //-------------------------------------
+        Level = playerFsmData.Level;
+        Atk = playerFsmData.Atk;
+        Mag = playerFsmData.Mag;
+        Def = playerFsmData.Def;
+        Mdf = playerFsmData.Mdf;
+        Hp = playerFsmData.Hp;
+        Mp = playerFsmData.Mp;
+        Luck = playerFsmData.Luck;
+        
+        
+        //---------------------------FSM
+        FsmState<PlayerFSM>[] PlayerCoreFSM =
+        {
+            new PlayerAtk(),
+            new PlayerDef(),
+            new PlayerIdle(),
+            new PlayerMenu(),
+            new PlayerProp(),
+            new PlayerSkill(),
+            new PlayerLeave(),
+            new PlayerMoveTarget(),
+            new PlayerDmg()
+        };
+
+        playFsm = GameEntry.Fsm.CreateFsm(this, PlayerCoreFSM);
+        playFsm.Start<PlayerIdle>();
+
+
+
     }
 
     public override void OnAction()
     {
         base.OnAction();
         GameEntry.BattleSystem.SetFreeTimeState(true);
+        playFsm.SetData<VarBoolean>("Action",true);
+        InitActionPos = this.transform.position;
+        InitActionRotation = this.transform.rotation;
         Debug.Log("name:"+name +"::::Action");
     }
 
@@ -69,7 +109,13 @@ public class PlayerFSM : PlayerBase
             Debug.Log("load ed   Model and Icon");
         }
     }
-    
+
+    public void Damage(int atk)
+    {
+        Hp -= atk;
+        playFsm.CastChangeState<PlayerDmg>();
+    }
+
     private void LoadModelSuccess(string assetName, object asset, float duration, object userData)
     {
         var obj = asset as GameObject;

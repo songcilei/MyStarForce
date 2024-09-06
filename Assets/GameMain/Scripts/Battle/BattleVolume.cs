@@ -41,14 +41,34 @@ public class BattleVolume : MonoBehaviour
     [Button]
     private void loadEntity()
     {
-        GameEntry.Entity.ShowPlayer(new PlayerFSMData(GameEntry.Entity.GenerateSerialId(),80001,PlayerType.Hero));    
-        GameEntry.Entity.ShowPlayer(new PlayerFSMData(GameEntry.Entity.GenerateSerialId(),80002,PlayerType.Hero)); 
-        GameEntry.Entity.ShowPlayer(new PlayerFSMData(GameEntry.Entity.GenerateSerialId(),80003,PlayerType.Hero));
+
+        List<TeamBase> teams = GameEntry.TeamComponent.GetTeam();
+        var table = GameEntry.DataTable.GetDataTable<DREntity>();
+        foreach (var team in teams)
+        {
+            
+            GameEntry.Entity.ShowPlayer(new PlayerFSMData(GameEntry.Entity.GenerateSerialId(),team.TypeId,PlayerType.Hero));
+        }
+        
+        // GameEntry.Entity.ShowPlayer(new PlayerFSMData(GameEntry.Entity.GenerateSerialId(),80001,PlayerType.Hero));    
+        // GameEntry.Entity.ShowPlayer(new PlayerFSMData(GameEntry.Entity.GenerateSerialId(),80002,PlayerType.Hero)); 
+        // GameEntry.Entity.ShowPlayer(new PlayerFSMData(GameEntry.Entity.GenerateSerialId(),80003,PlayerType.Hero));
 
         foreach (var actor in ActorTypes)
         {
             GameEntry.Entity.ShowPlayer(new PlayerFSMData(GameEntry.Entity.GenerateSerialId(),(int)actor,PlayerType.Enemy));    
         }
+    }
+
+    [Button]
+    private void AddRandomPlayerToTeam()
+    {
+        GameEntry.Event.Fire(this,AddRandomTeamListArgs.Create());
+    }
+    [Button]
+    private void RemoveTeamList()
+    {
+        GameEntry.Event.Fire(this,ClearTeamListArgs.Create());
     }
 
     private void LoadSuccess(object sender,GameEventArgs e)
