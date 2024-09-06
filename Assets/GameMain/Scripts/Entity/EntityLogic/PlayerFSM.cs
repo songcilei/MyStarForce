@@ -20,9 +20,10 @@ public class PlayerFSM : PlayerBase
     private bool IconLoadEd = false;
     private string modelName;
     private string icon;
-    public float Radius;
-    public Vector3 InitActionPos;
-    public Quaternion InitActionRotation;
+    public float Radius;//模型检测半径
+    public bool IsDef = false;//防御模式
+    public Vector3 InitActionPos;//battle场景初始化位置
+    public Quaternion InitActionRotation;//battle场景初始化旋转
     private IFsm<PlayerFSM> playFsm;
     protected override void OnInit(object userData)
     {
@@ -76,7 +77,7 @@ public class PlayerFSM : PlayerBase
     {
         base.OnAction();
         GameEntry.BattleSystem.SetFreeTimeState(true);
-        playFsm.SetData<VarBoolean>("Action",true);
+        playFsm.CastChangeState<PlayerMenu>();
         InitActionPos = this.transform.position;
         InitActionRotation = this.transform.rotation;
         Debug.Log("name:"+name +"::::Action");
@@ -112,6 +113,12 @@ public class PlayerFSM : PlayerBase
 
     public void Damage(int atk)
     {
+        //防御模式
+        if (IsDef)
+        {
+            atk = atk / 2;
+        }
+
         Hp -= atk;
         playFsm.CastChangeState<PlayerDmg>();
     }

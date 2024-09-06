@@ -19,6 +19,7 @@ public class PlayerAtk : FsmState<PlayerFSM>
         targetId =fsm.GetData<VarInt32>("targetId");
         PlayerFSM entity = (PlayerFSM)GameEntry.Entity.GetEntity(targetId).Logic;
         entity.Damage(fsm.Owner.Atk);
+        ChangeState<PlayerLeaveTarget>(fsm);
         
     }
 

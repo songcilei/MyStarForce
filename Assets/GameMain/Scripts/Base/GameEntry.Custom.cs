@@ -44,6 +44,12 @@ namespace StarForce
             private set;
         }
 
+        public static PropComponent PropComponent
+        {
+            get;
+            private set;
+        }
+
         private static void InitCustomComponents()
         {
             BuiltinData = UnityGameFramework.Runtime.GameEntry.GetComponent<BuiltinDataComponent>();
@@ -51,6 +57,7 @@ namespace StarForce
             Shop = UnityGameFramework.Runtime.GameEntry.GetComponent<ShopComponent>();
             BattleSystem = UnityGameFramework.Runtime.GameEntry.GetComponent<BattleComponent>();
             TeamComponent = UnityGameFramework.Runtime.GameEntry.GetComponent<TeamComponent>();
+            PropComponent = UnityGameFramework.Runtime.GameEntry.GetComponent<PropComponent>();
         }
     }
 }
