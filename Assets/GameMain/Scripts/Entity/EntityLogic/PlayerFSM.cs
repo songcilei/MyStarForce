@@ -156,4 +156,13 @@ public class PlayerFSM : PlayerBase
         IconLoadEd = true;
     }
 
+    public void ActiveSelectEffect()
+    {
+        
+    }
+
+    public void ResetSelectEffect()
+    {
+        
+    }
 }
