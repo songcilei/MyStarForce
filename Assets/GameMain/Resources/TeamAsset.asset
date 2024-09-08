@@ -13,44 +13,95 @@ MonoBehaviour:
   m_Name: TeamAsset
   m_EditorClassIdentifier: 
   Team:
-  - TypeId: 80006
-    PlayerId: 80006
+  - TypeId: 80005
+    PlayerId: 80005
     Level: 1
-    Grow: 24.1
+    Grow: 23.1
     Skills: e8030000e9030000
-  - TypeId: 80001
-    PlayerId: 80001
-    Level: 1
-    Grow: 19.1
-    Skills: e8030000e9030000
+    Spd: 1
+    Atk: 1
+    Mag: 1
+    Def: 1
+    Mdf: 1
+    Hp: 100
+    Mp: 1
+    Luck: 1
   - TypeId: 80003
     PlayerId: 80003
     Level: 1
     Grow: 21.1
     Skills: e8030000e9030000
-  TeamList:
-  - TypeId: 80006
-    PlayerId: 80006
-    Level: 1
-    Grow: 24.1
-    Skills: e8030000e9030000
+    Spd: 3
+    Atk: 1
+    Mag: 1
+    Def: 1
+    Mdf: 1
+    Hp: 100
+    Mp: 1
+    Luck: 1
   - TypeId: 80001
     PlayerId: 80001
     Level: 1
     Grow: 19.1
     Skills: e8030000e9030000
-  - TypeId: 0
+    Spd: 1
+    Atk: 1
+    Mag: 1
+    Def: 1
+    Mdf: 1
+    Hp: 100
+    Mp: 1
+    Luck: 1
+  TeamList:
+  - TypeId: 80005
+    PlayerId: 80005
+    Level: 1
+    Grow: 23.1
+    Skills: e8030000e9030000
+    Spd: 1
+    Atk: 1
+    Mag: 1
+    Def: 1
+    Mdf: 1
+    Hp: 100
+    Mp: 1
+    Luck: 1
+  - TypeId: 80003
+    PlayerId: 80003
+    Level: 1
+    Grow: 21.1
+    Skills: e8030000e9030000
+    Spd: 3
+    Atk: 1
+    Mag: 1
+    Def: 1
+    Mdf: 1
+    Hp: 100
+    Mp: 1
+    Luck: 1
+  - TypeId: 80001
+    PlayerId: 80001
+    Level: 1
+    Grow: 19.1
+    Skills: e8030000e9030000
+    Spd: 1
+    Atk: 1
+    Mag: 1
+    Def: 1
+    Mdf: 1
+    Hp: 100
+    Mp: 1
+    Luck: 1
+  - TypeId: 80002
     PlayerId: 80002
     Level: 1
     Grow: 20.1
     Skills: e8030000e9030000
-  - TypeId: 80004
-    PlayerId: 80004
-    Level: 1
-    Grow: 22.1
-    Skills: e8030000e9030000
-  - TypeId: 80003
-    PlayerId: 80003
-    Level: 1
-    Grow: 21.1
-    Skills: e8030000e9030000
+    Spd: 2
+    Atk: 1
+    Mag: 1
+    Def: 1
+    Mdf: 1
+    Hp: 100
+    Mp: 1
+    Luck: 1

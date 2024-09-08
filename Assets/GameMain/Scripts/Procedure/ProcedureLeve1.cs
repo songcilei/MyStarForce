@@ -21,10 +21,13 @@ public class ProcedureLeve1 : ProcedureBase
         base.OnInit(procedureOwner);
     }
 
+    private BattleDebugger battleDebugger;
     protected override void OnEnter(IFsm<IProcedureManager> procedureOwner)
     {
         base.OnEnter(procedureOwner);
         GameEntry.Entity.ShowPlayerControl(new PlayerControlEntityData(GameEntry.Entity.GenerateSerialId(),90001));
+        battleDebugger = new BattleDebugger();
+        GameEntry.Debugger.RegisterDebuggerWindow("Battle",battleDebugger);
     }
 
     protected override void OnUpdate(IFsm<IProcedureManager> procedureOwner, float elapseSeconds, float realElapseSeconds)
@@ -35,5 +38,6 @@ public class ProcedureLeve1 : ProcedureBase
     protected override void OnLeave(IFsm<IProcedureManager> procedureOwner, bool isShutdown)
     {
         base.OnLeave(procedureOwner, isShutdown);
+        GameEntry.Debugger.UnregisterDebuggerWindow("Battle");
     }
 }

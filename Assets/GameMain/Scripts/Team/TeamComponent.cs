@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using GameFramework.Event;
 using StarForce;
+using UnityEditor;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 using GameEntry = StarForce.GameEntry;
@@ -121,7 +122,10 @@ public class TeamComponent : GameFrameworkComponent
                 break;
             }
         }
-
+#if UNITY_EDITOR
+        EditorUtility.SetDirty(teamScriptable);
+        AssetDatabase.SaveAssets();
+#endif        
     }
 
 }

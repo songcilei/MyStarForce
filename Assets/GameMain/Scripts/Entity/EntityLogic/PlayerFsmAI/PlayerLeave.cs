@@ -14,8 +14,10 @@ public class PlayerLeave : FsmState<PlayerFSM>
     protected override void OnEnter(IFsm<PlayerFSM> fsm)
     {
         base.OnEnter(fsm);
-        GameEntry.BattleSystem._battleType = BattleType.OnLeave;
-
+        // GameEntry.BattleSystem._battleType = BattleType.OnLeave;
+        
+        GameEntry.BattleSystem.SetFreeTimeState(false);
+        ChangeState<PlayerIdle>(fsm);
     }
 
     protected override void OnUpdate(IFsm<PlayerFSM> fsm, float elapseSeconds, float realElapseSeconds)

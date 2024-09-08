@@ -55,3 +55,10 @@ MonoBehaviour:
     attack: 100
     defence: 500
     value: 10
+  - name: mSword
+    type: 1000
+    shopType: 1
+    life: 20
+    attack: 100
+    defence: 50000
+    value: 10

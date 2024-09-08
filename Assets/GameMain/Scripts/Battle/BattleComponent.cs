@@ -17,11 +17,11 @@ public class BattleComponent : GameFrameworkComponent
     public Dictionary<string, BattleBase> battleHeadUIList = new Dictionary<string, BattleBase>();
     public RectTransform Timeline;
 
-    public float YOffset = 5;
+    public float YOffset = 15;
     public RectTransform PlayerHead;
     public RectTransform PlayerHeadTemp;
     public RectTransform PplayerHeadIns;
-    
+
     public bool RunBattleState = false;
 
     public RectTransform StartPos;
@@ -78,6 +78,7 @@ public class BattleComponent : GameFrameworkComponent
                     WidthX = Mathf.Abs(EndPosX - StartPosX); 
                 }
 
+                Debug.Log("battle None");
                 break;
             case BattleType.OnInit:
                 Init();
@@ -96,6 +97,7 @@ public class BattleComponent : GameFrameworkComponent
                 GameEntry.Event.Fire(this,CloseBattleEventArgs.Create(heroTransform.position,heroFsmList,enemyFsmList));
                 Shutdown();
                 RunBattleState = false;
+                _battleType = BattleType.None;
                 break;
             default:
                 break;
@@ -129,6 +131,7 @@ public class BattleComponent : GameFrameworkComponent
             RawImage icon_ui = insTran.transform.Find("HeadIcon")?.GetComponent<RawImage>();
             icon_ui.texture= icon;
             insTran.gameObject.SetActive(true);
+   
             float initPos = playerF.TimelineInitPos*WidthX; 
             Vector3 startPosition = Vector3.zero;
             Vector3 endPosition = Vector3.zero;
@@ -189,15 +192,29 @@ public class BattleComponent : GameFrameworkComponent
             mbase.m_LocalTime = battleHeadUIList[key].m_TotalTime % 100;
             mbase.RectTrans.position = new Vector3(mbase.StartPosition.x + (WidthX * mbase.m_LocalTime / 100),mbase.StartPosition.y,mbase.StartPosition.z);
 //action
-            if (Mathf.Abs(mbase.RectTrans.position.x - EndPosX)<1)
+            if (Mathf.Abs(mbase.RectTrans.position.x - EndPosX)<10)
             {
+                Debug.Log("action!");
                 PlayerFSM playerFsm = (PlayerFSM)GameEntry.Entity.GetEntity(mbase.EntityId).Logic;
+                CurrentPlayer = playerFsm;
+                CurrentKey = key;
                 playerFsm.OnAction();
             }
         }
-        
-        
     }
+
+    private PlayerFSM CurrentPlayer;
+    private string CurrentKey;
+    /// <summary>
+    /// debbug => leave current
+    /// </summary>
+    public void nextPlayerFsm()
+    {
+        battleHeadUIList[CurrentKey].InitStartPos();
+        CurrentPlayer.LeaveFsm();
+    }
+
+
 //set free time
     public void SetFreeTimeState(bool state)
     {
@@ -206,20 +223,14 @@ public class BattleComponent : GameFrameworkComponent
 
     private void Shutdown()
     {
+        
+        //Hide UI
+        HideUI();
 //clear list
         if (PlayerFsmList.Count>0)
         {
             PlayerFsmList.Clear();
         }
-
-        if (battleHeadUIList.Count>0)
-        {
-            battleHeadUIList.Clear();
-        }
-
-
-//Hide UI
-        HideUI();
     }
 
     public bool CheckHeroHPZero()
@@ -253,6 +264,13 @@ public class BattleComponent : GameFrameworkComponent
     private void HideUI()
     {
         Timeline.gameObject.SetActive(false);
+
+        foreach (var battleBase in battleHeadUIList)
+        {
+            Debug.Log(battleBase.Value.RectTrans.name);
+            GameObject.Destroy(battleBase.Value.RectTrans.gameObject);
+        }
+        battleHeadUIList.Clear();
     }
 
     private void ShowUI()
@@ -267,6 +285,8 @@ public class BattleComponent : GameFrameworkComponent
         {
             PlayerFsmList.Add(entity);
         }
+
+        Debug.Log("RunbattleState is true");
         RunBattleState = true;
     }
 

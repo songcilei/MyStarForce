@@ -63,6 +63,8 @@ public class TestDebugger : IDebuggerWindow
             GameEntry.Shop.ClearProduct();
         }
 
+        
+        
         GUILayout.EndScrollView();
 
     }

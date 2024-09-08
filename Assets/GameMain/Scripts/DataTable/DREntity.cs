@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2024-09-06 16:43:36.897
+// 生成时间：2024-09-07 00:46:27.904
 //------------------------------------------------------------
 
 using GameFramework;
@@ -162,6 +162,15 @@ namespace StarForce
             private set;
         }
 
+        /// <summary>
+        /// 获取AABB半径。
+        /// </summary>
+        public float Radius
+        {
+            get;
+            private set;
+        }
+
         public override bool ParseDataRow(string dataRowString, object userData)
         {
             string[] columnStrings = dataRowString.Split(DataTableExtension.DataSplitSeparators);
@@ -188,6 +197,7 @@ namespace StarForce
             Hp = int.Parse(columnStrings[index++]);
             Mp = int.Parse(columnStrings[index++]);
             Luck = int.Parse(columnStrings[index++]);
+            Radius = float.Parse(columnStrings[index++]);
 
             GeneratePropertyArray();
             return true;
@@ -226,6 +236,7 @@ namespace StarForce
                     Hp = binaryReader.Read7BitEncodedInt32();
                     Mp = binaryReader.Read7BitEncodedInt32();
                     Luck = binaryReader.Read7BitEncodedInt32();
+                    Radius = binaryReader.ReadSingle();
                 }
             }
 

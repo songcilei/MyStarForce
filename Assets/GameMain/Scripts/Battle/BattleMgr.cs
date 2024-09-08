@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using GameFramework;
 using GameFramework.Event;
+using Sirenix.OdinInspector;
 using StarForce;
 using UnityEngine;
 
@@ -103,19 +104,39 @@ public class BattleMgr : MonoBehaviour
         {
             return;
         }
+
         //hide hero
         foreach (var hero in ne.heroFsm)
         {
-            GameEntry.Entity.HideEntity(hero.entityId);
+
+            if (GameEntry.Entity.HasEntity(hero.entityId))
+            {
+                hero.StopFsm();
+                GameEntry.Entity.HideEntity(hero.entityId);
+            }
+            else
+            {
+                Debug.LogError("dont have EntityId:"+hero.entityId);
+            }
         }
         //hide enemy
         foreach (var enemy in ne.enemyFsm)
         {
-            GameEntry.Entity.HideEntity(enemy.entityId);
+
+            if (GameEntry.Entity.HasEntity(enemy.entityId))
+            {
+                enemy.StopFsm();
+                GameEntry.Entity.HideEntity(enemy.entityId);
+            }
+            else
+            {
+                Debug.LogError("dont have EntityId:"+enemy.entityId);
+            }
         }
         
         camera.enabled = false;
     }
+
 
 
     public void StartBattle(object obj,GameEventArgs args)

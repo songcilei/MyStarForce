@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum BattleType
@@ -31,5 +32,15 @@ public class BattleBase
         Icon = icon;
         StartPosition = startPosition;
         EndPosition = endPosition;
+    }
+
+    public void InitStartPos()
+    {
+        if (StartPosition!=null)
+        {
+            Debug.Log("startPosition:"+StartPosition);
+            //RectTrans.position = StartPosition;
+            m_TotalTime = 0;
+        }
     }
 }

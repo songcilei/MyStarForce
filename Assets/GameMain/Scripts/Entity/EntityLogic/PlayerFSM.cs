@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using GameFramework.Fsm;
@@ -25,13 +26,31 @@ public class PlayerFSM : PlayerBase
     public Vector3 InitActionPos;//battle场景初始化位置
     public Quaternion InitActionRotation;//battle场景初始化旋转
     private IFsm<PlayerFSM> playFsm;
+    private string FsmName;
+    private GameObject modelInstance;
     protected override void OnInit(object userData)
     {
         base.OnInit(userData);
 
         LoadAssetCallbacks_Model = new LoadAssetCallbacks(LoadModelSuccess);
         LoadAssetSuccessCallback_Icon = new LoadAssetCallbacks(LoadIconSuccess);
+        
+    }
 
+    public override void OnAction()
+    {
+        base.OnAction();
+        GameEntry.BattleSystem.SetFreeTimeState(true);
+        playFsm.CastChangeState<PlayerMenu>();
+        InitActionPos = this.transform.position;
+        InitActionRotation = this.transform.rotation;
+        Debug.Log("name:"+name +"::::Action");
+    }
+
+    protected override void OnShow(object userData)
+    {
+        base.OnShow(userData);
+        //-----------------------------Init
         Model = transform.Find("Model").gameObject;
         
         PlayerFSMData playerFsmData = userData as PlayerFSMData;
@@ -65,33 +84,15 @@ public class PlayerFSM : PlayerBase
             new PlayerMoveTarget(),
             new PlayerDmg()
         };
-
-        playFsm = GameEntry.Fsm.CreateFsm(this, PlayerCoreFSM);
+        FsmName = modelName + entityId;
+        playFsm = GameEntry.Fsm.CreateFsm(FsmName,this, PlayerCoreFSM);
         playFsm.Start<PlayerIdle>();
-
-
-
-    }
-
-    public override void OnAction()
-    {
-        base.OnAction();
-        GameEntry.BattleSystem.SetFreeTimeState(true);
-        playFsm.CastChangeState<PlayerMenu>();
-        InitActionPos = this.transform.position;
-        InitActionRotation = this.transform.rotation;
-        Debug.Log("name:"+name +"::::Action");
-    }
-
-    protected override void OnShow(object userData)
-    {
-        base.OnShow(userData);
         
+        //--------------------------------------------- Load Asset
         string modelPath = AssetUtility.GetNPCModelAsset(modelName);
         GameEntry.Resource.LoadAsset(modelPath,LoadAssetCallbacks_Model);
         Debug.Log("loading model!");
         name = modelName + entityId;
-        
         string iconPath = AssetUtility.GetPlayerHeadIconAsset(icon);
         GameEntry.Resource.LoadAsset(iconPath,LoadAssetSuccessCallback_Icon);
         
@@ -100,6 +101,7 @@ public class PlayerFSM : PlayerBase
     protected override void OnHide(bool isShutdown, object userData)
     {
         base.OnHide(isShutdown, userData);
+        GameObject.Destroy(modelInstance);
     }
 
     protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
@@ -109,6 +111,11 @@ public class PlayerFSM : PlayerBase
         {
             Debug.Log("load ed   Model and Icon");
         }
+    }
+
+    protected void OnDestroy()
+    {
+
     }
 
     public void Damage(int atk)
@@ -123,13 +130,23 @@ public class PlayerFSM : PlayerBase
         playFsm.CastChangeState<PlayerDmg>();
     }
 
+    public void LeaveFsm()
+    {
+        playFsm.CastChangeState<PlayerLeave>();
+    }
+
+    public void StopFsm()
+    {
+        GameEntry.Fsm.DestroyFsm<PlayerFSM>(FsmName);
+    }
+
     private void LoadModelSuccess(string assetName, object asset, float duration, object userData)
     {
         var obj = asset as GameObject;
-        GameObject model = Instantiate(obj,Model.transform);
-        model.transform.localPosition = Vector3.zero;
-        model.transform.rotation = quaternion.identity;
-        model.transform.localScale = Vector3.one;
+        modelInstance = Instantiate(obj,Model.transform);
+        modelInstance.transform.localPosition = Vector3.zero;
+        modelInstance.transform.rotation = quaternion.identity;
+        modelInstance.transform.localScale = Vector3.one;
         Debug.Log("log success for model!!");
         modelLoadEd = true;
     }
