@@ -10,7 +10,6 @@ public class PlayerAtkEventArgs : GameEventArgs
     public int targetId;
     public override void Clear()
     {
-        throw new System.NotImplementedException();
     }
 
     public override int Id {

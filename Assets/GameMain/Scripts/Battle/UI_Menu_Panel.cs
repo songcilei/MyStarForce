@@ -35,6 +35,8 @@ public class UI_Menu_Panel : MonoBehaviour
     {
         _canvasGroup = this.GetComponent<CanvasGroup>();
         _gameControl = new GameControl();
+        _gameControl.Enable();
+        
         _gameControl.Control.SelectTarget.started += SelectPress;
         _gameControl.Control.SelectTarget.canceled += SelectUp;
         if (SkillUIPanel!=null)
@@ -71,11 +73,14 @@ public class UI_Menu_Panel : MonoBehaviour
 
     private void SelectPress(InputAction.CallbackContext callback)
     {
+        Debug.Log("select press");
         switch (_UIMenuPanelState)
         {
             case UIMenuPanelState.Atk:
+                Debug.Log("run atk");
                 if (player)
                 {
+                    
                     GameEntry.Event.Fire(this,PlayerAtkEventArgs.Create(player.entityId));
                 }
 
@@ -142,7 +147,7 @@ public class UI_Menu_Panel : MonoBehaviour
     private PlayerFSM GetRayPlayer()
     {
         //Vector3 worldPos = Camera.current.ScreenToWorldPoint(Input.mousePosition);
-        Ray ray = Camera.current.ScreenPointToRay(Input.mousePosition);
+        Ray ray = BattleMgr.Instance.camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
@@ -264,4 +269,8 @@ public class UI_Menu_Panel : MonoBehaviour
         //1:leave
     }
 
+    private void OnDestroy()
+    {
+        _gameControl.Disable();
+    }
 }

@@ -19,7 +19,7 @@ public class PlayerMoveTarget : FsmState<PlayerFSM>
         targetId =fsm.GetData<VarInt32>("targetId");
         if (GameEntry.Entity.HasEntity(targetId))
         {
-            PlayerFSM entity = (PlayerFSM)GameEntry.Entity.GetEntity(targetId).Logic;
+            entity = (PlayerFSM)GameEntry.Entity.GetEntity(targetId).Logic;
         }
 
     }

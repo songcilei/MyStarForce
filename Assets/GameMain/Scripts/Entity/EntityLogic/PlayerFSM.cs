@@ -87,6 +87,7 @@ public class PlayerFSM : PlayerBase
             new PlayerSkill(),
             new PlayerLeave(),
             new PlayerMoveTarget(),
+            new PlayerLeaveTarget(),
             new PlayerDmg()
         };
         FsmName = modelName + entityId;
@@ -125,7 +126,7 @@ public class PlayerFSM : PlayerBase
         base.OnUpdate(elapseSeconds, realElapseSeconds);
         if (modelLoadEd && IconLoadEd)
         {
-            Debug.Log("load ed   Model and Icon");
+            // Debug.Log("load ed   Model and Icon");
         }
     }
 
