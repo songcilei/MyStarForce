@@ -37,6 +37,13 @@ public class BattleComponent : GameFrameworkComponent
 
 
     public Transform heroTransform;
+
+
+    public UI_Menu_Panel UIMenuPanel;
+    
+    
+    public PlayerFSM CurrentPlayer;
+    private string CurrentKey;
     protected override void Awake()
     {
         base.Awake();
@@ -132,7 +139,7 @@ public class BattleComponent : GameFrameworkComponent
             icon_ui.texture= icon;
             insTran.gameObject.SetActive(true);
    
-            float initPos = playerF.TimelineInitPos*WidthX; 
+            float initPos = playerF.TimelineInitPos*WidthX;
             Vector3 startPosition = Vector3.zero;
             Vector3 endPosition = Vector3.zero;
             switch (playerF.PlayerType)
@@ -199,12 +206,15 @@ public class BattleComponent : GameFrameworkComponent
                 CurrentPlayer = playerFsm;
                 CurrentKey = key;
                 playerFsm.OnAction();
+                if (UIMenuPanel)
+                {
+                    UIMenuPanel.ShowUIPanel();
+                    UIMenuPanel.HideSkillUIPanel();
+                }
             }
         }
     }
 
-    private PlayerFSM CurrentPlayer;
-    private string CurrentKey;
     /// <summary>
     /// debbug => leave current
     /// </summary>

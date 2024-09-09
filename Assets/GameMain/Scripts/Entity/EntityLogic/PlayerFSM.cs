@@ -28,6 +28,9 @@ public class PlayerFSM : PlayerBase
     private IFsm<PlayerFSM> playFsm;
     private string FsmName;
     private GameObject modelInstance;
+    private PlayerFSMData playerFsmData;
+    public Dictionary<string,BufferState> BufferList = new Dictionary<string, BufferState>();
+    public Dictionary<string, IAction> SkillList = new Dictionary<string, IAction>();
     protected override void OnInit(object userData)
     {
         base.OnInit(userData);
@@ -41,6 +44,8 @@ public class PlayerFSM : PlayerBase
     {
         base.OnAction();
         GameEntry.BattleSystem.SetFreeTimeState(true);
+        //buffer loop
+        BufferLifeSubOne();
         playFsm.CastChangeState<PlayerMenu>();
         InitActionPos = this.transform.position;
         InitActionRotation = this.transform.rotation;
@@ -53,13 +58,14 @@ public class PlayerFSM : PlayerBase
         //-----------------------------Init
         Model = transform.Find("Model").gameObject;
         
-        PlayerFSMData playerFsmData = userData as PlayerFSMData;
+        playerFsmData = userData as PlayerFSMData;
         entityId = playerFsmData.EntityId;
         PlayerType = playerFsmData.PlayerType;
         Spd = playerFsmData.Spd;
         modelName = playerFsmData.ModelName;
         icon = playerFsmData.Icon;
         Radius = playerFsmData.Radius;
+        TimelineInitPos = playerFsmData.TimelineInitPos;
         //-------------------------------------
         Level = playerFsmData.Level;
         Atk = playerFsmData.Atk;
@@ -69,7 +75,6 @@ public class PlayerFSM : PlayerBase
         Hp = playerFsmData.Hp;
         Mp = playerFsmData.Mp;
         Luck = playerFsmData.Luck;
-        
         
         //---------------------------FSM
         FsmState<PlayerFSM>[] PlayerCoreFSM =
@@ -95,6 +100,17 @@ public class PlayerFSM : PlayerBase
         name = modelName + entityId;
         string iconPath = AssetUtility.GetPlayerHeadIconAsset(icon);
         GameEntry.Resource.LoadAsset(iconPath,LoadAssetSuccessCallback_Icon);
+        
+        
+        //----------------------------------------------Init Skill
+        var table = GameEntry.DataTable.GetDataTable<DRSkill>();
+        foreach (var id in playerFsmData.Skills)
+        {
+            DRSkill drSkill = table.GetDataRow(id);
+            Type type = Type.GetType(drSkill.SkillClass);
+            IAction action = type.Assembly.CreateInstance(drSkill.SkillClass) as IAction;
+            SkillList[drSkill.SkillName] = action;
+        }
         
     }
 
@@ -128,6 +144,16 @@ public class PlayerFSM : PlayerBase
 
         Hp -= atk;
         playFsm.CastChangeState<PlayerDmg>();
+    }
+
+    public void AddBuffer(BufferState buff)
+    {
+        BufferList.Add(buff.m_BufferName,buff);
+    }
+
+    public void RemoveBuffer()
+    {
+        
     }
 
     public void LeaveFsm()
@@ -165,4 +191,17 @@ public class PlayerFSM : PlayerBase
     {
         
     }
+
+    public void BufferLifeSubOne()
+    {
+        foreach (var buffer in BufferList)
+        {
+            buffer.Value.m_BufferLife -= 1;
+            if (buffer.Value.m_BufferLife<=0)
+            {
+                BufferList.Remove(buffer.Key);
+            }
+        }
+    }
+
 }

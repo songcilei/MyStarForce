@@ -102,6 +102,7 @@ public class TeamComponent : GameFrameworkComponent
         teamBase.Level = drEntity.Level;
         teamBase.Grow = drEntity.Grow;
         teamBase.Skills = drEntity.Skills;
+        teamBase.TimelineInitPos = 0.8f;
         //--------------------------------
         teamBase.Spd = drEntity.Spd;
         teamBase.Atk = drEntity.Atk;

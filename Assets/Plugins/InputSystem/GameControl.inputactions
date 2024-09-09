@@ -24,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Fire",
+                    "name": "SelectTarget",
                     "type": "Button",
                     "id": "91d16078-635d-4386-be7c-4f9e2d6089ea",
                     "expectedControlType": "Button",
@@ -214,10 +214,10 @@
                     "name": "",
                     "id": "a460f8b6-d962-45ec-9012-cdb3134b6c78",
                     "path": "*/{PrimaryAction}",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
-                    "action": "Fire",
+                    "action": "SelectTarget",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

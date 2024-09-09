@@ -39,12 +39,12 @@ MonoBehaviour:
     Hp: 100
     Mp: 1
     Luck: 1
-  - TypeId: 80001
-    PlayerId: 80001
+  - TypeId: 80006
+    PlayerId: 80006
     Level: 1
-    Grow: 19.1
+    Grow: 24.1
     Skills: e8030000e9030000
-    Spd: 1
+    Spd: 2.5
     Atk: 1
     Mag: 1
     Def: 1
@@ -79,12 +79,12 @@ MonoBehaviour:
     Hp: 100
     Mp: 1
     Luck: 1
-  - TypeId: 80001
-    PlayerId: 80001
+  - TypeId: 80006
+    PlayerId: 80006
     Level: 1
-    Grow: 19.1
+    Grow: 24.1
     Skills: e8030000e9030000
-    Spd: 1
+    Spd: 2.5
     Atk: 1
     Mag: 1
     Def: 1

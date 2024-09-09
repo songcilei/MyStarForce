@@ -13,6 +13,8 @@ public class PlayerFSMData : EntityData
     public PlayerType PlayerType = PlayerType.None;
     public float TimelineInitPos = 0;
     public float Radius = 0;
+
+    public int[] Skills;
 //-----------------------------------------------
     public float Spd=0;
     public int Atk = 0;
@@ -38,7 +40,7 @@ public class PlayerFSMData : EntityData
             this.ModelName = drNpcModel.AssetName;
             this.Icon = drNpcModel.Icon;
             this.PlayerType = playerType;
-            TimelineInitPos = 0;
+            this.TimelineInitPos = 0.8f;
             Radius = drNpcModel.Radius;
             //-------------------------------------
             this.Spd = drEntity.Spd;
@@ -49,6 +51,7 @@ public class PlayerFSMData : EntityData
             this.Hp = drEntity.Hp;
             this.Mp = drEntity.Mp;
             this.Luck = drEntity.Luck;
+            this.Skills = drEntity.Skills;
         }
 
         if (playerType == PlayerType.Hero)
@@ -62,7 +65,7 @@ public class PlayerFSMData : EntityData
             this.ModelName = drNpcModel.AssetName;
             this.Icon = drNpcModel.Icon;
             this.PlayerType = playerType;
-            TimelineInitPos = 0;
+            this.TimelineInitPos = teamBase.TimelineInitPos;
             
             //-------------------------------------
             this.Spd = teamBase.Spd;
@@ -74,8 +77,8 @@ public class PlayerFSMData : EntityData
             this.Mp = teamBase.Mp;
             this.Level = teamBase.Level;
             this.Luck = teamBase.Luck;
-            
-            
+            this.Skills = teamBase.Skills;
+
         }
 
 

@@ -11,7 +11,7 @@ public class TeamBase
     public int Level;
     public float Grow;
     public int[] Skills;
-    
+    public float TimelineInitPos=0;
     //-------------------------------------
     public float Spd=0;
     public int Atk = 0;
@@ -20,6 +20,6 @@ public class TeamBase
     public int Mdf = 0;
     public int Hp = 0;
     public int Mp = 0;
-
+    
     public int Luck = 0;
 }
