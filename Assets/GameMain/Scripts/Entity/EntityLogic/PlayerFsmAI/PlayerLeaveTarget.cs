@@ -28,7 +28,7 @@ public class PlayerLeaveTarget : FsmState<PlayerFSM>
         Vector3 Dir = (targetPos-fsm.Owner.transform.position).normalized;
         if (Vector3.Distance(fsm.Owner.transform.position,targetPos)>0.5f)
         {
-            fsm.Owner.transform.position += Dir * Time.deltaTime;
+            fsm.Owner.transform.position += Dir * Time.deltaTime*10;
         }
         else
         {

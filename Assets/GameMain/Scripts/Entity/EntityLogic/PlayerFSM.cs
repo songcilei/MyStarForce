@@ -11,7 +11,13 @@ using GameEntry = StarForce.GameEntry;
 
 public class PlayerFSM : PlayerBase
 {
-    public PlayerFSMData PlayerFsmData = null;
+    public PlayerFSMData PlayerFsmData
+    {
+        get
+        {
+            return m_playerFsmData;
+        }
+    }
     public Texture2D HeadIcon;
     public GameObject Model;
     private LoadAssetCallbacks LoadAssetCallbacks_Model;
@@ -20,6 +26,7 @@ public class PlayerFSM : PlayerBase
     private bool modelLoadEd = false;
     private bool IconLoadEd = false;
     private string modelName;
+    private string entityName;
     private string icon;
     public float Radius;//模型检测半径
     public bool IsDef = false;//防御模式
@@ -28,7 +35,7 @@ public class PlayerFSM : PlayerBase
     private IFsm<PlayerFSM> playFsm;
     private string FsmName;
     private GameObject modelInstance;
-    private PlayerFSMData playerFsmData;
+    private PlayerFSMData m_playerFsmData;
     public Dictionary<string,BufferState> BufferList = new Dictionary<string, BufferState>();
     public Dictionary<string, IAction> SkillList = new Dictionary<string, IAction>();
     protected override void OnInit(object userData)
@@ -58,23 +65,24 @@ public class PlayerFSM : PlayerBase
         //-----------------------------Init
         Model = transform.Find("Model").gameObject;
         
-        playerFsmData = userData as PlayerFSMData;
-        entityId = playerFsmData.EntityId;
-        PlayerType = playerFsmData.PlayerType;
-        Spd = playerFsmData.Spd;
-        modelName = playerFsmData.ModelName;
-        icon = playerFsmData.Icon;
-        Radius = playerFsmData.Radius;
-        TimelineInitPos = playerFsmData.TimelineInitPos;
+        m_playerFsmData = userData as PlayerFSMData;
+        entityId = m_playerFsmData.EntityId;
+        PlayerType = m_playerFsmData.PlayerType;
+        Spd = m_playerFsmData.Spd;
+        modelName = m_playerFsmData.ModelName;
+        entityName = m_playerFsmData.EntityName;
+        icon = m_playerFsmData.Icon;
+        Radius = m_playerFsmData.Radius;
+        TimelineInitPos = m_playerFsmData.TimelineInitPos;
         //-------------------------------------
-        Level = playerFsmData.Level;
-        Atk = playerFsmData.Atk;
-        Mag = playerFsmData.Mag;
-        Def = playerFsmData.Def;
-        Mdf = playerFsmData.Mdf;
-        Hp = playerFsmData.Hp;
-        Mp = playerFsmData.Mp;
-        Luck = playerFsmData.Luck;
+        Level = m_playerFsmData.Level;
+        Atk = m_playerFsmData.Atk;
+        Mag = m_playerFsmData.Mag;
+        Def = m_playerFsmData.Def;
+        Mdf = m_playerFsmData.Mdf;
+        Hp = m_playerFsmData.Hp;
+        Mp = m_playerFsmData.Mp;
+        Luck = m_playerFsmData.Luck;
         
         //---------------------------FSM
         FsmState<PlayerFSM>[] PlayerCoreFSM =
@@ -90,7 +98,7 @@ public class PlayerFSM : PlayerBase
             new PlayerLeaveTarget(),
             new PlayerDmg()
         };
-        FsmName = modelName + entityId;
+        FsmName = entityName + entityId;
         playFsm = GameEntry.Fsm.CreateFsm(FsmName,this, PlayerCoreFSM);
         playFsm.Start<PlayerIdle>();
         
@@ -105,7 +113,7 @@ public class PlayerFSM : PlayerBase
         
         //----------------------------------------------Init Skill
         var table = GameEntry.DataTable.GetDataTable<DRSkill>();
-        foreach (var id in playerFsmData.Skills)
+        foreach (var id in m_playerFsmData.Skills)
         {
             DRSkill drSkill = table.GetDataRow(id);
             Type type = Type.GetType(drSkill.SkillClass);
@@ -149,12 +157,12 @@ public class PlayerFSM : PlayerBase
 
     public void AddBuffer(BufferState buff)
     {
-        BufferList.Add(buff.m_BufferName,buff);
+        BufferList[buff.m_BufferName] = buff;
     }
 
-    public void RemoveBuffer()
+    public void RemoveBuffer(string key)
     {
-        
+        BufferList.Remove(key);
     }
 
     public void LeaveFsm()
@@ -200,7 +208,8 @@ public class PlayerFSM : PlayerBase
             buffer.Value.m_BufferLife -= 1;
             if (buffer.Value.m_BufferLife<=0)
             {
-                BufferList.Remove(buffer.Key);
+                // BufferList.Remove(buffer.Key);
+                RemoveBuffer(buffer.Key);
             }
         }
     }

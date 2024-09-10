@@ -6,6 +6,10 @@ public class AttackUp25 :  IAtkBuffer
 {
     public void Execute(PlayerFSM fsm, params object[] parameters)
     {
+        if (fsm==null)
+        {
+            Debug.LogError("fsm is null!!!");;
+        }
         BufferState bufferState = new BufferState("AttackUp25",3,fsm.PlayerFsmData.Atk*0.25f,0,0,0);
         fsm.AddBuffer(bufferState);
     }

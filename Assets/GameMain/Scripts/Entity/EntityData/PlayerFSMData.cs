@@ -8,6 +8,7 @@ public class PlayerFSMData : EntityData
 {
 
     public int EntityId;
+    public string EntityName;
     public string ModelName;
     public string Icon;
     public PlayerType PlayerType = PlayerType.None;
@@ -38,10 +39,11 @@ public class PlayerFSMData : EntityData
             DRNpcModel drNpcModel = GameEntry.DataTable.GetDataTable<DRNpcModel>().GetDataRow(modelId);
         
             this.ModelName = drNpcModel.AssetName;
+            this.EntityName = drEntity.AssetName;
             this.Icon = drNpcModel.Icon;
             this.PlayerType = playerType;
-            this.TimelineInitPos = 0.8f;
-            Radius = drNpcModel.Radius;
+            this.TimelineInitPos = 0f;
+            this.Radius = drNpcModel.Radius;
             //-------------------------------------
             this.Spd = drEntity.Spd;
             this.Atk = drEntity.Atk;
@@ -63,10 +65,11 @@ public class PlayerFSMData : EntityData
             DRNpcModel drNpcModel = GameEntry.DataTable.GetDataTable<DRNpcModel>().GetDataRow(modelId);
         
             this.ModelName = drNpcModel.AssetName;
+            this.EntityName = drEntity.AssetName;
             this.Icon = drNpcModel.Icon;
             this.PlayerType = playerType;
             this.TimelineInitPos = teamBase.TimelineInitPos;
-            
+            this.Radius = drNpcModel.Radius;
             //-------------------------------------
             this.Spd = teamBase.Spd;
             this.Atk = teamBase.Atk;

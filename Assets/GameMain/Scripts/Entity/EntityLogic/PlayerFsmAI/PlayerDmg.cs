@@ -19,11 +19,12 @@ public class PlayerDmg : FsmState<PlayerFSM>
     protected override void OnUpdate(IFsm<PlayerFSM> fsm, float elapseSeconds, float realElapseSeconds)
     {
         base.OnUpdate(fsm, elapseSeconds, realElapseSeconds);
+        ChangeState<PlayerIdle>(fsm);
     }
 
     protected override void OnLeave(IFsm<PlayerFSM> fsm, bool isShutdown)
     {
         base.OnLeave(fsm, isShutdown);
-        ChangeState<PlayerIdle>(fsm);
+        
     }
 }

@@ -206,11 +206,13 @@ public class BattleComponent : GameFrameworkComponent
                 CurrentPlayer = playerFsm;
                 CurrentKey = key;
                 playerFsm.OnAction();
+                
                 if (UIMenuPanel)
                 {
                     UIMenuPanel.ShowUIPanel();
                     UIMenuPanel.HideSkillUIPanel();
                 }
+                break;
             }
         }
     }

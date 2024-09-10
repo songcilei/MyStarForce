@@ -91,6 +91,8 @@ public class UI_Menu_Panel : MonoBehaviour
                 if (player)
                 {
                     currentAction.Execute(player);
+                    GameEntry.Event.Fire(this,PlayerSkillEventArgs.Create());
+                    HideUIPanel();
                 }
 
                 break;
@@ -191,20 +193,23 @@ public class UI_Menu_Panel : MonoBehaviour
 
         PlayerFSM currenFsm = GameEntry.BattleSystem.CurrentPlayer;
 
-        foreach (var skill in currenFsm.SkillList)
+        if (currenFsm)
         {
-            if (SkillUITemp!=null)
+            foreach (var skill in currenFsm.SkillList)
             {
-                var obj =Instantiate(SkillUITemp, SkillUIPanel);
-                TempSkillUIList.Add(obj);
-                Button button = obj.GetComponent<Button>();
-                button.name = skill.Key;
-                button.transform.GetChild(0).GetComponent<Text>().text = skill.Key;
-                button.onClick.AddListener(() => { Skill_Action(skill.Value); });
+                if (SkillUITemp!=null)
+                {
+                    var obj =Instantiate(SkillUITemp, SkillUIPanel);
+                    obj.gameObject.SetActive(true);
+                    TempSkillUIList.Add(obj);
+                    Button button = obj.GetComponent<Button>();
+                    button.name = skill.Key;
+                    button.transform.GetChild(0).GetComponent<Text>().text = skill.Key;
+                    button.onClick.AddListener(() => { Skill_Action(skill.Value); });
                 
+                }
             }
         }
-
     }
 
     public void HideSkillUIPanel()
@@ -218,7 +223,10 @@ public class UI_Menu_Panel : MonoBehaviour
 
         foreach (var skill in TempSkillUIList)
         {
-            GameObject.Destroy(skill.gameObject);
+            if (skill!=null)
+            {
+                GameObject.Destroy(skill.gameObject);
+            }
         }
     }
 
@@ -243,12 +251,14 @@ public class UI_Menu_Panel : MonoBehaviour
  
     public void Skill_Action(IAction action)
     {
+        //1:set action
         
-        currentAction = action;
         //2:select skill
-        _UIMenuPanelState = UIMenuPanelState.Skill;
+        currentAction = action;
         //3:hide menu UI
+        HideSkillUIPanel();
         //4:select atk target
+        _UIMenuPanelState = UIMenuPanelState.Skill;
         //5:fire evet
     }
 

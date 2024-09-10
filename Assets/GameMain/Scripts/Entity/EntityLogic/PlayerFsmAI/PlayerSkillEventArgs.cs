@@ -9,7 +9,6 @@ public class PlayerSkillEventArgs : GameEventArgs
     public static readonly int EventId = typeof(PlayerSkillEventArgs).GetHashCode();
     public override void Clear()
     {
-        throw new System.NotImplementedException();
     }
 
     public override int Id {

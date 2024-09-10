@@ -29,13 +29,13 @@ public class PlayerMoveTarget : FsmState<PlayerFSM>
         base.OnUpdate(fsm, elapseSeconds, realElapseSeconds);
         Vector3 targetPos = entity.transform.position;
         Vector3 selfPos = fsm.Owner.transform.position;
-        Vector3 Dir = targetPos - selfPos;
+        Vector3 Dir = (targetPos - selfPos).normalized;
         float radius = fsm.Owner.Radius;
 
         if (Vector3.Distance(targetPos,selfPos)>radius)
         {
             fsm.Owner.transform.forward = Dir.normalized;
-            fsm.Owner.transform.position += Dir * Time.deltaTime;
+            fsm.Owner.transform.position += Dir * Time.deltaTime*10;
         }
         else
         {
