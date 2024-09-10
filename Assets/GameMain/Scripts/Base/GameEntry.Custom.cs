@@ -44,7 +44,7 @@ namespace StarForce
             private set;
         }
 
-        public static PropComponent PropComponent
+        public static PackComponent PackComponent
         {
             get;
             private set;
@@ -57,7 +57,7 @@ namespace StarForce
             Shop = UnityGameFramework.Runtime.GameEntry.GetComponent<ShopComponent>();
             BattleSystem = UnityGameFramework.Runtime.GameEntry.GetComponent<BattleComponent>();
             TeamComponent = UnityGameFramework.Runtime.GameEntry.GetComponent<TeamComponent>();
-            PropComponent = UnityGameFramework.Runtime.GameEntry.GetComponent<PropComponent>();
+            PackComponent = UnityGameFramework.Runtime.GameEntry.GetComponent<PackComponent>();
         }
     }
 }

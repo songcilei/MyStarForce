@@ -62,6 +62,29 @@ namespace StarForce
             }
 
 
+            if (GUILayout.Button("AddLifeDrug"))
+            {
+                GameEntry.PackComponent.AddLifeDrug();
+            }
+
+
+            if (GUILayout.Button("AddMagicDrug"))
+            {
+                GameEntry.PackComponent.AddMagicDrug();
+            }
+            
+            if (GUILayout.Button("ExpentLifeDrug"))
+            {
+                GameEntry.PackComponent.ExpendLifeDrug();
+            }
+
+
+            if (GUILayout.Button("ExpentMagicDrug"))
+            {
+                GameEntry.PackComponent.ExpendMagicDrug();
+            }
+
+
 
             GUILayout.EndScrollView();
         }

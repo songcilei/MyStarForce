@@ -214,4 +214,22 @@ public class PlayerFSM : PlayerBase
         }
     }
 
+
+    public void UseDrug(ProductBase Pbase)
+    {
+        if (!Pbase.type.ToString().Contains("Drug"))
+        {
+            return;
+        }
+
+        Atk += Pbase.attack;
+        Hp += Pbase.hp;
+        Mag += Pbase.magic;
+        Def += Pbase.defence;
+        Luck += Pbase.lucky;
+        
+
+
+    }
+
 }

@@ -14,51 +14,86 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProductList:
   - name: mSword
+    icon: {fileID: 0}
+    Info: 
+    number: 0
     type: 1000
     shopType: 1
     life: 20
     attack: 100
+    magic: 1
     defence: 50000
+    lucky: 0
     value: 10
   - name: mSword
+    icon: {fileID: 0}
+    Info: 
+    number: 0
     type: 1000
     shopType: 1
     life: 20
     attack: 100
+    magic: 1
     defence: 50000
+    lucky: 0
     value: 10
   - name: mSword
+    icon: {fileID: 0}
+    Info: 
+    number: 0
     type: 1000
     shopType: 1
     life: 20
     attack: 100
+    magic: 1
     defence: 50000
+    lucky: 0
     value: 10
   - name: mItem
+    icon: {fileID: 0}
+    Info: 
+    number: 0
     type: 2000
     shopType: 5
     life: 20
     attack: 100
+    magic: 1
     defence: 500
+    lucky: 0
     value: 10
   - name: mItem
+    icon: {fileID: 0}
+    Info: 
+    number: 0
     type: 2000
     shopType: 5
     life: 20
     attack: 100
+    magic: 1
     defence: 500
+    lucky: 0
     value: 10
   - name: mItem
+    icon: {fileID: 0}
+    Info: 
+    number: 0
     type: 2000
     shopType: 5
     life: 20
     attack: 100
+    magic: 1
     defence: 500
+    lucky: 0
     value: 10
   - name: mSword
+    icon: {fileID: 0}
+    Info: 
+    number: 0
     type: 1000
     shopType: 1
     life: 20
     attack: 100
+    magic: 1
     defence: 50000
+    lucky: 0
     value: 10

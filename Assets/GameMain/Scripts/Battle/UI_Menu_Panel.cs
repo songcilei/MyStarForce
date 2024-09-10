@@ -12,7 +12,8 @@ public enum UIMenuPanelState
     Atk,
     Skill,
     SkillMenu,
-    Prop,
+    Pack,
+    PackMenu,
     Def,
     Leave
 }
@@ -26,10 +27,12 @@ public class UI_Menu_Panel : MonoBehaviour
     private GameControl _gameControl;
 
     private PlayerFSM player;
-
+    private CanvasGroup _skillUIPanelGroup;
+    private CanvasGroup _PackUIPanelGroup;
     public RectTransform SkillUIPanel;
-    private CanvasGroup _skillUiPanelGroup;
     public RectTransform SkillUITemp;
+    public RectTransform PackUIPanel;
+    public RectTransform PackUITemp;
     private IAction currentAction;
     private void Start()
     {
@@ -41,7 +44,12 @@ public class UI_Menu_Panel : MonoBehaviour
         _gameControl.Control.SelectTarget.canceled += SelectUp;
         if (SkillUIPanel!=null)
         {
-            _skillUiPanelGroup = SkillUIPanel.GetComponent<CanvasGroup>();
+            _skillUIPanelGroup = SkillUIPanel.GetComponent<CanvasGroup>();
+        }
+
+        if (PackUIPanel!=null)
+        {
+            _PackUIPanelGroup = PackUIPanel.GetComponent<CanvasGroup>();
         }
     }
 
@@ -60,7 +68,9 @@ public class UI_Menu_Panel : MonoBehaviour
                 player = GetRayPlayer();
                 SelectEffect(player);
                 break;
-            case UIMenuPanelState.Prop:
+            case UIMenuPanelState.PackMenu:
+                break;
+            case UIMenuPanelState.Pack:
                 break;
             case UIMenuPanelState.Def:
                 break;
@@ -96,7 +106,9 @@ public class UI_Menu_Panel : MonoBehaviour
                 }
 
                 break;
-            case UIMenuPanelState.Prop:
+            case UIMenuPanelState.PackMenu:
+                break;
+            case UIMenuPanelState.Pack:
                 break;
             case UIMenuPanelState.Def:
                 break;
@@ -116,7 +128,9 @@ public class UI_Menu_Panel : MonoBehaviour
                 break;
             case UIMenuPanelState.Skill:
                 break;
-            case UIMenuPanelState.Prop:
+            case UIMenuPanelState.PackMenu:
+                break;
+            case UIMenuPanelState.Pack:
                 break;
             case UIMenuPanelState.Def:
                 break;
@@ -184,11 +198,11 @@ public class UI_Menu_Panel : MonoBehaviour
     public void ShowSkillUIPanel()
     {
         TempSkillUIList.Clear();
-        if (_skillUiPanelGroup!=null)
+        if (_skillUIPanelGroup!=null)
         {
-            _skillUiPanelGroup.alpha = 1;
-            _skillUiPanelGroup.interactable = true;
-            _skillUiPanelGroup.blocksRaycasts = true;
+            _skillUIPanelGroup.alpha = 1;
+            _skillUIPanelGroup.interactable = true;
+            _skillUIPanelGroup.blocksRaycasts = true;
         }
 
         PlayerFSM currenFsm = GameEntry.BattleSystem.CurrentPlayer;
@@ -214,11 +228,11 @@ public class UI_Menu_Panel : MonoBehaviour
 
     public void HideSkillUIPanel()
     {
-        if (_skillUiPanelGroup != null)
+        if (_skillUIPanelGroup != null)
         {
-            _skillUiPanelGroup.alpha = 0;
-            _skillUiPanelGroup.interactable = false;
-            _skillUiPanelGroup.blocksRaycasts = false;
+            _skillUIPanelGroup.alpha = 0;
+            _skillUIPanelGroup.interactable = false;
+            _skillUIPanelGroup.blocksRaycasts = false;
         }
 
         foreach (var skill in TempSkillUIList)
@@ -226,6 +240,48 @@ public class UI_Menu_Panel : MonoBehaviour
             if (skill!=null)
             {
                 GameObject.Destroy(skill.gameObject);
+            }
+        }
+    }
+    private List<RectTransform> TempPackUIList = new List<RectTransform>();
+    public void ShowPackUIPanel()
+    {
+        TempPackUIList.Clear();
+        if (_PackUIPanelGroup!=null)
+        {
+            _PackUIPanelGroup.alpha = 1;
+            _PackUIPanelGroup.interactable = true;
+            _PackUIPanelGroup.blocksRaycasts = true;
+        }
+
+        Dictionary<string, ProductBase> packs = GameEntry.PackComponent._packScriptable.PackList;
+        foreach (var pack in packs)
+        {
+            var obj = Instantiate(PackUITemp, PackUIPanel);
+            obj.gameObject.SetActive(true);
+            TempPackUIList.Add(obj);
+            Button button = obj.GetComponent<Button>();
+            button.name = pack.Key;
+            button.transform.GetChild(0).GetComponent<Text>().text = pack.Key;
+//Execute  Pack
+            // button.onClick.AddListener(() => {Pack_ActionWin(pack.key);});
+        }
+    }
+
+    public void HidePackUIPanel()
+    {
+        if (_PackUIPanelGroup !=null)
+        {
+            _skillUIPanelGroup.alpha = 0;
+            _skillUIPanelGroup.interactable = false;
+            _skillUIPanelGroup.blocksRaycasts = false;
+        }
+        GameEntry.PackComponent.ClearCreentPackKey();
+        foreach (var pack in TempPackUIList)
+        {
+            if (pack!=null)
+            {
+                GameObject.Destroy(pack.gameObject);
             }
         }
     }
@@ -262,7 +318,14 @@ public class UI_Menu_Panel : MonoBehaviour
         //5:fire evet
     }
 
-    public void Prop_Action()
+    public void Pack_ActionWin(string key)
+    {
+        ShowPackUIPanel();
+        GameEntry.PackComponent.SetCurrenPack(key);
+        _UIMenuPanelState = UIMenuPanelState.PackMenu;
+    }
+
+    public void Pack_Action()
     {
         //1:show prop window
         //2:select prop
