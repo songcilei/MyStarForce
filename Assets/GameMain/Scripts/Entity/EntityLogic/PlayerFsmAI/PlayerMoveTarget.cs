@@ -21,7 +21,6 @@ public class PlayerMoveTarget : FsmState<PlayerFSM>
         {
             entity = (PlayerFSM)GameEntry.Entity.GetEntity(targetId).Logic;
         }
-
     }
 
     protected override void OnUpdate(IFsm<PlayerFSM> fsm, float elapseSeconds, float realElapseSeconds)

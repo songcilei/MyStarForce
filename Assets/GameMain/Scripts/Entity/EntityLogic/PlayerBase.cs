@@ -32,4 +32,9 @@ public class PlayerBase : EntityLogic
         
     }
 
+    public virtual void OnAIAction()
+    {
+        
+    }
+
 }

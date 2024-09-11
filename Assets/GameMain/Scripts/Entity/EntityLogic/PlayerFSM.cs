@@ -38,6 +38,9 @@ public class PlayerFSM : PlayerBase
     private PlayerFSMData m_playerFsmData;
     public Dictionary<string,BufferState> BufferList = new Dictionary<string, BufferState>();
     public Dictionary<string, IAction> SkillList = new Dictionary<string, IAction>();
+
+    private AILogic m_AILogic;
+    
     protected override void OnInit(object userData)
     {
         base.OnInit(userData);
@@ -46,17 +49,41 @@ public class PlayerFSM : PlayerBase
         LoadAssetSuccessCallback_Icon = new LoadAssetCallbacks(LoadIconSuccess);
         
     }
-
+    //hero action
     public override void OnAction()
     {
         base.OnAction();
+        //free timeline
         GameEntry.BattleSystem.SetFreeTimeState(true);
         //buffer loop
         BufferLifeSubOne();
+        //into menu 
         playFsm.CastChangeState<PlayerMenu>();
+        //init
         InitActionPos = this.transform.position;
         InitActionRotation = this.transform.rotation;
-        Debug.Log("name:"+name +"::::Action");
+        Debug.Log("name:"+name +":Action");
+    }
+
+    // enemy action
+    public override void OnAIAction()
+    {
+        base.OnAIAction();
+        //free timeline
+        GameEntry.BattleSystem.SetFreeTimeState(true);
+        //buffer loop
+        BufferLifeSubOne();
+        //into menu 
+        playFsm.CastChangeState<PlayerMenu>();
+        //init
+        InitActionPos = this.transform.position;
+        InitActionRotation = this.transform.rotation;
+        if (m_AILogic != null)
+        {
+            m_AILogic.StartThink();
+        }
+
+        Debug.Log("name:"+name +":AIAction");
     }
 
     protected override void OnShow(object userData)
@@ -83,7 +110,13 @@ public class PlayerFSM : PlayerBase
         Hp = m_playerFsmData.Hp;
         Mp = m_playerFsmData.Mp;
         Luck = m_playerFsmData.Luck;
-        
+        //---------------------------AI
+        if (PlayerType == PlayerType.Enemy)
+        {
+            m_AILogic = new AILogic(2);
+            m_AILogic.AI_Init(this);
+        }
+
         //---------------------------FSM
         FsmState<PlayerFSM>[] PlayerCoreFSM =
         {
@@ -135,6 +168,11 @@ public class PlayerFSM : PlayerBase
         if (modelLoadEd && IconLoadEd)
         {
             // Debug.Log("load ed   Model and Icon");
+        }
+//AI Update
+        if (m_AILogic!=null)
+        {
+            m_AILogic.AI_Update();
         }
     }
 

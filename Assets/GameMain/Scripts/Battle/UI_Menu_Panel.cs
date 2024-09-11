@@ -75,8 +75,11 @@ public class UI_Menu_Panel : MonoBehaviour
                 SelectEffect(player);
                 break;
             case UIMenuPanelState.Def:
+                GameEntry.Event.Fire(this,PlayerDefEventArgs.Create());
                 break;
             case UIMenuPanelState.Leave:
+                GameEntry.Event.Fire(this,PlayerLeaveEventArgs.Create());
+                GameEntry.BattleSystem._battleType = BattleType.OnLeave;
                 break;
             default:
                 break;
@@ -345,11 +348,14 @@ public class UI_Menu_Panel : MonoBehaviour
     public void Def_Action()
     {
         //1:def
+        _UIMenuPanelState = UIMenuPanelState.Def;
+        HideUIPanel();
     }
 
     public void Leave_Action()
     {
         //1:leave
+        _UIMenuPanelState = UIMenuPanelState.Leave;
     }
 
     private void OnDestroy()

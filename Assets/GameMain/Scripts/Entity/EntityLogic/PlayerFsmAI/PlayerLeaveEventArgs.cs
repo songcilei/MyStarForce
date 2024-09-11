@@ -9,7 +9,6 @@ public class PlayerLeaveEventArgs : GameEventArgs
     public static readonly int EventId = typeof(PlayerLeaveEventArgs).GetHashCode();
     public override void Clear()
     {
-        throw new System.NotImplementedException();
     }
 
     public override int Id {

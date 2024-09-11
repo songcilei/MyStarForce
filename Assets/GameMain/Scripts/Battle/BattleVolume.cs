@@ -34,6 +34,7 @@ public class BattleVolume : MonoBehaviour
     }
 
 
+    
     private void OnDestroy()
     {
 
@@ -80,7 +81,7 @@ public class BattleVolume : MonoBehaviour
     }
 
     [Button]
-    public void NextPalyerFSM()
+    public void LeaveBattle()
     {
         this.gameObject.SetActive(true);
         loadEd = 0;

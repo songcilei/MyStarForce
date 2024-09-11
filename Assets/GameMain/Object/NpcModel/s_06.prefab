@@ -73,6 +73,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: s_06
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 66f8628f795e8dd40bf250077596229d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9049353913531820325, guid: 66f8628f795e8dd40bf250077596229d,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -109,6 +114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c7b6a87d4e43ec4a9fd6a24bae46112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _character: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!95 &5180384483153687392
 Animator:
   serializedVersion: 5

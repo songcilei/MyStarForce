@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
 using GameEntry = StarForce.GameEntry;
+using Random = UnityEngine.Random;
 
 public class BattleComponent : GameFrameworkComponent
 {
@@ -203,14 +204,28 @@ public class BattleComponent : GameFrameworkComponent
             {
                 Debug.Log("action!");
                 PlayerFSM playerFsm = (PlayerFSM)GameEntry.Entity.GetEntity(mbase.EntityId).Logic;
+
+
                 CurrentPlayer = playerFsm;
                 CurrentKey = key;
-                playerFsm.OnAction();
-                
-                if (UIMenuPanel)
+
+                switch (playerFsm.PlayerType)
                 {
-                    UIMenuPanel.ShowUIPanel();
-                    UIMenuPanel.HideSkillUIPanel();
+                    case PlayerType.Hero:
+                        playerFsm.OnAction();
+                        if (UIMenuPanel)
+                        {
+                            UIMenuPanel.ShowUIPanel();
+                            UIMenuPanel.HideSkillUIPanel();
+                        }
+                        break;
+                    case PlayerType.Enemy:
+                        //AI
+                        playerFsm.OnAIAction();
+                        
+                        break;
+                    default:
+                        break;
                 }
                 break;
             }
@@ -300,6 +315,28 @@ public class BattleComponent : GameFrameworkComponent
 
         Debug.Log("RunbattleState is true");
         RunBattleState = true;
+    }
+
+
+    public List<PlayerFSM> GetLiveHeroList()
+    {
+        List<PlayerFSM> liveHeroList = new List<PlayerFSM>();
+        foreach (var hero in heroFsmList)
+        {
+            if (hero.Hp>0)
+            {
+                liveHeroList.Add(hero);
+            }
+        }
+
+        return liveHeroList;
+    }
+
+    public PlayerFSM GetSoloLiveHero()
+    {
+        List<PlayerFSM> heroList = GetLiveHeroList();
+        int index = Random.Range(0, heroList.Count);
+        return heroList[index];
     }
 
 }

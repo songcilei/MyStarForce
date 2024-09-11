@@ -41,7 +41,7 @@ namespace StarForce
             if (GUILayout.Button("Leave Battle"))
             {
  
-                battleVolume.NextPalyerFSM();
+                battleVolume.LeaveBattle();
             }
 
             if (GUILayout.Button("add Player"))

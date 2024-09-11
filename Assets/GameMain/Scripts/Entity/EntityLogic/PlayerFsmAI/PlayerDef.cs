@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using GameFramework.Fsm;
+using StarForce;
 using UnityEngine;
 
 public class PlayerDef : FsmState<PlayerFSM>
@@ -14,11 +15,13 @@ public class PlayerDef : FsmState<PlayerFSM>
     {
         base.OnEnter(fsm);
         fsm.Owner.IsDef = true;
+        GameEntry.BattleSystem.nextPlayerFsm();
     }
 
     protected override void OnUpdate(IFsm<PlayerFSM> fsm, float elapseSeconds, float realElapseSeconds)
     {
         base.OnUpdate(fsm, elapseSeconds, realElapseSeconds);
+        
     }
 
     protected override void OnLeave(IFsm<PlayerFSM> fsm, bool isShutdown)
