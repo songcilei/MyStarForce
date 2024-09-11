@@ -68,8 +68,19 @@ public class PackComponent : GameFrameworkComponent
         
         fsm.UseDrug(Pbase);
     }
-    
-    
+
+    public void UsePack(PlayerFSM fsm)
+    {
+        if (!_packScriptable.PackList.ContainsKey(CurrentSelectKey))
+        {
+            return;
+        }
+
+        ProductBase Pbase = _packScriptable.PackList[CurrentSelectKey];
+        
+        fsm.UseDrug(Pbase);
+    }
+
 
 //----------------------------------------------------------------
     public void AddLifeDrug()

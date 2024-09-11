@@ -71,6 +71,8 @@ public class UI_Menu_Panel : MonoBehaviour
             case UIMenuPanelState.PackMenu:
                 break;
             case UIMenuPanelState.Pack:
+                player = GetRayPlayer();
+                SelectEffect(player);
                 break;
             case UIMenuPanelState.Def:
                 break;
@@ -109,6 +111,12 @@ public class UI_Menu_Panel : MonoBehaviour
             case UIMenuPanelState.PackMenu:
                 break;
             case UIMenuPanelState.Pack:
+                if (player)
+                {
+                    GameEntry.PackComponent.UsePack(player);
+                    GameEntry.Event.Fire(this,PlayerPropEventArgs.Create());
+                }
+
                 break;
             case UIMenuPanelState.Def:
                 break;
@@ -264,7 +272,7 @@ public class UI_Menu_Panel : MonoBehaviour
             button.name = pack.Key;
             button.transform.GetChild(0).GetComponent<Text>().text = pack.Key;
 //Execute  Pack
-            // button.onClick.AddListener(() => {Pack_ActionWin(pack.key);});
+            button.onClick.AddListener(() => {Pack_Action(pack.Key);});
         }
     }
 
@@ -318,15 +326,17 @@ public class UI_Menu_Panel : MonoBehaviour
         //5:fire evet
     }
 
-    public void Pack_ActionWin(string key)
+    public void Pack_ActionWin()
     {
         ShowPackUIPanel();
-        GameEntry.PackComponent.SetCurrenPack(key);
-        _UIMenuPanelState = UIMenuPanelState.PackMenu;
     }
 
-    public void Pack_Action()
+    public void Pack_Action(string key)
     {
+        GameEntry.PackComponent.SetCurrenPack(key);
+        HidePackUIPanel();
+        _UIMenuPanelState = UIMenuPanelState.Pack;
+
         //1:show prop window
         //2:select prop
         //3:select hero

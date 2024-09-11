@@ -20,6 +20,7 @@ MonoBehaviour:
     type: 1000
     shopType: 1
     life: 20
+    hp: 25
     attack: 100
     magic: 1
     defence: 50000
@@ -32,6 +33,7 @@ MonoBehaviour:
     type: 1000
     shopType: 1
     life: 20
+    hp: 25
     attack: 100
     magic: 1
     defence: 50000
@@ -44,6 +46,7 @@ MonoBehaviour:
     type: 1000
     shopType: 1
     life: 20
+    hp: 25
     attack: 100
     magic: 1
     defence: 50000
@@ -56,6 +59,7 @@ MonoBehaviour:
     type: 2000
     shopType: 5
     life: 20
+    hp: 25
     attack: 100
     magic: 1
     defence: 500
@@ -68,6 +72,7 @@ MonoBehaviour:
     type: 2000
     shopType: 5
     life: 20
+    hp: 25
     attack: 100
     magic: 1
     defence: 500
@@ -80,6 +85,7 @@ MonoBehaviour:
     type: 2000
     shopType: 5
     life: 20
+    hp: 25
     attack: 100
     magic: 1
     defence: 500
@@ -92,6 +98,7 @@ MonoBehaviour:
     type: 1000
     shopType: 1
     life: 20
+    hp: 25
     attack: 100
     magic: 1
     defence: 50000
