@@ -269,6 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6d24be39c7126d4c86770fcd384e7fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentSkillIndex: 0
 --- !u!4 &602928736
 Transform:
   m_ObjectHideFlags: 0
@@ -388,8 +389,8 @@ MonoBehaviour:
   groups:
   - {fileID: 1877191481}
   _length: 20
-  _viewTimeMin: -1
-  _viewTimeMax: 21
+  _viewTimeMin: -3.6894252
+  _viewTimeMax: 24.282932
 --- !u!4 &912798913
 Transform:
   m_ObjectHideFlags: 0

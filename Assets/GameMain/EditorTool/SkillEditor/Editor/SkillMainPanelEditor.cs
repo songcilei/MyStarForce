@@ -45,7 +45,13 @@ public class SkillMainPanelEditor : Editor
         //Check change End
         GUILayout.EndVertical();
         
-//-------------------------------------- Main Panel
+//-------------------------------------- Debugger
+        if (GUILayout.Button("InitCutscene"))
+        {
+            m_SkillMainPanel.Debugger();
+        }
+
+
 
     }
 }
