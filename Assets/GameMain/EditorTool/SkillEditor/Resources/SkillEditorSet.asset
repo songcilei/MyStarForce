@@ -12,7 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd38a472ab2caf54aadd1efc0cc16057, type: 3}
   m_Name: SkillEditorSet
   m_EditorClassIdentifier: 
-  ModelPath: 
-  ModelName: []
-  AnimationPath: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  PrefabPath: Assets/GameMain/Object/NpcModel
+  PrefabName: []
+  AnimationPath: Assets/GameMain/Art/Animation/s_06
   AnimationName: []
