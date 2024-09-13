@@ -7,10 +7,11 @@ using UnityEngine;
 public class SkillEditorSet : SerializedScriptableObject
 {
     
-    public string ModelPath = "";
-    public List<string> ModelName = new List<string>();
+    public string PrefabPath = "";
+    public List<string> PrefabName = new List<string>();
+    public int CurrentPrefabIndex;
     public string AnimationPath = "";
     public List<string> AnimationName = new List<string>();
+    public int CurrentAnimationIndex;
 
-    
 }

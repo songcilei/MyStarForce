@@ -8,4 +8,9 @@ public class SkillEditorTableBase : SerializedMonoBehaviour
 {
     public string SkillName = string.Empty;
     
+    
+    public string Prefabname = string.Empty;
+    public string AnimaName = string.Empty;
+    
+
 }
