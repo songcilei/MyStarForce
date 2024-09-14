@@ -89,6 +89,7 @@ namespace Slate.ActionClips
             if ( !Application.isPlaying ) {
                 em.enabled = time < length;
                 if ( simulationSync ) {
+                    Debug.Log(time);
                     particles.Simulate(time);
                 }
             }

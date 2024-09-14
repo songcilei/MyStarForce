@@ -16,7 +16,7 @@ public class SkillMainPanel : MonoBehaviour
     public int CurrentSkillIndex=0;
 
     private Cutscene m_Cutscene;
-    
+    public string SkillName;
     void Start()
     {
         Init();
@@ -37,6 +37,52 @@ public class SkillMainPanel : MonoBehaviour
     {
         return m_SkillEditorSet;
     }
+
+    public Cutscene GetCutScene()
+    {
+        return m_Cutscene;
+    }
+
+    public CutsceneGroup GetActorGroup(string name)
+    {
+        foreach (var group in m_Cutscene.groups)
+        {
+            if (group.name == name)
+            {
+                return group;
+            }
+        }
+
+        var actorGroup = m_Cutscene.AddGroup<ActorGroup>();
+        actorGroup.name = name;
+        var actionTrack = actorGroup.AddTrack<ActorActionTrack>();
+        actionTrack.name = "actorTrack";
+        var animaTrack = actorGroup.AddTrack<AnimatorTrack>();
+        animaTrack.name = "animaTrack";
+        
+        return actorGroup;
+    }
+
+    public CutsceneTrack GetActorTrack(CutsceneGroup group,string name)
+    {
+        foreach (var track in group.tracks)
+        {
+            if (track.name == name)
+            {
+                return track;
+            }
+        }
+        return null;
+    }
+
+
+    public AnimationClip GetCurrentAnimationClip(SkillEditorTableBase tableBase)
+    {
+        string clipPath = string.Format("{0}{1}/{2}{3}",GetEditorSet().AnimationPath,tableBase.Prefabname,tableBase.AnimaName,".anim");
+        AnimationClip clip = AssetDatabase.LoadAssetAtPath<AnimationClip>(clipPath);
+        return clip;
+    }
+
 
     public SkillEditorTableData GetEditorTableData()
     {
@@ -67,6 +113,8 @@ public class SkillMainPanel : MonoBehaviour
         m_Cutscene = GameObject.Find("Cutscene")?.GetComponent<Cutscene>();
         if (m_Cutscene!=null)
         {
+            m_Cutscene.Stop();
+            m_Cutscene.currentTime = 0;
             //Actor
             List<CutsceneGroup> cutsceneGroups = new List<CutsceneGroup>();
             var groups = m_Cutscene.groups;
@@ -96,6 +144,7 @@ public class SkillMainPanel : MonoBehaviour
                     track.DeleteAction(clip);
                 }
             }
+            
         }
         else
         {

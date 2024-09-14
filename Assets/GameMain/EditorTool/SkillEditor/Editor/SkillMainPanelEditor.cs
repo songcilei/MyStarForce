@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Slate;
+using Slate.ActionClips;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem.iOS;
@@ -9,7 +12,18 @@ public class SkillMainPanelEditor : Editor
 {
 
     private SkillMainPanel m_SkillMainPanel;
-    private string SkillName = "";
+
+    public string SkillName
+    {
+        get
+        {
+            return m_SkillMainPanel.SkillName;
+        }
+        set
+        {
+            m_SkillMainPanel.SkillName = value;
+        }
+    }
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
@@ -105,15 +119,33 @@ public class SkillMainPanelEditor : Editor
 
     private void ImportTableBase()
     {
+        //--------------------------------------------------main
         int index = m_SkillMainPanel.CurrentSkillIndex;
         string key = m_SkillMainPanel.GetSkillNameList()[index];
-
+        SkillName = key;
         var table = m_SkillMainPanel.GetEditorTableData().m_SkillEditorTableBases[key];
-
+        if (table==null)
+        {
+            Debug.Log("table is null!!!!!");
+        }
+        
         m_SkillMainPanel.GetEditorSet().CurrentPrefabIndex = GetPrefabIndex(table.Prefabname);
         m_SkillMainPanel.GetEditorSet().CurrentAnimationIndex = GetAnimaIndex(table.AnimaName);
+        //add import ---------------------------------------------
+
+        var actorGroup = m_SkillMainPanel.GetActorGroup("actorGroup");
+      
+        //prefab clip
+        //var actorTrack = m_SkillMainPanel.GetActorTrack(actorGroup, "actorTrack");
+        string prefabPath = string.Format("{0}{1}{2}",m_SkillMainPanel.GetEditorSet().PrefabPath,table.Prefabname,".prefab");
+        actorGroup.actor = AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath);
+        //animation clip
+        var Animtrack = m_SkillMainPanel.GetActorTrack(actorGroup,"animaTrack");
         
-        
+        AnimationClip clip = m_SkillMainPanel.GetCurrentAnimationClip(table);
+        var actorClip = Animtrack.AddAction<PlayAnimatorClip>(0);
+        actorClip.animationClip = clip;
+
     }
 
     //save
@@ -129,7 +161,10 @@ public class SkillMainPanelEditor : Editor
             .AnimationName[m_SkillMainPanel.GetEditorSet().CurrentAnimationIndex];
         m_SkillMainPanel.GetEditorTableData().m_SkillEditorTableBases[SkillName] = tableBase;
         
-        //add save 
+        //add save ---------------------------------------------
+        
+        
+        
         
         //--------------------------------------------------main
         AssetDatabase.SaveAssets();
