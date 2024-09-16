@@ -387,7 +387,7 @@ namespace Slate
                 transformSnapshot = null;
             }
         }
-
+//TODO:zihao.zhang
         //Initialize actor reference mode
         void TryInstantiateLocalActor() {
             if ( refDuplicateActor == null ) {

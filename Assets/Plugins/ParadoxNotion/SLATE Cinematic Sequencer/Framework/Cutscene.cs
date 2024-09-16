@@ -548,17 +548,15 @@ namespace Slate
         public void Sample(float time) {
 
             currentTime = time;
-
+            
             //ignore same minmax times
             if ( ( currentTime == 0 || currentTime == length ) && previousTime == currentTime ) {
                 return;
             }
-
             //Initialize time pointers if required.
             if ( !preInitialized && currentTime > 0 && previousTime == 0 ) {
                 InitializeTimePointers();
             }
-
             //Sample started
             if ( currentTime > 0 && currentTime < length && ( previousTime == 0 || previousTime == length ) ) {
                 OnSampleStarted();

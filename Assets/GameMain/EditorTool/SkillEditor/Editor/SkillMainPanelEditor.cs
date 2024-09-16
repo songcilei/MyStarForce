@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Slate;
 using Slate.ActionClips;
+using StarForce;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -46,6 +47,7 @@ public class SkillMainPanelEditor : Editor
 
         if (GUILayout.Button("导入"))
         {
+            m_SkillMainPanel.Init();
             ImportTableBase();
         }
 
@@ -131,9 +133,9 @@ public class SkillMainPanelEditor : Editor
         
         m_SkillMainPanel.GetEditorSet().CurrentPrefabIndex = GetPrefabIndex(table.Prefabname);
         m_SkillMainPanel.GetEditorSet().CurrentAnimationIndex = GetAnimaIndex(table.AnimaName);
-        //add import ---------------------------------------------
+        //add actorGroup import ---------------------------------------------
 
-        var actorGroup = m_SkillMainPanel.GetActorGroup("actorGroup");
+        var actorGroup = m_SkillMainPanel.GetActorGroup("actorGroup",true,true);
       
         //prefab clip
         //var actorTrack = m_SkillMainPanel.GetActorTrack(actorGroup, "actorTrack");
@@ -146,6 +148,32 @@ public class SkillMainPanelEditor : Editor
         var actorClip = Animtrack.AddAction<PlayAnimatorClip>(0);
         actorClip.animationClip = clip;
 
+        
+        //add EffectGroup import-----------------------------------------------
+        var effectList = table.Effect;
+        for (int i = 0; i < effectList.Count; i++)
+        {
+            string groupName = effectList[i].TrackName;
+            CutsceneGroup group = m_SkillMainPanel.GetActorGroup(groupName,true,false);
+            var obj = AssetDatabase.LoadAssetAtPath<GameObject>(effectList[i].EffectPath);
+            if (obj != null && group!=null)
+            {
+                group.actor = obj;
+                if (effectList[i].HasClip)
+                {
+                    var particle = group.tracks[0].AddAction<m_SampleParticleSystem>(effectList[i].StartTime);
+                    particle.particles = obj.GetComponent<ParticleSystem>();
+
+                    group.tracks[0].clips[0].startTime = effectList[i].StartTime;
+                    group.tracks[0].clips[0].endTime = effectList[i].EndTime;
+                    group.tracks[0].clips[0].length = effectList[i].Length;
+                    group.tracks[0].clips[0].blendIn = effectList[i].BlendIn;
+                    group.tracks[0].clips[0].blendOut = effectList[i].BlendOut;
+                }
+            }
+        }
+
+        Selection.activeObject = m_SkillMainPanel.gameObject;
     }
 
     //save
@@ -159,12 +187,38 @@ public class SkillMainPanelEditor : Editor
             .PrefabName[m_SkillMainPanel.GetEditorSet().CurrentPrefabIndex];
         tableBase.AnimaName = m_SkillMainPanel.GetEditorSet()
             .AnimationName[m_SkillMainPanel.GetEditorSet().CurrentAnimationIndex];
-        m_SkillMainPanel.GetEditorTableData().m_SkillEditorTableBases[SkillName] = tableBase;
+        
+        //add effect
+        CutsceneGroup[] groups = m_SkillMainPanel.GetEffectGroup("Effect");
+        for (int i = 0; i < groups.Length; i++)
+        {
+            string path = PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(groups[i].actor);
+            SkillEditorEffect effect = new SkillEditorEffect();
+            effect.TrackName = groups[i].name;
+            effect.EffectPath = path;
+            if (groups[i].tracks[0].clips.Count>0)
+            {
+                effect.HasClip = true;
+                effect.StartTime = groups[i].tracks[0].clips[0].startTime;
+                effect.EndTime = groups[i].tracks[0].clips[0].endTime;
+                effect.Length = groups[i].tracks[0].clips[0].length;
+                effect.BlendIn = groups[i].tracks[0].clips[0].blendIn;
+                effect.BlendOut = groups[i].tracks[0].clips[0].blendOut;
+            }
+            else
+            {
+                effect.HasClip = false;
+            }
+
+            tableBase.Effect.Add(effect);
+
+        }
         
         //add save ---------------------------------------------
         
         
-        
+        m_SkillMainPanel.GetEditorTableData().m_SkillEditorTableBases[SkillName] = tableBase;
+
         
         //--------------------------------------------------main
         AssetDatabase.SaveAssets();
@@ -181,6 +235,9 @@ public class SkillMainPanelEditor : Editor
                 m_SkillMainPanel.CurrentSkillIndex = i;
             }
         }
+        
+        //重新导入
+        ImportTableBase();
     }
 
     private void DeleteTableBase()

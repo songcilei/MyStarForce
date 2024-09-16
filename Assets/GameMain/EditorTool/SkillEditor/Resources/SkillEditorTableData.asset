@@ -34,7 +34,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 4
+      Data: 9
     - Name: 
       Entry: 7
       Data: 
@@ -54,7 +54,80 @@ MonoBehaviour:
       Entry: 1
       Data: home_run
     - Name: ActorClipName
-      Entry: 6
+      Entry: 1
+      Data: 
+    - Name: Effect
+      Entry: 7
+      Data: 3|System.Collections.Generic.List`1[[SkillEditorEffect, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 4|SkillEditorEffect, Assembly-CSharp
+    - Name: TrackName
+      Entry: 1
+      Data: Effect
+    - Name: EffectPath
+      Entry: 1
+      Data: Assets/GameMain/EditorTool/Particle System (1).prefab
+    - Name: HasClip
+      Entry: 5
+      Data: false
+    - Name: StartTime
+      Entry: 4
+      Data: 0
+    - Name: EndTime
+      Entry: 4
+      Data: 10
+    - Name: Length
+      Entry: 4
+      Data: 10
+    - Name: BlendIn
+      Entry: 4
+      Data: 0
+    - Name: BlendOut
+      Entry: 4
+      Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 5|SkillEditorEffect, Assembly-CSharp
+    - Name: TrackName
+      Entry: 1
+      Data: Effect2
+    - Name: EffectPath
+      Entry: 1
+      Data: Assets/GameMain/EditorTool/Particle System (1).prefab
+    - Name: HasClip
+      Entry: 5
+      Data: false
+    - Name: StartTime
+      Entry: 4
+      Data: 4.20000029
+    - Name: EndTime
+      Entry: 4
+      Data: 14.2000008
+    - Name: Length
+      Entry: 4
+      Data: 10
+    - Name: BlendIn
+      Entry: 4
+      Data: 0
+    - Name: BlendOut
+      Entry: 4
+      Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
       Data: 
     - Name: 
       Entry: 8
@@ -70,7 +143,7 @@ MonoBehaviour:
       Data: 222
     - Name: $v
       Entry: 7
-      Data: 3|SkillEditorTableBase, Assembly-CSharp
+      Data: 6|SkillEditorTableBase, Assembly-CSharp
     - Name: SkillName
       Entry: 1
       Data: 222
@@ -81,7 +154,50 @@ MonoBehaviour:
       Entry: 1
       Data: home_stand
     - Name: ActorClipName
-      Entry: 6
+      Entry: 1
+      Data: 
+    - Name: Effect
+      Entry: 7
+      Data: 7|System.Collections.Generic.List`1[[SkillEditorEffect, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 8|SkillEditorEffect, Assembly-CSharp
+    - Name: TrackName
+      Entry: 1
+      Data: Effect
+    - Name: EffectPath
+      Entry: 1
+      Data: Assets/GameMain/EditorTool/Particle System (1).prefab
+    - Name: HasClip
+      Entry: 5
+      Data: false
+    - Name: StartTime
+      Entry: 4
+      Data: 0
+    - Name: EndTime
+      Entry: 4
+      Data: 10
+    - Name: Length
+      Entry: 4
+      Data: 10
+    - Name: BlendIn
+      Entry: 4
+      Data: 0
+    - Name: BlendOut
+      Entry: 4
+      Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
       Data: 
     - Name: 
       Entry: 8
@@ -97,7 +213,7 @@ MonoBehaviour:
       Data: 333
     - Name: $v
       Entry: 7
-      Data: 4|SkillEditorTableBase, Assembly-CSharp
+      Data: 9|SkillEditorTableBase, Assembly-CSharp
     - Name: SkillName
       Entry: 1
       Data: 333
@@ -108,7 +224,50 @@ MonoBehaviour:
       Entry: 1
       Data: home_walk
     - Name: ActorClipName
-      Entry: 6
+      Entry: 1
+      Data: 
+    - Name: Effect
+      Entry: 7
+      Data: 10|System.Collections.Generic.List`1[[SkillEditorEffect, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 11|SkillEditorEffect, Assembly-CSharp
+    - Name: TrackName
+      Entry: 1
+      Data: Effect
+    - Name: EffectPath
+      Entry: 1
+      Data: Assets/GameMain/EditorTool/Particle System (1).prefab
+    - Name: HasClip
+      Entry: 5
+      Data: false
+    - Name: StartTime
+      Entry: 4
+      Data: 5.20000029
+    - Name: EndTime
+      Entry: 4
+      Data: 15.2000008
+    - Name: Length
+      Entry: 4
+      Data: 10
+    - Name: BlendIn
+      Entry: 4
+      Data: 0
+    - Name: BlendOut
+      Entry: 4
+      Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
       Data: 
     - Name: 
       Entry: 8
@@ -124,7 +283,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 7
-      Data: 5|SkillEditorTableBase, Assembly-CSharp
+      Data: 12|SkillEditorTableBase, Assembly-CSharp
     - Name: SkillName
       Entry: 1
       Data: 
@@ -136,6 +295,419 @@ MonoBehaviour:
       Data: home_run
     - Name: ActorClipName
       Entry: 1
+      Data: 
+    - Name: Effect
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: 4444
+    - Name: $v
+      Entry: 7
+      Data: 13|SkillEditorTableBase, Assembly-CSharp
+    - Name: SkillName
+      Entry: 1
+      Data: 4444
+    - Name: Prefabname
+      Entry: 1
+      Data: s_06
+    - Name: AnimaName
+      Entry: 1
+      Data: home_run
+    - Name: ActorClipName
+      Entry: 1
+      Data: 
+    - Name: Effect
+      Entry: 7
+      Data: 14|System.Collections.Generic.List`1[[SkillEditorEffect, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 15|SkillEditorEffect, Assembly-CSharp
+    - Name: TrackName
+      Entry: 1
+      Data: Effect
+    - Name: EffectPath
+      Entry: 1
+      Data: Assets/GameMain/EditorTool/Particle System (1).prefab
+    - Name: HasClip
+      Entry: 5
+      Data: false
+    - Name: StartTime
+      Entry: 4
+      Data: 0
+    - Name: EndTime
+      Entry: 4
+      Data: 10
+    - Name: Length
+      Entry: 4
+      Data: 10
+    - Name: BlendIn
+      Entry: 4
+      Data: 0
+    - Name: BlendOut
+      Entry: 4
+      Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 16|SkillEditorEffect, Assembly-CSharp
+    - Name: TrackName
+      Entry: 1
+      Data: Effect2
+    - Name: EffectPath
+      Entry: 1
+      Data: Assets/GameMain/EditorTool/Particle System (1).prefab
+    - Name: HasClip
+      Entry: 5
+      Data: false
+    - Name: StartTime
+      Entry: 4
+      Data: 4.20000029
+    - Name: EndTime
+      Entry: 4
+      Data: 14.2000008
+    - Name: Length
+      Entry: 4
+      Data: 10
+    - Name: BlendIn
+      Entry: 4
+      Data: 0
+    - Name: BlendOut
+      Entry: 4
+      Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: 444
+    - Name: $v
+      Entry: 7
+      Data: 17|SkillEditorTableBase, Assembly-CSharp
+    - Name: SkillName
+      Entry: 1
+      Data: 444
+    - Name: Prefabname
+      Entry: 1
+      Data: s_06
+    - Name: AnimaName
+      Entry: 1
+      Data: home_walk
+    - Name: ActorClipName
+      Entry: 1
+      Data: 
+    - Name: Effect
+      Entry: 7
+      Data: 18|System.Collections.Generic.List`1[[SkillEditorEffect, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 19|SkillEditorEffect, Assembly-CSharp
+    - Name: TrackName
+      Entry: 1
+      Data: Effect
+    - Name: EffectPath
+      Entry: 1
+      Data: Assets/GameMain/EditorTool/Particle System (1).prefab
+    - Name: HasClip
+      Entry: 5
+      Data: true
+    - Name: StartTime
+      Entry: 4
+      Data: 7.3
+    - Name: EndTime
+      Entry: 4
+      Data: 17.3
+    - Name: Length
+      Entry: 4
+      Data: 10
+    - Name: BlendIn
+      Entry: 4
+      Data: 0
+    - Name: BlendOut
+      Entry: 4
+      Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: 555
+    - Name: $v
+      Entry: 7
+      Data: 20|SkillEditorTableBase, Assembly-CSharp
+    - Name: SkillName
+      Entry: 1
+      Data: 555
+    - Name: Prefabname
+      Entry: 1
+      Data: s_06
+    - Name: AnimaName
+      Entry: 1
+      Data: home_walk
+    - Name: ActorClipName
+      Entry: 1
+      Data: 
+    - Name: Effect
+      Entry: 7
+      Data: 21|System.Collections.Generic.List`1[[SkillEditorEffect, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 22|SkillEditorEffect, Assembly-CSharp
+    - Name: TrackName
+      Entry: 1
+      Data: Effect
+    - Name: EffectPath
+      Entry: 1
+      Data: Assets/GameMain/EditorTool/Particle System (1) 1.prefab
+    - Name: HasClip
+      Entry: 5
+      Data: true
+    - Name: StartTime
+      Entry: 4
+      Data: 0.6
+    - Name: EndTime
+      Entry: 4
+      Data: 10.6
+    - Name: Length
+      Entry: 4
+      Data: 10
+    - Name: BlendIn
+      Entry: 4
+      Data: 0
+    - Name: BlendOut
+      Entry: 4
+      Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 23|SkillEditorEffect, Assembly-CSharp
+    - Name: TrackName
+      Entry: 1
+      Data: Effect2
+    - Name: EffectPath
+      Entry: 1
+      Data: Assets/GameMain/EditorTool/Particle System (1) 1.prefab
+    - Name: HasClip
+      Entry: 5
+      Data: true
+    - Name: StartTime
+      Entry: 4
+      Data: 7.1
+    - Name: EndTime
+      Entry: 4
+      Data: 17.1
+    - Name: Length
+      Entry: 4
+      Data: 10
+    - Name: BlendIn
+      Entry: 4
+      Data: 0
+    - Name: BlendOut
+      Entry: 4
+      Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: 777
+    - Name: $v
+      Entry: 7
+      Data: 24|SkillEditorTableBase, Assembly-CSharp
+    - Name: SkillName
+      Entry: 1
+      Data: 777
+    - Name: Prefabname
+      Entry: 1
+      Data: s_06
+    - Name: AnimaName
+      Entry: 1
+      Data: home_walk
+    - Name: ActorClipName
+      Entry: 1
+      Data: 
+    - Name: Effect
+      Entry: 7
+      Data: 25|System.Collections.Generic.List`1[[SkillEditorEffect, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 26|SkillEditorEffect, Assembly-CSharp
+    - Name: TrackName
+      Entry: 1
+      Data: Effect
+    - Name: EffectPath
+      Entry: 1
+      Data: Assets/GameMain/EditorTool/Particle System (1) 1.prefab
+    - Name: HasClip
+      Entry: 5
+      Data: false
+    - Name: StartTime
+      Entry: 4
+      Data: 8.5
+    - Name: EndTime
+      Entry: 4
+      Data: 18.5
+    - Name: Length
+      Entry: 4
+      Data: 10
+    - Name: BlendIn
+      Entry: 4
+      Data: 0
+    - Name: BlendOut
+      Entry: 4
+      Data: 0.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: 888
+    - Name: $v
+      Entry: 7
+      Data: 27|SkillEditorTableBase, Assembly-CSharp
+    - Name: SkillName
+      Entry: 1
+      Data: 888
+    - Name: Prefabname
+      Entry: 1
+      Data: s_06
+    - Name: AnimaName
+      Entry: 1
+      Data: home_walk
+    - Name: ActorClipName
+      Entry: 1
+      Data: 
+    - Name: Effect
+      Entry: 7
+      Data: 28|System.Collections.Generic.List`1[[SkillEditorEffect, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 29|SkillEditorEffect, Assembly-CSharp
+    - Name: TrackName
+      Entry: 1
+      Data: Effect
+    - Name: EffectPath
+      Entry: 1
+      Data: Assets/GameMain/EditorTool/Particle System (1) 1.prefab
+    - Name: HasClip
+      Entry: 5
+      Data: false
+    - Name: StartTime
+      Entry: 4
+      Data: 0
+    - Name: EndTime
+      Entry: 4
+      Data: 1
+    - Name: Length
+      Entry: 4
+      Data: 1
+    - Name: BlendIn
+      Entry: 4
+      Data: 0
+    - Name: BlendOut
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
       Data: 
     - Name: 
       Entry: 8

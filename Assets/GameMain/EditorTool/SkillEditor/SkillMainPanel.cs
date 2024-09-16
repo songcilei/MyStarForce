@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 using Sirenix.OdinInspector;
 using Slate;
+using Slate.ActionClips;
 using UnityEditor;
 using UnityEngine;
 using UnityGameFramework.Runtime;
@@ -43,7 +45,21 @@ public class SkillMainPanel : MonoBehaviour
         return m_Cutscene;
     }
 
-    public CutsceneGroup GetActorGroup(string name)
+    public CutsceneGroup CreateActorGroup(string name,bool isAnimator)
+    {
+        var actorGroup = m_Cutscene.AddGroup<ActorGroup>();
+        actorGroup.name = name;
+        var actionTrack = actorGroup.AddTrack<ActorActionTrack>();
+        actionTrack.name = "actorTrack";
+        if (isAnimator)
+        {
+            var animaTrack = actorGroup.AddTrack<AnimatorTrack>();
+            animaTrack.name = "animaTrack";
+        }
+        return actorGroup;
+    }
+
+    public CutsceneGroup GetActorGroup(string name,bool IsCreate,bool isAnimator)
     {
         foreach (var group in m_Cutscene.groups)
         {
@@ -53,16 +69,40 @@ public class SkillMainPanel : MonoBehaviour
             }
         }
 
-        var actorGroup = m_Cutscene.AddGroup<ActorGroup>();
-        actorGroup.name = name;
-        var actionTrack = actorGroup.AddTrack<ActorActionTrack>();
-        actionTrack.name = "actorTrack";
-        var animaTrack = actorGroup.AddTrack<AnimatorTrack>();
-        animaTrack.name = "animaTrack";
-        
-        return actorGroup;
+        if (IsCreate)
+        {
+            CutsceneGroup actorGroup = CreateActorGroup(name,isAnimator);
+            return actorGroup;
+        }
+
+        return null;
     }
 
+    public CutsceneGroup[] GetEffectGroup(string name)
+    {
+        List<CutsceneGroup> groups = new List<CutsceneGroup>();
+        foreach (var group in m_Cutscene.groups)
+        {
+            if (group.name.Contains(name))
+            {
+                groups.Add(group);
+            }
+        }
+
+        if (groups.Count==0)
+        {
+            var effectGroup = m_Cutscene.AddGroup<ActorGroup>();
+            effectGroup.name = name;
+            var effectTrack = effectGroup.AddTrack<ActorActionTrack>();
+            effectTrack.name = "effectTrack";
+            groups.Add(effectGroup);
+        }
+
+
+        return groups.ToArray();
+    }
+
+    
     public CutsceneTrack GetActorTrack(CutsceneGroup group,string name)
     {
         foreach (var track in group.tracks)

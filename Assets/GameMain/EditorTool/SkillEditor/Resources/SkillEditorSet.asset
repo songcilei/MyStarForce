@@ -35,4 +35,4 @@ MonoBehaviour:
   - home_run
   - home_stand
   - home_walk
-  CurrentAnimationIndex: 0
+  CurrentAnimationIndex: 2

@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
+using UnityEditor;
 using UnityEngine;
 
 public class TestParticle : MonoBehaviour
@@ -17,4 +19,15 @@ public class TestParticle : MonoBehaviour
     {
         sys.Simulate(time);
     }
+
+    [Button]
+    void getPaht()
+    {
+        string path =AssetDatabase.GetAssetPath(this);
+        Debug.Log(path);
+
+        path = PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(this);
+        Debug.Log(path);
+    }
+
 }
