@@ -226,12 +226,11 @@ public class SkillMainPanel : MonoBehaviour
         }
         m_SkillEditorSet.AnimationName.Clear();
         string dataPath = CombineAssetPath(m_SkillEditorSet.AnimationPath);
-        string naimaFolder = m_SkillEditorSet.PrefabName[m_SkillEditorSet.CurrentPrefabIndex];
-
-        
-        if (Directory.Exists(dataPath+naimaFolder))
+        string animaFolder = GetAnimaFolderName(m_SkillEditorSet.PrefabName[m_SkillEditorSet.CurrentPrefabIndex]);
+        Debug.Log(animaFolder);
+        if (Directory.Exists(dataPath+animaFolder))
         {
-            string[] filePaths = GetAllChild(dataPath+naimaFolder, "anim");
+            string[] filePaths = GetAllChild(dataPath+animaFolder, "anim");
 
             foreach (var filePath in filePaths)
             {
@@ -243,10 +242,25 @@ public class SkillMainPanel : MonoBehaviour
         }
         else
         {
-            Debug.LogError("没有找到配套的动画路径："+dataPath+naimaFolder);
+            Debug.LogError("没有找到配套的动画路径："+dataPath+animaFolder);
 
         }
 
+    }
+
+    private string GetAnimaFolderName(string name)
+    {
+        string str = string.Empty;
+        if (name.Contains("_"))
+        {
+            int index = name.IndexOf("_");
+            str = name.Substring(0, index);
+        }
+        else
+        {
+            str = name;
+        }
+        return str;
     }
 
     private string CombineAssetPath(string assetPath)

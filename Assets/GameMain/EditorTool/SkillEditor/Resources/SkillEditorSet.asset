@@ -23,16 +23,31 @@ MonoBehaviour:
     SerializationNodes: []
   PrefabPath: Assets/GameMain/Object/NpcModel/
   PrefabName:
+  - Armadil_1
+  - Armadil_2
+  - Armadil_3
+  - Bizun_1
+  - Bizun_2
+  - Bizun_3
+  - Blueberry_01
+  - Blueberry_02
+  - Blueberry_03
+  - Crabik2_1
+  - Crabik2_2
+  - Crabik2_3
   - NpcModel_01
   - NpcModel_02
   - NpcModel_03
   - NpcModel_04
   - NpcModel_05
+  - Pincerdeer_1
+  - Pincerdeer_2
+  - Pincerdeer_3
+  - Spiderbat_1
+  - Spiderbat_2
+  - Spiderbat_3
   - s_06
-  CurrentPrefabIndex: 5
+  CurrentPrefabIndex: 17
   AnimationPath: Assets/GameMain/Art/Animation/
-  AnimationName:
-  - home_run
-  - home_stand
-  - home_walk
+  AnimationName: []
   CurrentAnimationIndex: 2
