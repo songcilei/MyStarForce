@@ -9,11 +9,11 @@ using GameEntry = StarForce.GameEntry;
 
 public class BattleBrithPoint : MonoBehaviour
 {
-    
+    public int typeId;
+    public string patrolPathName;
     void Start()
     {
-        
-        
+
         GameEntry.Event.Subscribe(ShowEntitySuccessEventArgs.EventId,SuccessLoad);
         StartCoroutine(PlayRun());
         
@@ -25,7 +25,7 @@ public class BattleBrithPoint : MonoBehaviour
 
         yield return new WaitForSeconds(1);
         
-        GameEntry.Entity.ShowNpcControlEntity(new NpcControlEntityData(GameEntry.Entity.GenerateSerialId(),80007,"path1"));
+        GameEntry.Entity.ShowNpcControlEntity(new NpcControlEntityData(GameEntry.Entity.GenerateSerialId(),typeId,patrolPathName));
         
     }
 

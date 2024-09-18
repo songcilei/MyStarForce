@@ -15,8 +15,8 @@ public class NpcControlEntityData : EntityData
         var dtEntity = GameEntry.DataTable.GetDataTable<DREntity>();
         var drTable = dtEntity.GetDataRow(typeId);
         var dtNpcModel = GameEntry.DataTable.GetDataTable<DRNpcModel>();
-        var drNpc = dtNpcModel.GetDataRow(drTable.ModelID[0]);
-        ModelName = drNpc.AssetName;
+        // var drNpc = dtNpcModel.GetDataRow(drTable.ModelID[0]);
+        // ModelName = drNpc.AssetName;
 
         if (patrolPathName==null)
         {
