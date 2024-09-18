@@ -9,12 +9,24 @@ using UnityEngine.InputSystem;
 public class PlayerInputSystem : MonoBehaviour
 {
 
+    public static PlayerInputSystem Instance;
     private GameControl m_GameControl;
     private Character _character;
     private Vector3 camFroward;
     private bool Jump = false;
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+        
+
+        //---------------------------------
         m_GameControl = new GameControl();
         m_GameControl.Enable();
         _character = GetComponent<Character>();

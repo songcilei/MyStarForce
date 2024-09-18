@@ -47,7 +47,12 @@ MonoBehaviour:
   - Spiderbat_2
   - Spiderbat_3
   - s_06
-  CurrentPrefabIndex: 17
+  CurrentPrefabIndex: 1
   AnimationPath: Assets/GameMain/Art/Animation/
-  AnimationName: []
+  AnimationName:
+  - Amadil_1_Attack
+  - Amadil_2_Attack_01
+  - Amadil_2_Attack_02
+  - Amadil_2_Attack_03
+  - Amadil_3_Attack_01
   CurrentAnimationIndex: 2

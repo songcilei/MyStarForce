@@ -7,6 +7,7 @@
 
 using GameFramework.DataTable;
 using System;
+using UnityEngine;
 using UnityGameFramework.Runtime;
 
 namespace StarForce
@@ -110,6 +111,11 @@ namespace StarForce
             entityComponent.ShowEntity(typeof(PlayerControlEntity),"Asteroid",100,data);
         }
 
+        public static void ShowNpcControlEntity(this EntityComponent entityComponent,NpcControlEntityData data)
+        {
+            entityComponent.ShowNPC(typeof(NpcControlEntity),"Asteroid",100,data);
+        }
+
         private static void ShowEntity(this EntityComponent entityComponent, Type logicType, string entityGroup, int priority, EntityData data)
         {
             if (data == null)
@@ -127,6 +133,26 @@ namespace StarForce
             }
 
             entityComponent.ShowEntity(data.Id, logicType, AssetUtility.GetEntityAsset(drEntity.AssetName), entityGroup, priority, data);
+        }
+
+        private static void ShowNPC(this EntityComponent entityComponent,Type logicType,string entityGroup,int priority, EntityData data)
+        {
+            if (data == null)
+            {
+                Debug.LogWarning("Data is invalid");
+                return;
+            }
+
+            IDataTable<DREntity> dtEntity = GameEntry.DataTable.GetDataTable<DREntity>();
+            DREntity drEntity = dtEntity.GetDataRow(data.TypeId);
+            if (drEntity == null)
+            {
+                Log.Warning("Can not load entity id '{0}' from data table.", data.TypeId.ToString());
+                return;
+            }
+
+            entityComponent.ShowEntity(data.Id, logicType, AssetUtility.GetNPCAsset(drEntity.AssetName),entityGroup,priority,data);
+
         }
 
         public static int GenerateSerialId(this EntityComponent entityComponent)

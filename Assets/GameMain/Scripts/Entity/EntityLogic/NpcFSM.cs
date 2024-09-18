@@ -8,7 +8,9 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityGameFramework.Runtime;
 using GameEntry = StarForce.GameEntry;
-
+/// <summary>
+/// 商店NPC
+/// </summary>
 public class NpcFSM : EntityLogic
 {
     public NpcFSMData NpcFsmData = null;

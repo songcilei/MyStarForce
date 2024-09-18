@@ -51,6 +51,11 @@ namespace StarForce
             return Utility.Text.Format("Assets/GameMain/Entities/{0}.prefab", assetName);
         }
 
+        public static string GetNPCAsset(string assetName)
+        {
+            return Utility.Text.Format("Assets/GameMain/Object/NpcModel/{0}.prefab", assetName);
+        }
+
         public static string GetUIFormAsset(string assetName)
         {
             return Utility.Text.Format("Assets/GameMain/UI/UIForms/{0}.prefab", assetName);

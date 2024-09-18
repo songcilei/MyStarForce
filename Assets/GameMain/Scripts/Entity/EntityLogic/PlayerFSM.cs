@@ -8,7 +8,9 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 using GameEntry = StarForce.GameEntry;
-
+/// <summary>
+/// 战斗中控制器
+/// </summary>
 public class PlayerFSM : PlayerBase
 {
     public PlayerFSMData PlayerFsmData
