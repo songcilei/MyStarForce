@@ -53,6 +53,8 @@ public class NpcControlEntity : EntityLogic
     protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
     {
         base.OnUpdate(elapseSeconds, realElapseSeconds);
+
+
     }
 
     protected override void OnHide(bool isShutdown, object userData)
@@ -68,6 +70,7 @@ public class NpcControlEntity : EntityLogic
     {
         if (Debug)
         {
+            Transform trans = PlayerInputSystem.Instance.transform;
             Vector3 center = transform.position;
             Vector3 direction = transform.forward;
             Gizmos.color = Color.red;
@@ -84,6 +87,10 @@ public class NpcControlEntity : EntityLogic
 
                 Gizmos.DrawLine(center, point);
             }
+            
+            Gizmos.DrawLine(trans.position,center);
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(center,center+direction*5);
         }
     }
 }

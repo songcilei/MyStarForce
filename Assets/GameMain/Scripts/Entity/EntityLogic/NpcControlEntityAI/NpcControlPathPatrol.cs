@@ -90,8 +90,9 @@ public class NpcControlPathPatrol : FsmState<NpcControlEntity>
     {
         Vector3 heroPos = heroTrans.position;
         float distance = Vector3.Distance(trans.position, heroPos);
-        Vector3 norVec = trans.rotation * trans.forward;
-        Vector3 temVec = trans.position-heroPos;
+        // Quaternion qUaRation = Quaternion.Euler(0,searchAngle/2,0);
+        Vector3 norVec = trans.forward;
+        Vector3 temVec = heroPos - trans.position;
 
         float angle = Mathf.Acos(Vector3.Dot(norVec.normalized, temVec.normalized)) * Mathf.Rad2Deg;
         if (distance<searchRadius)

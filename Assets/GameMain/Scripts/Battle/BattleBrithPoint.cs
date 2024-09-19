@@ -40,7 +40,7 @@ public class BattleBrithPoint : MonoBehaviour
         if (ne.EntityLogicType == typeof(NpcControlEntity))
         {
             var entity = (NpcControlEntity)ne.Entity.Logic;
-            entity.transform.position = Vector3.zero;
+            entity.transform.position = this.transform.position;
         }
     }
 }
