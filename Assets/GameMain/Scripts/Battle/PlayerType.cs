@@ -10,4 +10,7 @@ public enum ActorType
     Monster4 =80004,
     Monster5 =80005,
     Monster6 =80006,
+    Monster7 =80007,
+    Monster8 =80008,
+    Monster9 =80009,
 }

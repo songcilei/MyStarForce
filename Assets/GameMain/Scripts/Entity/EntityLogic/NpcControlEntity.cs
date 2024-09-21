@@ -28,7 +28,7 @@ public class NpcControlEntity : EntityLogic
         patrolPath = data.patrolPathName;
         npcState = new FsmState<NpcControlEntity>[]
         {
-            new NpcControlIdle(patrolPath),
+            new NpcControlIdle(searchRadius,searchAngle,patrolPath),
             new NpcControlFind(),
             new NpcControlMove(),
             new NpcControlDeath(),

@@ -11,12 +11,14 @@ public class BattleBrithPoint : MonoBehaviour
 {
     public int typeId;
     public string patrolPathName;
+
+    public List<ActorType> m_ActorTypes = new List<ActorType>();
+
     void Start()
     {
 
         GameEntry.Event.Subscribe(ShowEntitySuccessEventArgs.EventId,SuccessLoad);
         StartCoroutine(PlayRun());
-        
     }
 
 
@@ -41,6 +43,8 @@ public class BattleBrithPoint : MonoBehaviour
         {
             var entity = (NpcControlEntity)ne.Entity.Logic;
             entity.transform.position = this.transform.position;
+            var trigger = entity.gameObject.AddComponent<BattleTrigger>();
+            trigger.SetEnemys(m_ActorTypes);
         }
     }
 }
