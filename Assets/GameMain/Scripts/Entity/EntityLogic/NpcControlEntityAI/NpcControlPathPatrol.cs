@@ -31,23 +31,21 @@ public class NpcControlPathPatrol : FsmState<NpcControlEntity>
     protected override void OnInit(IFsm<NpcControlEntity> fsm)
     {
         base.OnInit(fsm);
+        agent = fsm.Owner.GetComponent<NavMeshAgent>();
+        trans = fsm.Owner.transform;
+        heroTrans =  PlayerInputSystem.Instance.transform;
+        m_Animator = fsm.Owner.gameObject.GetComponent<Animator>();
     }
 
     protected override void OnEnter(IFsm<NpcControlEntity> fsm)
     {
         base.OnEnter(fsm);
-        agent = fsm.Owner.GetComponent<NavMeshAgent>();
-        trans = fsm.Owner.transform;
-        heroTrans =  PlayerInputSystem.Instance.transform;
-        m_Animator = fsm.Owner.gameObject.GetComponent<Animator>();
         if (m_PatrolPathName != null)
         {   
             m_PatrolPath = PatrolPoints.Instance.GetPatrolPath(m_PatrolPathName);
             agent.Warp(trans.position);
             Patroling = true;
         }
-
-
     }
 
     protected override void OnUpdate(IFsm<NpcControlEntity> fsm, float elapseSeconds, float realElapseSeconds)

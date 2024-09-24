@@ -27,19 +27,21 @@ public class NpcControlIdle : FsmState<NpcControlEntity>
     protected override void OnInit(IFsm<NpcControlEntity> fsm)
     {
         base.OnInit(fsm);
+        heroTrans =  PlayerInputSystem.Instance.transform;
+        m_Animator = fsm.Owner.gameObject.GetComponent<Animator>();
+        agent = fsm.Owner.gameObject.GetComponent<NavMeshAgent>();
+        trans = fsm.Owner.transform;
     }
 
     protected override void OnEnter(IFsm<NpcControlEntity> fsm)
     {
         base.OnEnter(fsm);
-        m_Animator = fsm.Owner.gameObject.GetComponent<Animator>();
         Waiting = true;
-        trans = fsm.Owner.transform;
         if (m_PatrolPathName != null)
         {
             agent.Warp(trans.position);
         }
-        heroTrans =  PlayerInputSystem.Instance.transform;
+        //heroTrans =  PlayerInputSystem.Instance.transform;
         WaitSec();
     }
 
@@ -48,7 +50,7 @@ public class NpcControlIdle : FsmState<NpcControlEntity>
         base.OnUpdate(fsm, elapseSeconds, realElapseSeconds);
         m_Animator.Play("idle");
 
-        if (Waiting = false)
+        if (Waiting == false)
         {
             if (PatrolPoints.Instance.GetPatrolPath(m_PatrolPathName)==null)
             {

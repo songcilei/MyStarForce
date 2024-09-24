@@ -70,7 +70,13 @@ public class PlayerControlEntity : EntityLogic
         }
         
         Character character = this.GetComponent<Character>();
-        
+
+        BattleBrithPoint[] brithPoints = FindObjectsOfType<BattleBrithPoint>();
+        foreach (var point in brithPoints)
+        {
+            point.CreateNpc();
+        }
+
     }
 
     private void LoadIconSuccess(string assetName,object asset,float duration,object userData)

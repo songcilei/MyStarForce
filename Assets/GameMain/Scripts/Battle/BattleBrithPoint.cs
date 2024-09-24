@@ -18,9 +18,14 @@ public class BattleBrithPoint : MonoBehaviour
     {
 
         GameEntry.Event.Subscribe(ShowEntitySuccessEventArgs.EventId,SuccessLoad);
-        StartCoroutine(PlayRun());
+        //StartCoroutine(PlayRun());
     }
 
+
+    public void CreateNpc()
+    {
+        GameEntry.Entity.ShowNpcControlEntity(new NpcControlEntityData(GameEntry.Entity.GenerateSerialId(),typeId,patrolPathName));
+    }
 
     IEnumerator PlayRun()
     {
