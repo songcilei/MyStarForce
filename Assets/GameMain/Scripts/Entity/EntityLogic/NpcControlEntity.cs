@@ -43,7 +43,7 @@ public class NpcControlEntity : EntityLogic
 //data        
         data = userData as NpcControlEntityData;
         EntityId = data.EntityId;
-        
+        this.gameObject.name = this.gameObject.name + "_" + EntityId;
         // GameEntry.Resource.LoadAsset();
 //create fsm
         npcFsm = GameEntry.Fsm.CreateFsm(this.name + EntityId, this, npcState);

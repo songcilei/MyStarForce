@@ -11,9 +11,10 @@ public class BattleBrithPoint : MonoBehaviour
 {
     public int typeId;
     public string patrolPathName;
-
+    
     public List<ActorType> m_ActorTypes = new List<ActorType>();
 
+    private int EntityID = 0;
     void Start()
     {
 
@@ -24,7 +25,8 @@ public class BattleBrithPoint : MonoBehaviour
 
     public void CreateNpc()
     {
-        GameEntry.Entity.ShowNpcControlEntity(new NpcControlEntityData(GameEntry.Entity.GenerateSerialId(),typeId,patrolPathName));
+        EntityID = GameEntry.Entity.GenerateSerialId();
+        GameEntry.Entity.ShowNpcControlEntity(new NpcControlEntityData(EntityID,typeId,patrolPathName));
     }
 
     IEnumerator PlayRun()
@@ -46,10 +48,14 @@ public class BattleBrithPoint : MonoBehaviour
         ShowEntitySuccessEventArgs ne = (ShowEntitySuccessEventArgs)args;
         if (ne.EntityLogicType == typeof(NpcControlEntity))
         {
-            var entity = (NpcControlEntity)ne.Entity.Logic;
-            entity.transform.position = this.transform.position;
-            var trigger = entity.gameObject.AddComponent<BattleTrigger>();
-            trigger.SetEnemys(m_ActorTypes);
+            if (ne.Entity.Id == EntityID)
+            {
+                var entity = (NpcControlEntity)ne.Entity.Logic;
+                entity.transform.position = this.transform.position;
+                var trigger = entity.gameObject.AddComponent<BattleTrigger>();
+                trigger.SetEnemys(m_ActorTypes);
+                GameEntry.Event.Unsubscribe(ShowEntitySuccessEventArgs.EventId,SuccessLoad);
+            }
         }
     }
 }

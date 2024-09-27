@@ -92,7 +92,12 @@ public class PlayerFSM : PlayerBase
     {
         base.OnShow(userData);
         //-----------------------------Init
-        Model = transform.Find("Model").gameObject;
+        if (transform.Find("Model"))
+        {
+            Model = transform.Find("Model").gameObject;
+        }
+
+        
         
         m_playerFsmData = userData as PlayerFSMData;
         entityId = m_playerFsmData.EntityId;
@@ -138,14 +143,20 @@ public class PlayerFSM : PlayerBase
         playFsm.Start<PlayerIdle>();
         
         //--------------------------------------------- Load Asset
-        string modelPath = AssetUtility.GetNPCModelAsset(modelName);
-        GameEntry.Resource.LoadAsset(modelPath,LoadAssetCallbacks_Model);
-        Debug.Log("loading model!");
-        name = modelName + entityId;
-        string iconPath = AssetUtility.GetPlayerHeadIconAsset(icon);
-        GameEntry.Resource.LoadAsset(iconPath,LoadAssetSuccessCallback_Icon);
-        
-        
+        if (Model)
+        {
+            string modelPath = AssetUtility.GetNPCModelAsset(modelName);
+            GameEntry.Resource.LoadAsset(modelPath,LoadAssetCallbacks_Model);
+            Debug.Log("loading model!");
+            name = modelName + entityId;
+            string iconPath = AssetUtility.GetPlayerHeadIconAsset(icon);
+            GameEntry.Resource.LoadAsset(iconPath,LoadAssetSuccessCallback_Icon);
+        }
+        else
+        {
+            name = entityName + entityName;
+        }
+
         //----------------------------------------------Init Skill
         var table = GameEntry.DataTable.GetDataTable<DRSkill>();
         foreach (var id in m_playerFsmData.Skills)

@@ -2,11 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using GameFramework.Event;
 using Sirenix.OdinInspector;
+using StarForce;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
 using GameEntry = StarForce.GameEntry;
+using Object = System.Object;
 using Random = UnityEngine.Random;
 
 public class BattleComponent : GameFrameworkComponent
@@ -45,6 +48,11 @@ public class BattleComponent : GameFrameworkComponent
     
     public PlayerFSM CurrentPlayer;
     private string CurrentKey;
+
+    private int LoadFallbackIndex = 0;
+    private bool LoadCheck = false;
+    private int entitylistCount = 0;
+    
     protected override void Awake()
     {
         base.Awake();
@@ -77,13 +85,28 @@ public class BattleComponent : GameFrameworkComponent
         switch (_battleType)
         {
             case BattleType.None:
+                if (LoadCheck)
+                {
+                    Debug.Log(LoadFallbackIndex);
+                    if (LoadFallbackIndex == entitylistCount)
+                    {
+                        Debug.Log("entity countss:"+entitylist.Count);
+                        SetPlayerToList(entitylist);
+                        LoadCheck = false;
+                        GameEntry.Event.Unsubscribe(ShowEntitySuccessEventArgs.EventId,LoadEntitySuccess);
+                        GameEntry.Event.Unsubscribe(ShowEntityFailureEventArgs.EventId,LoadFailureLoad);
+
+                    }
+                }
+
                 if (RunBattleState)
                 {
                     _battleType = BattleType.OnInit;//change state
                     RectTransform rect = Timeline.GetComponent<RectTransform>();
                     StartPosX = StartPos.position.x;
                     EndPosX = EndPos.position.x;
-                    WidthX = Mathf.Abs(EndPosX - StartPosX); 
+                    WidthX = Mathf.Abs(EndPosX - StartPosX);
+                    
                 }
 
                 Debug.Log("battle None");
@@ -94,7 +117,7 @@ public class BattleComponent : GameFrameworkComponent
                 break;
             case BattleType.OnStart:
                 heroTransform = GameObject.Find("hero").transform;
-    //enter BattleMgr            
+    //enter BattleMgr  
                 GameEntry.Event.Fire(this,StartBattleEventArgs.Create(heroTransform.position,heroFsmList,enemyFsmList));
                 _battleType = BattleType.OnUpdate;
                 break;
@@ -115,7 +138,7 @@ public class BattleComponent : GameFrameworkComponent
 /// run 
 /// </summary>
 /// <param name="herolist"></param>
-    public void RunBattle(List<PlayerFSM> herolist)
+    public void RunBattle(List<PlayerFSM> entitylist)
     {
         if (RunBattleState)
         {
@@ -123,8 +146,37 @@ public class BattleComponent : GameFrameworkComponent
         }
 
         
-        SetPlayerToList(herolist);
+        SetPlayerToList(entitylist);
     }
+
+public void RunBattle(List<int> entityIDlist)
+{
+    if (RunBattleState)
+    {
+        return;
+    }
+    GameEntry.Event.Subscribe(ShowEntitySuccessEventArgs.EventId,LoadEntitySuccess);
+    GameEntry.Event.Subscribe(ShowEntityFailureEventArgs.EventId,LoadFailureLoad);
+
+    LoadFallbackIndex = 0;
+    entitylist.Clear();
+    
+    List<TeamBase> teams = GameEntry.TeamComponent.GetTeam();
+    foreach (var team in teams)
+    {
+        Debug.Log("team:"+team.TypeId);
+        GameEntry.Entity.ShowPlayer(new PlayerFSMData(GameEntry.Entity.GenerateSerialId(),team.TypeId,PlayerType.Hero));
+    }
+    
+    foreach (var entityID in entityIDlist)
+    {
+        // GameEntry.Entity.ShowPlayer(new PlayerFSMData(GameEntry.Entity.GetInstanceID(),entityID,PlayerType.Enemy));
+        GameEntry.Entity.ShowPlayer(new PlayerFSMData(GameEntry.Entity.GenerateSerialId(),entityID,PlayerType.Enemy));
+    }
+    entitylistCount = teams.Count + entityIDlist.Count;
+    Debug.Log("entitylistCount:"+entitylistCount);
+    LoadCheck = true;
+}
 
     private void Init()
     {
@@ -134,6 +186,7 @@ public class BattleComponent : GameFrameworkComponent
         GameObject HeadTemp = PlayerHeadTemp.gameObject;
         foreach (var playerF in PlayerFsmList)
         {
+            Debug.Log("type:"+playerF.PlayerType);
             RectTransform insTran = Instantiate(HeadTemp,PlayerHead).GetComponent<RectTransform>();
             Texture2D icon = playerF.HeadIcon;
             RawImage icon_ui = insTran.transform.Find("HeadIcon")?.GetComponent<RawImage>();
@@ -306,14 +359,14 @@ public class BattleComponent : GameFrameworkComponent
     }
 
 
-    private void SetPlayerToList(List<PlayerFSM> entitylist)
+    private void SetPlayerToList(List<PlayerFSM> Entitylist)
     {
-        foreach (var entity in entitylist)
+        foreach (var entity in Entitylist)
         {
             PlayerFsmList.Add(entity);
         }
 
-        Debug.Log("RunbattleState is true");
+        Debug.Log("Entity Counts:"+PlayerFsmList.Count);
         RunBattleState = true;
     }
 
@@ -337,6 +390,23 @@ public class BattleComponent : GameFrameworkComponent
         List<PlayerFSM> heroList = GetLiveHeroList();
         int index = Random.Range(0, heroList.Count);
         return heroList[index];
+    }
+
+    List<PlayerFSM> entitylist = new List<PlayerFSM>();
+    void LoadEntitySuccess(Object obj,GameEventArgs args)
+    {
+        ShowEntitySuccessEventArgs ne = (ShowEntitySuccessEventArgs) args;
+        if (ne.EntityLogicType == typeof(PlayerFSM))
+        {
+            entitylist.Add((PlayerFSM)ne.Entity.Logic);
+            LoadFallbackIndex++;
+        }
+    }
+    
+    private void LoadFailureLoad(object obj,GameEventArgs args)
+    {
+        ShowEntityFailureEventArgs ne = (ShowEntityFailureEventArgs)args;
+        Debug.LogError(ne.EntityAssetName + "Load Error!!!!");
     }
 
 }

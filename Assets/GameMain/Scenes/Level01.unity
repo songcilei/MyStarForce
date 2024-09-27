@@ -1668,7 +1668,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &362568603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4575,7 +4575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeId: 80007
   patrolPathName: path1
-  m_ActorTypes: 
+  m_ActorTypes: 873801008838010089380100
 --- !u!1001 &950435707
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5246,7 +5246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeId: 80009
   patrolPathName: path3
-  m_ActorTypes: 
+  m_ActorTypes: 873801008838010089380100
 --- !u!4 &1099514488
 Transform:
   m_ObjectHideFlags: 0
@@ -5382,7 +5382,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeId: 80008
   patrolPathName: path2
-  m_ActorTypes: 
+  m_ActorTypes: 873801008838010089380100
 --- !u!4 &1152181445
 Transform:
   m_ObjectHideFlags: 0

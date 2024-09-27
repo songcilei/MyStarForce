@@ -147,6 +147,8 @@ public class BattleMgr : MonoBehaviour
             return;
         }
 
+        Debug.Log("hero:"+ne.heroFsm.Count);
+        Debug.Log("enemy:"+ne.enemyFsm.Count);
         CreatBattle(ne.playPos, ne.heroFsm, ne.enemyFsm);
     }
 
