@@ -43,6 +43,10 @@ public class PlayerFSM : PlayerBase
 
     private AILogic m_AILogic;
     
+    
+    //animation
+    public Animator m_Animator = null;
+    
     protected override void OnInit(object userData)
     {
         base.OnInit(userData);
@@ -96,9 +100,13 @@ public class PlayerFSM : PlayerBase
         {
             Model = transform.Find("Model").gameObject;
         }
+        else
+        {
+            m_Animator = this.GetComponent<Animator>();
+        }
 
-        
-        
+
+
         m_playerFsmData = userData as PlayerFSMData;
         entityId = m_playerFsmData.EntityId;
         PlayerType = m_playerFsmData.PlayerType;
@@ -108,6 +116,7 @@ public class PlayerFSM : PlayerBase
         icon = m_playerFsmData.Icon;
         Radius = m_playerFsmData.Radius;
         TimelineInitPos = m_playerFsmData.TimelineInitPos;
+        
         //-------------------------------------
         Level = m_playerFsmData.Level;
         Atk = m_playerFsmData.Atk;
@@ -233,6 +242,11 @@ public class PlayerFSM : PlayerBase
         modelInstance.transform.localPosition = Vector3.zero;
         modelInstance.transform.rotation = quaternion.identity;
         modelInstance.transform.localScale = Vector3.one;
+        if (modelInstance.GetComponent<Animator>())
+        {
+            m_Animator = modelInstance.GetComponent<Animator>();
+        }
+
         Debug.Log("log success for model!!");
         modelLoadEd = true;
     }
