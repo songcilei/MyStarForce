@@ -156,14 +156,13 @@ public class PlayerFSM : PlayerBase
         {
             string modelPath = AssetUtility.GetNPCModelAsset(modelName);
             GameEntry.Resource.LoadAsset(modelPath,LoadAssetCallbacks_Model);
-            Debug.Log("loading model!");
-            name = modelName + entityId;
+            name = entityName + entityId;
             string iconPath = AssetUtility.GetPlayerHeadIconAsset(icon);
             GameEntry.Resource.LoadAsset(iconPath,LoadAssetSuccessCallback_Icon);
         }
         else
         {
-            name = entityName + entityName;
+            name = entityName + entityId;
         }
 
         //----------------------------------------------Init Skill
@@ -245,6 +244,10 @@ public class PlayerFSM : PlayerBase
         if (modelInstance.GetComponent<Animator>())
         {
             m_Animator = modelInstance.GetComponent<Animator>();
+        }
+        else
+        {
+            Debug.LogError( assetName+" Model dont have Animator component!");
         }
 
         Debug.Log("log success for model!!");

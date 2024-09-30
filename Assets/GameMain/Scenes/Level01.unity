@@ -5036,7 +5036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad3ebe64d89639429665f833eb77620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActorTypes: 843801008538010086380100
+  ActorTypes: 
 --- !u!4 &1085196506
 Transform:
   m_ObjectHideFlags: 0

@@ -109,24 +109,32 @@ public class AILogic
 
         if (heroList.Count>2)
         {
-            //范围技能
-            if (ThinkSuccess())
+            //有范围技能
+            if (GetRandomSkill(SkillKey._range)!=null)
             {
-                IAction action = GetRandomSkill(SkillKey._range);
+                //范围技能
+                if (ThinkSuccess())
+                {
+                    IAction action = GetRandomSkill(SkillKey._range);
+                    PlayerFSM hero = GetSoloLiveHero();
+                    action.Execute(fsm,hero.entityId);
+                    GameEntry.Event.Fire(this,PlayerSkillEventArgs.Create());
+                    m_AIState = AIState.None;
+                }
+            }
+        }
+
+        //有单体技能
+        if (GetRandomSkill(SkillKey._atk)!=null)
+        {
+            if (ThinkSuccess())
+            {//单体技能
+                IAction action = GetRandomSkill(SkillKey._atk);
                 PlayerFSM hero = GetSoloLiveHero();
                 action.Execute(fsm,hero.entityId);
                 GameEntry.Event.Fire(this,PlayerSkillEventArgs.Create());
                 m_AIState = AIState.None;
             }
-        }
-
-        if (ThinkSuccess())
-        {//单体技能
-            IAction action = GetRandomSkill(SkillKey._atk);
-            PlayerFSM hero = GetSoloLiveHero();
-            action.Execute(fsm,hero.entityId);
-            GameEntry.Event.Fire(this,PlayerSkillEventArgs.Create());
-            m_AIState = AIState.None;
         }
         m_AIState = AIState.Normal;
 

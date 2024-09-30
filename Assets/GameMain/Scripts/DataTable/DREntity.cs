@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2024-09-19 01:20:13.516
+// 生成时间：2024-09-30 23:51:12.628
 //------------------------------------------------------------
 
 using GameFramework;
@@ -171,6 +171,15 @@ namespace StarForce
             private set;
         }
 
+        /// <summary>
+        /// 获取头像图片名称。
+        /// </summary>
+        public string Icon
+        {
+            get;
+            private set;
+        }
+
         public override bool ParseDataRow(string dataRowString, object userData)
         {
             string[] columnStrings = dataRowString.Split(DataTableExtension.DataSplitSeparators);
@@ -198,6 +207,7 @@ namespace StarForce
             Mp = int.Parse(columnStrings[index++]);
             Luck = int.Parse(columnStrings[index++]);
             Radius = float.Parse(columnStrings[index++]);
+            Icon = columnStrings[index++];
 
             GeneratePropertyArray();
             return true;
@@ -237,6 +247,7 @@ namespace StarForce
                     Mp = binaryReader.Read7BitEncodedInt32();
                     Luck = binaryReader.Read7BitEncodedInt32();
                     Radius = binaryReader.ReadSingle();
+                    Icon = binaryReader.ReadString();
                 }
             }
 

@@ -11,7 +11,7 @@ using GameEntry = StarForce.GameEntry;
 [RequireComponent(typeof(Collider))]
 public class BattleTrigger : MonoBehaviour
 {
-    private ActorType[] m_ActorTypes;
+    public ActorType[] m_ActorTypes;
     private List<int> EntityIDList = new List<int>();
     private int loadEd = 0;
     private int teamCount = 0;

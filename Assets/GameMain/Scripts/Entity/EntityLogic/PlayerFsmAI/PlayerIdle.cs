@@ -14,7 +14,11 @@ public class PlayerIdle : FsmState<PlayerFSM>
     protected override void OnEnter(IFsm<PlayerFSM> fsm)
     {
         base.OnEnter(fsm);
-        fsm.Owner.m_Animator.Play("idle");
+        if (fsm.Owner.m_Animator!=null)
+        {
+            fsm.Owner.m_Animator.Play("idle");
+        }
+
     }
 
     protected override void OnUpdate(IFsm<PlayerFSM> fsm, float elapseSeconds, float realElapseSeconds)

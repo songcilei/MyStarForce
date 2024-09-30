@@ -184,6 +184,7 @@ public void RunBattle(List<int> entityIDlist)
         heroFsmList.Clear();
         enemyFsmList.Clear();
         GameObject HeadTemp = PlayerHeadTemp.gameObject;
+        Debug.Log("PlayerFsmList:"+PlayerFsmList.Count);
         foreach (var playerF in PlayerFsmList)
         {
             Debug.Log("type:"+playerF.PlayerType);
@@ -214,10 +215,12 @@ public void RunBattle(List<int> entityIDlist)
             
             
             BattleBase battleBase = new BattleBase(playerF.name,playerF.entityId,playerF.Spd,insTran,icon,startPosition,endPosition);
-            if (!battleHeadUIList.ContainsKey(playerF.name))
+            if (playerF != null)
             {
-                battleHeadUIList.Add(playerF.name,battleBase);
-                UnityGameFramework.Runtime.Log.Debug(playerF.name);
+                if (!battleHeadUIList.ContainsKey(playerF.name))
+                {
+                    battleHeadUIList.Add(playerF.name,battleBase);
+                }
             }
         }
         
