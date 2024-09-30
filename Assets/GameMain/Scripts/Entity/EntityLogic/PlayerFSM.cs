@@ -21,7 +21,7 @@ public class PlayerFSM : PlayerBase
         }
     }
     public Texture2D HeadIcon;
-    public GameObject Model;
+    // public GameObject Model;
     private LoadAssetCallbacks LoadAssetCallbacks_Model;
     private LoadAssetCallbacks LoadAssetSuccessCallback_Icon;
 
@@ -96,14 +96,14 @@ public class PlayerFSM : PlayerBase
     {
         base.OnShow(userData);
         //-----------------------------Init
-        if (transform.Find("Model"))
-        {
-            Model = transform.Find("Model").gameObject;
-        }
-        else
-        {
+        // if (transform.Find("Model"))
+        // {
+        //     Model = transform.Find("Model").gameObject;
+        // }
+        // else
+        // {
             m_Animator = this.GetComponent<Animator>();
-        }
+        // }
 
 
 
@@ -152,17 +152,19 @@ public class PlayerFSM : PlayerBase
         playFsm.Start<PlayerIdle>();
         
         //--------------------------------------------- Load Asset
-        if (Model)
+        // if (Model)
+        // {
+            // string modelPath = AssetUtility.GetNPCModelAsset(modelName);
+            // GameEntry.Resource.LoadAsset(modelPath,LoadAssetCallbacks_Model);
+        //     name = entityName + entityId;
+        //     string iconPath = AssetUtility.GetPlayerHeadIconAsset(icon);
+        //     GameEntry.Resource.LoadAsset(iconPath,LoadAssetSuccessCallback_Icon);
+        // }
+        // else
         {
-            string modelPath = AssetUtility.GetNPCModelAsset(modelName);
-            GameEntry.Resource.LoadAsset(modelPath,LoadAssetCallbacks_Model);
             name = entityName + entityId;
             string iconPath = AssetUtility.GetPlayerHeadIconAsset(icon);
             GameEntry.Resource.LoadAsset(iconPath,LoadAssetSuccessCallback_Icon);
-        }
-        else
-        {
-            name = entityName + entityId;
         }
 
         //----------------------------------------------Init Skill
@@ -186,10 +188,10 @@ public class PlayerFSM : PlayerBase
     protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
     {
         base.OnUpdate(elapseSeconds, realElapseSeconds);
-        if (modelLoadEd && IconLoadEd)
-        {
-            // Debug.Log("load ed   Model and Icon");
-        }
+        // if (modelLoadEd && IconLoadEd)
+        // {
+        //     // Debug.Log("load ed   Model and Icon");
+        // }
 //AI Update
         if (m_AILogic!=null)
         {
@@ -236,22 +238,22 @@ public class PlayerFSM : PlayerBase
 
     private void LoadModelSuccess(string assetName, object asset, float duration, object userData)
     {
-        var obj = asset as GameObject;
-        modelInstance = Instantiate(obj,Model.transform);
-        modelInstance.transform.localPosition = Vector3.zero;
-        modelInstance.transform.rotation = quaternion.identity;
-        modelInstance.transform.localScale = Vector3.one;
-        if (modelInstance.GetComponent<Animator>())
-        {
-            m_Animator = modelInstance.GetComponent<Animator>();
-        }
-        else
-        {
-            Debug.LogError( assetName+" Model dont have Animator component!");
-        }
-
-        Debug.Log("log success for model!!");
-        modelLoadEd = true;
+        // var obj = asset as GameObject;
+        // modelInstance = Instantiate(obj,Model.transform);
+        // modelInstance.transform.localPosition = Vector3.zero;
+        // modelInstance.transform.rotation = quaternion.identity;
+        // modelInstance.transform.localScale = Vector3.one;
+        // if (modelInstance.GetComponent<Animator>())
+        // {
+        //     m_Animator = modelInstance.GetComponent<Animator>();
+        // }
+        // else
+        // {
+        //     Debug.LogError( assetName+" Model dont have Animator component!");
+        // }
+        //
+        // Debug.Log("log success for model!!");
+        // modelLoadEd = true;
     }
     private void LoadIconSuccess(string assetName, object asset, float duration, object userData)
     {

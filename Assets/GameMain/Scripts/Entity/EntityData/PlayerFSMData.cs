@@ -35,15 +35,15 @@ public class PlayerFSMData : EntityData
         if (playerType == PlayerType.Enemy)
         {
             DREntity drEntity = GameEntry.DataTable.GetDataTable<DREntity>().GetDataRow(typeId);
-            int modelId = drEntity.ModelID[0];
-            DRNpcModel drNpcModel = GameEntry.DataTable.GetDataTable<DRNpcModel>().GetDataRow(modelId);
+            // int modelId = drEntity.ModelID[0];
+            // DRNpcModel drNpcModel = GameEntry.DataTable.GetDataTable<DRNpcModel>().GetDataRow(modelId);
         
-            this.ModelName = drNpcModel.AssetName;
+            this.ModelName = drEntity.AssetName;
             this.EntityName = drEntity.AssetName;
-            this.Icon = drNpcModel.Icon;
+            this.Icon = drEntity.Icon;
             this.PlayerType = playerType;
             this.TimelineInitPos = 0f;
-            this.Radius = drNpcModel.Radius;
+            this.Radius = drEntity.Radius;
             //-------------------------------------
             this.Spd = drEntity.Spd;
             this.Atk = drEntity.Atk;
